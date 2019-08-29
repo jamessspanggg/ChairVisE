@@ -14,3 +14,6 @@ Report: Project_Report.pdf
 - Backend: Google App Engine as PaaS + Spring REST + Google Cloud SQL (MySQL 5.6)
 - [**Setting-up Guide**](docs/setting-up.md)
 - [**Application Software Design**](docs/design.md)
+
+## Existing Charvice 2.0 Documentation
+https://hackmd.io/@a5A4fRHnTHSeDnuc86KjNw/rkLDiWrSS
