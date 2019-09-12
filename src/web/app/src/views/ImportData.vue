@@ -32,7 +32,7 @@
                      :value="idx">
           </el-option>
         </el-select>
-        <el-upload v-if="isReadyForUpload" drag action=""
+        <el-upload v-if="isReadyForUpload" drag action="" accept=".csv"
                    :auto-upload="false"
                    :show-file-list="false"
                    :multiple="false"
