@@ -15,5 +15,8 @@ Report: Project_Report.pdf
 - [**Setting-up Guide**](docs/setting-up.md)
 - [**Application Software Design**](docs/design.md)
 
-## Existing Charvice 2.0 Documentation
+## Existing CharVisE 2.0 Documentation
 https://hackmd.io/@a5A4fRHnTHSeDnuc86KjNw/rkLDiWrSS
+
+## CharVisE 3.0 Documentation
+https://hackmd.io/@a5A4fRHnTHSeDnuc86KjNw/S1DecrRSS
