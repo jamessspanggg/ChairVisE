@@ -220,7 +220,8 @@
               },
               ticks: {
                 autoSkip: false
-              }, scaleLabel: {
+              },
+              scaleLabel: {
                 display: true,
                 fontSize: 15,
                 fontStyle: 'bold',

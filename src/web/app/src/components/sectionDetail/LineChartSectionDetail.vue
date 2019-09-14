@@ -28,6 +28,12 @@
       <el-form-item label="Legend Label Name" prop="extraData.dataSetLabel" v-if="slotProps.isInAdvancedMode">
         <el-input v-model="slotProps.extraData.dataSetLabel" placeholder="Label Name"></el-input>
       </el-form-item>
+      <el-form-item label="X Label Name" prop="extraData.xLabel" v-if="slotProps.isInAdvancedMode">
+        <el-input v-model="slotProps.extraData.xLabel" placeholder="Label Name"></el-input>
+      </el-form-item>
+      <el-form-item label="Y Label Name" prop="extraData.yLabel" v-if="slotProps.isInAdvancedMode">
+        <el-input v-model="slotProps.extraData.yLabel" placeholder="Label Name"></el-input>
+      </el-form-item>
     </template>
   </basic-section-detail>
 </template>
@@ -94,6 +100,13 @@
               },
               gridLines: {
                 display: true
+              },
+              scaleLabel: {
+                display: true,
+                fontSize: 15,
+                fontStyle: 'bold',
+                labelString: extraData.yLabel,
+                padding: 20
               }
             }],
             xAxes: [{
@@ -103,11 +116,18 @@
               gridLines: {
                 display: false
               },
+              scaleLabel: {
+                display: true,
+                fontSize: 15,
+                fontStyle: 'bold',
+                labelString: extraData.xLabel,
+                padding: 20
+              }
             }]
           },
           legend: {
             display: true,
-            position: 'bottom'
+            position: 'right'
           },
           layout: {
             padding: {

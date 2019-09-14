@@ -1055,6 +1055,8 @@ export default {
         dataSetLabel: 'Acceptance Ratio',
         xAxisFieldName: 'year',
         yAxisFieldName: 'acceptance_ratio',
+        xLabel: 'Year',
+        yLabel: 'Acceptance Ratio',
       }
     }
   },
