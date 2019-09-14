@@ -333,6 +333,8 @@ export default {
         fieldsShownInToolTips: [{label: 'Email', field: 'author_email'}],
         xAxisFieldName: 'author_name',
         yAxisFieldName: 'submission_count',
+        xLabel: 'Author Name',
+        yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -457,6 +459,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 's_author_name',
         yAxisFieldName: 'paper_count',
+        xLabel: 'Author Name',
+        yLabel: 'Paper Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -527,6 +531,8 @@ export default {
         ],
         xAxisFieldName: 's_author_name',
         yAxisFieldName: 'acceptance_rate',
+        xLabel: 'Author Name',
+        yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -596,6 +602,8 @@ export default {
         ],
         xAxisFieldName: 's_author_name',
         yAxisFieldName: 'accepted',
+        xLabel: 'Author Name',
+        yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -806,6 +814,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 'weighted_score_interval',
         yAxisFieldName: 'submission_count',
+        xLabel: 'Weighted Score Interval',
+        yLabel: 'Submission Count',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
       }
@@ -948,6 +958,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 's_track_name',
         yAxisFieldName: 'submission_count',
+        xLabel: 'Track Name',
+        yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -995,6 +1007,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 's_track_name',
         yAxisFieldName: 'acceptance_ratio',
+        xLabel: 'Track Name',
+        yLabel: 'Acceptance Ratio',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1184,6 +1198,8 @@ export default {
         fieldsShownInToolTips: [{label: 'Email', field: 'author_email'}],
         xAxisFieldName: 'author_name',
         yAxisFieldName: 'submission_count',
+        xLabel: 'Author Name',
+        yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1263,6 +1279,8 @@ export default {
         ],
         xAxisFieldName: 'author_name',
         yAxisFieldName: 'acceptance_rate',
+        xLabel: 'Author Name',
+        yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1349,6 +1367,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 'acceptance_rate_interval',
         yAxisFieldName: 'number_of_author',
+        xLabel: 'Acceptance Rate Interval',
+        yLabel: 'No. Authors',
         numOfResultToDisplay: 20,
         isColorfulBar: false,
       }
@@ -1440,6 +1460,8 @@ export default {
         ],
         xAxisFieldName: 'author_name',
         yAxisFieldName: 'accepted',
+        xLabel: 'Author Name',
+        yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1508,6 +1530,8 @@ export default {
         ],
         xAxisFieldName: 'a_organisation',
         yAxisFieldName: 'acceptance_rate',
+        xLabel: 'Organisation Name',
+        yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1585,6 +1609,8 @@ export default {
         ],
         xAxisFieldName: 'a_organisation',
         yAxisFieldName: 'accepted',
+        xLabel: 'Organisation Name',
+        yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1662,6 +1688,8 @@ export default {
         ],
         xAxisFieldName: 'a_country',
         yAxisFieldName: 'acceptance_rate',
+        xLabel: 'Country Name',
+        yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1739,6 +1767,8 @@ export default {
         ],
         xAxisFieldName: 'a_country',
         yAxisFieldName: 'accepted',
+        xLabel: 'Country Name',
+        yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1790,6 +1820,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 'r_reviewer_name',
         yAxisFieldName: 'review_assignment',
+        xLabel: 'Reviewer Name',
+        yLabel: 'Average No. Review Assignment',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -1858,6 +1890,8 @@ export default {
         ],
         xAxisFieldName: 'r_reviewer_name',
         yAxisFieldName: 'avg_expertise_level',
+        xLabel: 'Reviewer Name',
+        yLabel: 'Average Expertise Level',
         numOfResultToDisplay: 30,
         isColorfulBar: true,
       }
@@ -1926,6 +1960,8 @@ export default {
         ],
         xAxisFieldName: 'r_reviewer_name',
         yAxisFieldName: 'avg_confidence_level',
+        xLabel: 'Reviewer Name',
+        yLabel: 'Average Confidence Level',
         numOfResultToDisplay: 30,
         isColorfulBar: true,
       }
@@ -1994,6 +2030,8 @@ export default {
         ],
         xAxisFieldName: 'r_reviewer_name',
         yAxisFieldName: 'avg_evaluation_score',
+        xLabel: 'Reviewer Name',
+        yLabel: 'Average Evaluation Score',
         numOfResultToDisplay: 30,
         isColorfulBar: true,
       }
@@ -2050,6 +2088,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 'num_of_review',
         yAxisFieldName: 'num_of_submission',
+        xLabel: 'No. Reviews',
+        yLabel: 'No. Submissions',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
       }
@@ -2180,6 +2220,8 @@ export default {
         ],
         xAxisFieldName: 'avg_expertise_level_interval',
         yAxisFieldName: 'num_of_reviewer',
+        xLabel: 'Average Expertise Level Interval',
+        yLabel: 'No. Reviewers',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
       }
@@ -2310,6 +2352,8 @@ export default {
         ],
         xAxisFieldName: 'avg_confidence_level_interval',
         yAxisFieldName: 'num_of_reviewer',
+        xLabel: 'Average Confidence Level Interval',
+        yLabel: 'No. Reviewers',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
       }
@@ -2452,6 +2496,8 @@ export default {
         ],
         xAxisFieldName: 'avg_evaluation_score_interval',
         yAxisFieldName: 'num_of_reviewer',
+        xLabel: 'Average Evaluation Score Interval',
+        yLabel: 'No. Reviewers',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
       }
@@ -2593,6 +2639,8 @@ export default {
         ],
         xAxisFieldName: 'weighted_score_interval',
         yAxisFieldName: 'acceptance_rate',
+        xLabel: 'Weighted Score Interval',
+        yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
       }
@@ -2640,6 +2688,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 's_track_name',
         yAxisFieldName: 'avg_weighted_score',
+        xLabel: 'Track Name',
+        yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 50,
         isColorfulBar: true,
       }
@@ -2713,6 +2763,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 'duration_get_reviewed_group',
         yAxisFieldName: 'num_of_submission',
+        xLabel: 'No. Days Taken To Review',
+        yLabel: 'No. Submissions',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
       }
@@ -2825,6 +2877,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 'avg_expertise_level_interval',
         yAxisFieldName: 'num_of_submission',
+        xLabel: 'Average Expertise Level Interval',
+        yLabel: 'No. Submissions',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
       }
@@ -2937,6 +2991,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 'avg_confidence_level_interval',
         yAxisFieldName: 'num_of_submission',
+        xLabel: 'Average Confidence Level Interval',
+        yLabel: 'No. Submissions',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
       }
@@ -2991,6 +3047,8 @@ export default {
         fieldsShownInToolTips: [],
         xAxisFieldName: 's_author_name',
         yAxisFieldName: 'avg_weighted_score',
+        xLabel: 'Author Name',
+        yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -3068,6 +3126,8 @@ export default {
         ],
         xAxisFieldName: 'author_name',
         yAxisFieldName: 'avg_weighted_score',
+        xLabel: 'Author Name',
+        yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -3131,6 +3191,8 @@ export default {
         ],
         xAxisFieldName: 'a_organisation',
         yAxisFieldName: 'avg_weighted_score',
+        xLabel: 'Organisation Name',
+        yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -3194,6 +3256,8 @@ export default {
         ],
         xAxisFieldName: 'a_country',
         yAxisFieldName: 'avg_weighted_score',
+        xLabel: 'Country Name',
+        yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -3201,7 +3265,7 @@ export default {
   },
 
 /*
-// visualization for gender distribution.  
+// visualization for gender distribution.
   "author_gender_ratio": {
         name: "Author Gender Distribution", // define the name of the chart
         group: 'Author Record', // classify the group of record (author/submission/review)
@@ -3316,6 +3380,8 @@ export default {
             dataSetLabel: 'Percentage of High Scores',
             xAxisFieldName:'r_confidence_level' ,
             yAxisFieldName: 'r_score_high_per',
+            xLabel: 'Confidence Level',
+            yLabel: 'High Score Percentage',
             numOfResultToDisplay: 10,
             isColorfulBar: false,
           }
