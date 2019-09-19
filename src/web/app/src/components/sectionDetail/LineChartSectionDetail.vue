@@ -127,7 +127,7 @@
           },
           legend: {
             display: true,
-            position: 'right'
+            position: 'top'
           },
           layout: {
             padding: {
