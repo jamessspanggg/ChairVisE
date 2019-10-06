@@ -32,7 +32,7 @@
 
       <!-- table head -->
       <div class="table-head">
-      <h3>First 5 rows of uploaded data:</h3>
+      <h3>Preview of uploaded data:</h3>
         <table>
           <th v-for="(title, index) in importList" v-bind:key="index">
             {{ title }}
