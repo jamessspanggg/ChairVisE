@@ -34,18 +34,14 @@
       <div class="table-head">
       <h3>First 5 rows of uploaded data:</h3>
         <table>
-          <template v-for="title in importList">
-            <th>
-              {{ title }}
-            </th>
-          </template>
-          <template v-for="i in 5">
-            <tr>
-              <td v-for="data in dbHead[i]">
-                {{ data }}
-              </td>
-            </tr>
-          </template>
+          <th v-for="(title, index) in importList" v-bind:key="index">
+            {{ title }}
+          <th/>
+          <tr v-for="i in 5" v-bind:key="i">
+            <td v-for="(data, index) in dbHead[i]" v-bind:key="index">
+              {{ data }}
+            </td>
+          </tr>
         </table>
       </div>
       <!-- end of table head -->
