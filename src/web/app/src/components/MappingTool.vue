@@ -30,6 +30,26 @@
       </div>
       <!-- end of imported tags -->
 
+      <!-- table head -->
+      <div class="table-head">
+      <h3>First 5 rows of uploaded data:</h3>
+        <table>
+          <template v-for="title in importList">
+            <th>
+              {{ title }}
+            </th>
+          </template>
+          <template v-for="i in 5">
+            <tr>
+              <td v-for="data in dbHead[i]">
+                {{ data }}
+              </td>
+            </tr>
+          </template>
+        </table>
+      </div>
+      <!-- end of table head -->
+
       <!-- button group -->
       <el-row class="button-row">
         <el-col>
@@ -111,6 +131,10 @@
     computed: {
       dbList: function () {
         return this.$store.state.dataMapping.data.dbSchema
+      },
+      // returns the first 5 rows of data
+      dbHead: function () {
+        return this.$store.state.dataMapping.data.uploadedData.slice(0, 6)
       },
       // a list of size k * 2, k is the number of mapped pairs
       // the mapped pairs are indexes.
@@ -407,5 +431,27 @@
 
   .button-row {
     margin-top: 40px;
+  }
+
+  .table-head {
+    padding-top: 5rem;
+    overflow-x: scroll;
+  }
+
+  table, tr, td, th {
+    border: 1px solid #f2f2f2;
+    font-size: 8px;
+    border-collapse: collapse;
+  }
+
+  th {
+    min-width: 50px;
+  }
+
+  td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 </style>
