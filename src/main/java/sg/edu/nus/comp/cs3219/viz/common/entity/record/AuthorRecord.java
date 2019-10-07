@@ -22,7 +22,7 @@ public class AuthorRecord {
     private Long id;
 
     // each record will be imported by each user, dataSet is used to distinguished records submitted by different user
-    private String dataSet;
+    private String dataSet; //email
 
     @Exportable(name = "Submission Id", nameInDB = "a_submission_id")
     @Column(name = "a_submission_id")
@@ -62,6 +62,19 @@ public class AuthorRecord {
     @Column(name = "a_is_corresponding")
     @JsonProperty("isCorresponding")
     private String isCorresponding;
+
+    @Column(name = "file_id")
+    private Long fileId;
+
+    public Long getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
+    }
+
+
 
     public Long getId() {
         return id;

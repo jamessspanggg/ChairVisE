@@ -69,6 +69,17 @@ public class ReviewRecord {
     @Column(name = "r_has_recommended_for_best_paper")
     private String hasRecommendedForBestPaper;
 
+    @Column(name = "file_id")
+    private Long fileId;
+
+    public Long getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
+    }
+
     public Long getId() {
         return id;
     }
