@@ -137,9 +137,7 @@
       fileUploadHandler: function (file, fileList) {
         // show loading and go parsing
         this.$store.commit("setPageLoadingStatus", true);
-        console.log(fileList[0].name); 
         let fileName = fileList[0].name;
-        //TODO: commit to setUploadedFileName.
         this.$store.commit("setUploadedFileName", fileName);
         Papa.parse(file.raw, {
           // ignoring empty lines in csv file

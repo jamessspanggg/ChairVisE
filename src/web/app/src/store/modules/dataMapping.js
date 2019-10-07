@@ -37,7 +37,6 @@ export default {
       state.data.uploadedData = data;
       state.hasFileUploaded = true;
     },
-    //TODO: create setUploadedFileName(state, data)
     setUploadedFileName(state, data) {
       state.data.fileName = data;
     },
@@ -147,7 +146,6 @@ export default {
           endpoint = "submission";
           break;
       }
-      //TODO: add fileName.
       let postData = {
         fileName: state.data.fileName,
         recordList: state.data.processedResult
