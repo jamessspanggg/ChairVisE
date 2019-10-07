@@ -22,6 +22,7 @@ export default {
       hasHeader: null,
       predefinedMapping: null,
       predefinedMappingId: null,
+      fileName: null
     },
     error: []
   },
@@ -36,7 +37,10 @@ export default {
       state.data.uploadedData = data;
       state.hasFileUploaded = true;
     },
-
+    //TODO: create setUploadedFileName(state, data)
+    setUploadedFileName(state, data) {
+      state.data.fileName = data;
+    },
     clearUploadedFile(state) {
       state.data.uploadedLabel = [];
       state.data.uploadedData = [];
@@ -143,7 +147,12 @@ export default {
           endpoint = "submission";
           break;
       }
-      await axios.post("/api/record/" + endpoint, state.data.processedResult)
+      //TODO: add fileName.
+      let postData = {
+        fileName: state.data.fileName,
+        recordList: state.data.processedResult
+      }
+      await axios.post("/api/record/" + endpoint, postData)
         .then(() => {
           commit("setPageLoadingStatus", false);
           commit("setUploadSuccess", true);
