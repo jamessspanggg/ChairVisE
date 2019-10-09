@@ -11,6 +11,7 @@ export default {
     userFileForm: {
       id: '',
       fileName: '',
+      fileType: '',
       createdAt: '',
     },
     userFileFormStatus: {

@@ -8,6 +8,7 @@ public class ReviewUploadRequest implements UploadRequestInterface<ReviewRecord>
 
 
     private String fileName;
+    private String fileType;
     private List<ReviewRecord> recordList;
 
 
@@ -20,6 +21,12 @@ public class ReviewUploadRequest implements UploadRequestInterface<ReviewRecord>
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+    @Override
+    public String getFileType() { return this.fileType; }
+
+    @Override
+    public void setFileType(String fileType) { this.fileType = fileType; }
 
     @Override
     public List<ReviewRecord> getRecordList() {

@@ -7,6 +7,7 @@ import java.util.List;
 public class SubmissionUploadRequest implements UploadRequestInterface<SubmissionRecord> {
 
     private String fileName;
+    private String fileType;
     private List<SubmissionRecord> recordList;
 
     @Override
@@ -18,6 +19,12 @@ public class SubmissionUploadRequest implements UploadRequestInterface<Submissio
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+    @Override
+    public String getFileType() { return this.fileType; }
+
+    @Override
+    public void setFileType(String fileType) { this.fileType = fileType; }
 
     @Override
     public List<SubmissionRecord> getRecordList() {
