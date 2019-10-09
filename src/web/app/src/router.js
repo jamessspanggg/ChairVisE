@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {ID_NEW_PRESENTATION} from "@/common/const";
+import { ID_NEW_PRESENTATION } from "@/common/const";
 
 Vue.use(Router);
 
@@ -18,6 +18,14 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "home" */ './views/Home.vue')
+    },
+    {
+      path: '/uploadedFiles',
+      name: 'uploadedFiles',
+      meta: {
+        title: 'Uploaded Files Page'
+      },
+      component: () => import(/* webpackChunkName: "uploadedFiles */ './views/UploadedFiles.vue'),
     },
     {
       path: '/analyze',
