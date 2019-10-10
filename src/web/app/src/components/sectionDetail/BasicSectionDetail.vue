@@ -161,7 +161,7 @@
             <el-option label="Big to Small" value="DESC"/>
             <el-option label="Small to Big" value="ASC"/>
           </el-select>&nbsp;
-          <el-button type="danger" icon="el-icon-delete" circle @clck="removeSorter(sorter)"></el-button>
+          <el-button type="danger" icon="el-icon-delete" circle @click="removeSorter(sorter)"></el-button>
         </el-form-item>
 
         <slot name="extraFormItems" :editForm="editForm" :extraData="editForm.extraData"
