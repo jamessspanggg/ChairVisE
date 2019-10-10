@@ -58,7 +58,6 @@
     },
     methods: {
       handlesSelectPresentation(presentation) {
-        console.log(presentation.id + " " + this.sectionId);
         this.$store.dispatch('copySectionDetail', {
           presentationId: presentation.id,
           id: this.sectionId
