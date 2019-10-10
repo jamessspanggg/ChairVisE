@@ -21,7 +21,7 @@
         <el-table-column label="File Type" prop="type"></el-table-column>
         <el-table-column label="Operations">
           <template>
-            <el-button icon="el-icon-delete"></el-button>
+            <el-button icon="el-icon-delete" type="danger"></el-button>
           </template>
         </el-table-column>
       </el-table>
