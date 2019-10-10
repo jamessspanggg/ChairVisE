@@ -134,9 +134,11 @@
       navigateToHomePage() {
         this.$router.replace("/home");
       },
-      fileUploadHandler: function (file) {
+      fileUploadHandler: function (file, fileList) {
         // show loading and go parsing
         this.$store.commit("setPageLoadingStatus", true);
+        let fileName = fileList[0].name;
+        this.$store.commit("setUploadedFileName", fileName);
         Papa.parse(file.raw, {
           // ignoring empty lines in csv file
           skipEmptyLines: true,

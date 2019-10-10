@@ -2,14 +2,14 @@ package sg.edu.nus.comp.cs3219.viz.logic;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import sg.edu.nus.comp.cs3219.viz.common.entity.record.AuthorRecord;
+import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.AuthorUploadRequest;
+import sg.edu.nus.comp.cs3219.viz.common.entity.UserFile;
 import sg.edu.nus.comp.cs3219.viz.common.entity.record.ReviewRecord;
 import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionAuthorRecord;
 import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionRecord;
-import sg.edu.nus.comp.cs3219.viz.storage.repository.AuthorRecordRepository;
-import sg.edu.nus.comp.cs3219.viz.storage.repository.ReviewRecordRepository;
-import sg.edu.nus.comp.cs3219.viz.storage.repository.SubmissionAuthorRecordRepository;
-import sg.edu.nus.comp.cs3219.viz.storage.repository.SubmissionRecordRepository;
+import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.ReviewUploadRequest;
+import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.SubmissionUploadRequest;
+import sg.edu.nus.comp.cs3219.viz.storage.repository.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,45 +24,50 @@ public class RecordLogic {
 
     private ReviewRecordRepository reviewRecordRepository;
 
+    private UserFileRepository userFileRepository;
+
     public RecordLogic(AuthorRecordRepository authorRecordRepository,
                        SubmissionRecordRepository submissionRecordRepository,
                        SubmissionAuthorRecordRepository submissionAuthorRecordRepository,
-                       ReviewRecordRepository reviewRecordRepository) {
+                       ReviewRecordRepository reviewRecordRepository,
+                       UserFileRepository userFileRepository) {
         this.authorRecordRepository = authorRecordRepository;
         this.submissionRecordRepository = submissionRecordRepository;
         this.submissionAuthorRecordRepository = submissionAuthorRecordRepository;
         this.reviewRecordRepository = reviewRecordRepository;
+        this.userFileRepository = userFileRepository;
     }
 
     @Transactional
-    public void removeAndPersistAuthorRecordForDataSet(String dataSet, List<AuthorRecord> authorRecordList) {
-        authorRecordRepository.deleteAllByDataSetEquals(dataSet);
-        authorRecordRepository.saveAll(authorRecordList.stream().peek(r -> {
+    public void persistAuthorRecordForDataSet(String dataSet, AuthorUploadRequest authorUploadRequest) {
+        UserFile userFile = userFileRepository.save(new UserFile(dataSet, authorUploadRequest.getFileName()));
+        authorRecordRepository.saveAll(authorUploadRequest.getRecordList().stream().peek(r -> {
             // should not set ID when creating records
             r.setId(null);
             // should set dataSet
             r.setDataSet(dataSet);
             // the other field can be arbitrary
+            r.setFileId(userFile.getId());
         }).collect(Collectors.toList()));
     }
 
     @Transactional
-    public void removeAndPersistReviewRecordForDataSet(String dataSet, List<ReviewRecord> reviewRecordList) {
-        reviewRecordRepository.deleteAllByDataSetEquals(dataSet);
-        reviewRecordRepository.saveAll(reviewRecordList.stream().peek(r -> {
+    public void persistReviewRecordForDataSet(String dataSet, ReviewUploadRequest reviewUploadRequest) {
+        UserFile userFile = userFileRepository.save(new UserFile(dataSet, reviewUploadRequest.getFileName()));
+        reviewRecordRepository.saveAll(reviewUploadRequest.getRecordList().stream().peek(r -> {
             // should not set ID when creating records
             r.setId(null);
             // should set dataSet
             r.setDataSet(dataSet);
             // the other field can be arbitrary
+            r.setFileId(userFile.getId());
         }).collect(Collectors.toList()));
     }
 
     @Transactional
-    public void removeAndPersistSubmissionRecordForDataSet(String dataSet, List<SubmissionRecord> submissionRecordList) {
-        submissionRecordRepository.deleteAllByDataSetEquals(dataSet);
-        submissionAuthorRecordRepository.deleteAllByDataSetEquals(dataSet);
-        submissionRecordRepository.saveAll(submissionRecordList.stream().peek(s -> {
+    public void persistSubmissionRecordForDataSet(String dataSet, SubmissionUploadRequest submissionUploadRequest) {
+        UserFile userFile = userFileRepository.save(new UserFile(dataSet, submissionUploadRequest.getFileName()));
+        submissionRecordRepository.saveAll(submissionUploadRequest.getRecordList().stream().peek(s -> {
             // should not set ID when creating records
             s.setId(null);
             // should set dataSet
@@ -82,6 +87,7 @@ public class RecordLogic {
                     .collect(Collectors.toList());
             s.setAuthorSet(submissionAuthorRecords);
             // the other field can be arbitrary
+            s.setFileId(userFile.getId());
         }).collect(Collectors.toList()));
     }
 }
