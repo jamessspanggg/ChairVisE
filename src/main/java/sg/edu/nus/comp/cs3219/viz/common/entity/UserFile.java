@@ -21,13 +21,19 @@ public class UserFile {
     @Column(name = "file_name")
     private String fileName;
 
+    @Column(name = "file_type")
+    private String fileType;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
     private Date createdAt;
 
-    public UserFile(String userEmail, String fileName) {
+    public UserFile(){}
+
+    public UserFile(String userEmail, String fileName, String fileType) {
         this.userEmail = userEmail;
         this.fileName = fileName;
+        this.fileType = fileType;
         this.createdAt = new Date();
     }
 
@@ -54,6 +60,10 @@ public class UserFile {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+    public String getFileType() { return fileType; }
+
+    public void setFileType(String fileType) { this.fileType = fileType; }
 
     public Date getCreatedAt() {
         return createdAt;

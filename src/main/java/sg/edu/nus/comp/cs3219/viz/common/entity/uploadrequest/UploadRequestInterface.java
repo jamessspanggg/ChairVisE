@@ -6,6 +6,8 @@ public interface UploadRequestInterface<T> {
 
     public String getFileName();
     public void setFileName(String fileName);
+    public String getFileType();
+    public void setFileType(String fileType);
     public List<T> getRecordList();
     public void setRecordList(List<T> recordList);
 }
