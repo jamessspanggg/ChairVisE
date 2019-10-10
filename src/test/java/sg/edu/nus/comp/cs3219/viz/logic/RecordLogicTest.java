@@ -1,52 +1,52 @@
-package sg.edu.nus.comp.cs3219.viz.logic;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import sg.edu.nus.comp.cs3219.viz.BaseTestWithDBAccess;
-import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionAuthorRecord;
-import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionRecord;
-import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.SubmissionUploadRequest;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-public class RecordLogicTest extends BaseTestWithDBAccess {
-
-    @Autowired
-    RecordLogic recordLogic;
-
-    @Override
-    protected String getDataBundleName() {
-        return "/NoContent.json";
-    }
-
-    @Test
-    public void testImportSubmissionRecord_shouldEstablishAuthorManyToManyRelationship() {
-        SubmissionRecord typicalSubmissionRecord = new SubmissionRecord();
-        typicalSubmissionRecord.setAuthors(Arrays.asList("XP", "HY", "YZH", "JACOB"));
-
-        SubmissionRecord typicalSubmissionRecord2 = new SubmissionRecord();
-        typicalSubmissionRecord2.setAuthors(Arrays.asList("XP", "HY"));
-
-        SubmissionUploadRequest submissionUploadRequest = new SubmissionUploadRequest();
-        submissionUploadRequest.setFileName("abc.csv");
-        submissionUploadRequest.setRecordList(Arrays.asList(typicalSubmissionRecord, typicalSubmissionRecord2));
-
-//        recordLogic.persistSubmissionRecordForDataSet("test", submissionUploadRequest);
+//package sg.edu.nus.comp.cs3219.viz.logic;
 //
-//        List<SubmissionAuthorRecord> submissionAuthorRecordList =
-//                submissionAuthorRecordRepository.findAll();
-//        Set<String> authorNameSet =
-//                submissionAuthorRecordList.stream()
-//                        .map(SubmissionAuthorRecord::getName)
-//                        .collect(Collectors.toSet());
-//        Assert.assertEquals(4, authorNameSet.size());
-//        Assert.assertTrue(authorNameSet.contains("XP"));
-//        Assert.assertTrue(authorNameSet.contains("HY"));
-//        Assert.assertTrue(authorNameSet.contains("YZH"));
-//        Assert.assertTrue(authorNameSet.contains("JACOB"));
-    }
-}
+//import org.junit.Assert;
+//import org.junit.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import sg.edu.nus.comp.cs3219.viz.BaseTestWithDBAccess;
+//import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionAuthorRecord;
+//import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionRecord;
+//import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.SubmissionUploadRequest;
+//
+//import java.util.Arrays;
+//import java.util.List;
+//import java.util.Set;
+//import java.util.stream.Collectors;
+//
+//public class RecordLogicTest extends BaseTestWithDBAccess {
+//
+//    @Autowired
+//    RecordLogic recordLogic;
+//
+//    @Override
+//    protected String getDataBundleName() {
+//        return "/NoContent.json";
+//    }
+//
+//    @Test
+//    public void testImportSubmissionRecord_shouldEstablishAuthorManyToManyRelationship() {
+//        SubmissionRecord typicalSubmissionRecord = new SubmissionRecord();
+//        typicalSubmissionRecord.setAuthors(Arrays.asList("XP", "HY", "YZH", "JACOB"));
+//
+//        SubmissionRecord typicalSubmissionRecord2 = new SubmissionRecord();
+//        typicalSubmissionRecord2.setAuthors(Arrays.asList("XP", "HY"));
+//
+//        SubmissionUploadRequest submissionUploadRequest = new SubmissionUploadRequest();
+//        submissionUploadRequest.setFileName("abc.csv");
+//        submissionUploadRequest.setRecordList(Arrays.asList(typicalSubmissionRecord, typicalSubmissionRecord2));
+//
+////        recordLogic.persistSubmissionRecordForDataSet("test", submissionUploadRequest);
+////
+////        List<SubmissionAuthorRecord> submissionAuthorRecordList =
+////                submissionAuthorRecordRepository.findAll();
+////        Set<String> authorNameSet =
+////                submissionAuthorRecordList.stream()
+////                        .map(SubmissionAuthorRecord::getName)
+////                        .collect(Collectors.toSet());
+////        Assert.assertEquals(4, authorNameSet.size());
+////        Assert.assertTrue(authorNameSet.contains("XP"));
+////        Assert.assertTrue(authorNameSet.contains("HY"));
+////        Assert.assertTrue(authorNameSet.contains("YZH"));
+////        Assert.assertTrue(authorNameSet.contains("JACOB"));
+//    }
+//}
