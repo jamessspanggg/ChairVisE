@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {processMapping} from '@/store/helpers/processor.js'
+import { processMapping } from '@/store/helpers/processor.js'
 
 export default {
   state: {
@@ -22,7 +22,8 @@ export default {
       hasHeader: null,
       predefinedMapping: null,
       predefinedMappingId: null,
-      fileName: null
+      fileName: null,
+      fileType: null,
     },
     error: []
   },
@@ -39,6 +40,9 @@ export default {
     },
     setUploadedFileName(state, data) {
       state.data.fileName = data;
+    },
+    setUploadedFileType(state, data) {
+      state.data.fileType = data;
     },
     clearUploadedFile(state) {
       state.data.uploadedLabel = [];
@@ -132,7 +136,7 @@ export default {
   },
 
   actions: {
-    async persistMapping({commit, state}) {
+    async persistMapping({ commit, state }) {
       commit("setPageLoadingStatus", true);
       let endpoint;
       switch (state.data.tableType) {
@@ -148,6 +152,7 @@ export default {
       }
       let postData = {
         fileName: state.data.fileName,
+        fileType: state.data.fileType,
         recordList: state.data.processedResult
       }
       await axios.post("/api/record/" + endpoint, postData)

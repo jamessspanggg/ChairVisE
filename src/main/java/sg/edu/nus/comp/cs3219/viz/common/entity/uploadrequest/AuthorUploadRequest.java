@@ -8,6 +8,7 @@ import java.util.List;
 public class AuthorUploadRequest implements UploadRequestInterface<AuthorRecord> {
 
     private String fileName;
+    private String fileType;
     private List<AuthorRecord> recordList;
 
 
@@ -20,6 +21,12 @@ public class AuthorUploadRequest implements UploadRequestInterface<AuthorRecord>
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+    @Override
+    public String getFileType() { return this.fileType; }
+
+    @Override
+    public void setFileType(String fileType) { this.fileType = fileType; }
 
     @Override
     public List<AuthorRecord> getRecordList() {
