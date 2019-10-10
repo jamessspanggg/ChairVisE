@@ -40,15 +40,18 @@
             :value="idx"
           ></el-option>
         </el-select>
+
         <el-upload
           v-if="isReadyForUpload"
           drag
           action
+          accept=".csv"
           :auto-upload="false"
           :show-file-list="false"
           :multiple="false"
           :on-change="fileUploadHandler"
         >
+
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">
             Drop file here or
@@ -375,13 +378,14 @@ export default {
                 ];
                 submissionres.push(element);
               }
+
               res2 = submissionres;
               //console.log(submissionres);
             }
             //author anonymization
             //console.log(res2);
           }
-          console.log(res2);
+          //console.log(res2);
           this.$store.commit("setUploadedFile", res2);
           this.$store.commit("setPageLoadingStatus", false);
         }.bind(this)
