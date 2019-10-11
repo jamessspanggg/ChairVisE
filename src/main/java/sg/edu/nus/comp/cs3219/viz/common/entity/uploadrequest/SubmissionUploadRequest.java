@@ -9,6 +9,7 @@ public class SubmissionUploadRequest implements UploadRequestInterface<Submissio
     private String fileName;
     private String fileType;
     private List<SubmissionRecord> recordList;
+    private final String tableType = "submission";
 
     @Override
     public String getFileName() {
@@ -34,5 +35,10 @@ public class SubmissionUploadRequest implements UploadRequestInterface<Submissio
     @Override
     public void setRecordList(List<SubmissionRecord> recordList) {
         this.recordList = recordList;
+    }
+
+    @Override
+    public String getTableType() {
+        return this.tableType;
     }
 }
