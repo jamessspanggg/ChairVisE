@@ -13,7 +13,6 @@
 
       <el-table
         :data="userFile"
-        :default-sort="{prop: 'datetime', order: 'descending'}"
         class="files-layout-centered"
       >
         <el-table-column label="Date" prop="datetime"></el-table-column>

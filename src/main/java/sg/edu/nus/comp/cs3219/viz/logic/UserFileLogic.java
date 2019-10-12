@@ -16,7 +16,8 @@ public class UserFileLogic {
     }
 
     public List<UserFile> findByUserEmail (String userEmail) {
-        List<UserFile> userFiles = userFileRepository.findByUserEmail(userEmail);
+        // return user file in descending order of date
+        List<UserFile> userFiles = userFileRepository.findByUserEmailOrderByCreatedAtDesc(userEmail);
 
         return userFiles;
     }
