@@ -19,7 +19,8 @@ export default {
       isLoading: false,
       isApiError: false,
       apiErrorMsg: '',
-    }
+    },
+    selectedFileIndex: ''
   },
   mutations: {
     setUserFileListLoading(state, isLoading) {
@@ -63,6 +64,10 @@ export default {
     setUserFileFormField(state, { field, value }) {
       state.userFileForm[field] = value;
     },
+
+    setSelectedFileIndex(state, index) {
+      state.selectedFileIndex = index;
+    },
   },
 
   actions: {
@@ -78,6 +83,16 @@ export default {
         .finally(() => {
           commit('setUserFileListLoading', false);
         })
+    },
+    async deleteUploadedFile({ commit, state }) {
+      commit("setPageLoadingStatus", true);
+      let selectedFile = state.userFileList[state.selectedFileIndex];
+
+      // delete user file and corresponding record
+      await axios.delete("/api/files/" + selectedFile.id)
+          .then(() => axios.delete("/api/record/" + selectedFile.tableType + "/" + selectedFile.id))
+          .then(() => state.userFileList.splice(state.selectedFileIndex, 1)) // remove the file from list
+          .then(() => commit("setPageLoadingStatus", false));
     }
   }
 }

@@ -20,8 +20,8 @@
         <el-table-column label="Table Type" prop="tableType"></el-table-column>
         <el-table-column label="File Type" prop="type"></el-table-column>
         <el-table-column label="Operations">
-          <template>
-            <el-button icon="el-icon-delete" type="danger"></el-button>
+          <template slot-scope="scope">
+            <el-button icon="el-icon-delete" type="danger" @click="deleteUploadedFile(scope.$index)"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -53,6 +53,15 @@ export default {
     navigateToHomePage() {
       this.$router.replace("/home");
     },
+  },
+  methods: {
+    navigateToHomePage() {
+      this.$router.replace("/home");
+    },
+    deleteUploadedFile(index) {
+      this.$store.commit("setSelectedFileIndex", index);
+      this.$store.dispatch("deleteUploadedFile");
+    }
   },
   computed: {
     isLogin() {

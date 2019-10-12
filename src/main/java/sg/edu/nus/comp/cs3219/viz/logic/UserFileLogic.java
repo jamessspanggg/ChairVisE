@@ -21,4 +21,9 @@ public class UserFileLogic {
 
         return userFiles;
     }
+
+    @Transactional
+    public void removeUserFileByFileId(String userEmail, Long file_id) {
+        userFileRepository.deleteUserFileByUserEmailAndId(userEmail, file_id);
+    }
 }

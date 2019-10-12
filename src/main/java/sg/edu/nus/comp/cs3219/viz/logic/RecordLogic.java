@@ -4,9 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.AuthorUploadRequest;
 import sg.edu.nus.comp.cs3219.viz.common.entity.UserFile;
-import sg.edu.nus.comp.cs3219.viz.common.entity.record.ReviewRecord;
 import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionAuthorRecord;
-import sg.edu.nus.comp.cs3219.viz.common.entity.record.SubmissionRecord;
 import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.ReviewUploadRequest;
 import sg.edu.nus.comp.cs3219.viz.common.entity.uploadrequest.SubmissionUploadRequest;
 import sg.edu.nus.comp.cs3219.viz.storage.repository.*;
@@ -92,5 +90,20 @@ public class RecordLogic {
             // the other field can be arbitrary
             s.setFileId(userFile.getId());
         }).collect(Collectors.toList()));
+    }
+
+    @Transactional
+    public void removeAuthorRecordByFileId(String dataSet, Long file_id) {
+        authorRecordRepository.deleteAuthorRecordByDataSetAndFileId(dataSet, file_id);
+    }
+
+    @Transactional
+    public void removeReviewRecordByFileId(String dataSet, Long file_id) {
+        reviewRecordRepository.deleteReviewRecordByDataSetAndFileId(dataSet, file_id);
+    }
+
+    @Transactional
+    public void removeSubmissionRecordByFileId(String dataSet, Long file_id) {
+        submissionRecordRepository.deleteSubmissionRecordByDataSetAndFileId(dataSet, file_id);
     }
 }
