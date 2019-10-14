@@ -53,11 +53,6 @@ export default {
     navigateToHomePage() {
       this.$router.replace("/home");
     },
-  },
-  methods: {
-    navigateToHomePage() {
-      this.$router.replace("/home");
-    },
     deleteUploadedFile(index) {
       this.$store.commit("setSelectedFileIndex", index);
       this.$store.dispatch("deleteUploadedFile");
