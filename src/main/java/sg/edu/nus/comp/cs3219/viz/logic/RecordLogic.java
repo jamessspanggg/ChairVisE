@@ -95,17 +95,18 @@ public class RecordLogic {
     }
 
     @Transactional
-    public void removeAuthorRecordByFileId(String dataSet, Long file_id) {
-        authorRecordRepository.deleteAuthorRecordByDataSetAndFileId(dataSet, file_id);
+    public void removeAuthorRecordByFileId(String dataSet, Long fileId) {
+        authorRecordRepository.deleteAuthorRecordByDataSetAndFileId(dataSet, fileId);
     }
 
     @Transactional
-    public void removeReviewRecordByFileId(String dataSet, Long file_id) {
-        reviewRecordRepository.deleteReviewRecordByDataSetAndFileId(dataSet, file_id);
+    public void removeReviewRecordByFileId(String dataSet, Long fileId) {
+        reviewRecordRepository.deleteReviewRecordByDataSetAndFileId(dataSet, fileId);
     }
 
     @Transactional
-    public void removeSubmissionRecordByFileId(String dataSet, Long file_id) {
-        submissionRecordRepository.deleteSubmissionRecordByDataSetAndFileId(dataSet, file_id);
+    public void removeSubmissionRecordByFileId(String dataSet, Long fileId) {
+        submissionRecordRepository.deleteSubmissionRecordByDataSetAndFileId(dataSet, fileId);
+        submissionAuthorRecordRepository.deleteSubmissionAuthorRecordsByDataSetAndFileId(dataSet, fileId);
     }
 }
