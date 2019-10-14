@@ -76,11 +76,13 @@ public class RecordLogic {
             // create many to many relationship for authors
             List<SubmissionAuthorRecord> submissionAuthorRecords = s.getAuthors().stream()
                     .map(authorName -> {
-                        SubmissionAuthorRecord existing = submissionAuthorRecordRepository.findFirstByNameEqualsAndDataSetEquals(authorName, dataSet);
+                        SubmissionAuthorRecord existing = submissionAuthorRecordRepository
+                                .findFirstByNameEqualsAndDataSetEqualsAndFileId(authorName, dataSet, userFile.getId());
                         if (existing == null) {
                             existing = new SubmissionAuthorRecord();
                             existing.setDataSet(dataSet);
                             existing.setName(authorName);
+                            existing.setFileId(userFile.getId());
                             existing = submissionAuthorRecordRepository.save(existing);
                         }
                         return existing;

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SubmissionAuthorRecordRepository extends JpaRepository<SubmissionAuthorRecord, Long> {
 
-    SubmissionAuthorRecord findFirstByNameEqualsAndDataSetEquals(String name, String dataSet);
+    SubmissionAuthorRecord findFirstByNameEqualsAndDataSetEqualsAndFileId(String name, String dataSet, Long fileId);
 
     // void deleteSubmissionAuthorRecordsByDataSetAnd(String dataSet);
 }
