@@ -21,7 +21,7 @@
         <el-table-column label="File Type" prop="type"></el-table-column>
         <el-table-column label="Operations">
           <template slot-scope="scope">
-            <el-button icon="el-icon-delete" type="danger" @click="deleteUploadedFile(scope.$index)"></el-button>
+            <el-button icon="el-icon-delete" type="danger" @click="openDeleteConfirmation(scope.$index)"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -52,6 +52,24 @@ export default {
   methods: {
     navigateToHomePage() {
       this.$router.replace("/home");
+    },
+    openDeleteConfirmation(index) {
+      this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
+      }).then(() => {
+        this.deleteUploadedFile(index);
+        this.$message({
+          type: 'success',
+          message: 'Delete Successful'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete Cancelled'
+        });
+      })
     },
     deleteUploadedFile(index) {
       this.$store.commit("setSelectedFileIndex", index);
