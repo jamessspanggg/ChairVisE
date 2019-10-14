@@ -24,6 +24,17 @@ public class SubmissionAuthorRecord {
     @Column(name = "s_author_name")
     private String name;
 
+    @Column(name = "file_id")
+    private Long fileId;
+
+    public Long getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
+    }
+
     public Long getId() {
         return id;
     }
