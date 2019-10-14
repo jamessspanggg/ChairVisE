@@ -5,8 +5,15 @@
       <div class="title" v-if="!isEditing">
         {{ sectionDetail.title }}
         <el-button type="primary" plain @click="changeEditMode(true)" v-if="isPresentationEditable">Edit</el-button>
+        <el-button type="success" plain @click="openCopyPresentationPanel()" v-if="isPresentationEditable">Copy
+        </el-button>
         <el-button type="danger" icon="el-icon-delete" circle @click="deleteSectionDetail"
                    v-if="isPresentationEditable"></el-button>
+        <el-dialog title="Copy to:" :visible.sync="isCopyDialogVisible" width="30%"
+                   :close-on-click-modal="false">
+          <Copy-Presentation-Panel v-bind:presentationId="this.presentationId"
+                                   v-bind:sectionId="this.sectionDetail.id"></Copy-Presentation-Panel>
+        </el-dialog>
       </div>
       <div class="title" v-else>
         <el-input v-model="editForm.title"></el-input>
@@ -175,6 +182,7 @@
 </template>
 
 <script>
+  import CopyPresentationPanel from '@/components/CopyPresentationPanel'
   import {deepCopy} from "@/common/utility"
 
   export default {
@@ -237,6 +245,7 @@
       return {
         isInAdvancedMode: false,
         isEditing: false,
+        isCopyDialogVisible: false,
 
         editForm: {
           title: '',
@@ -317,6 +326,10 @@
         this.editForm.groupers = this.sectionDetail.groupers.map(r => r.field);
         this.editForm.sorters = deepCopy(this.sectionDetail.sorters); // deep copy
         this.editForm.extraData = deepCopy(this.sectionDetail.extraData) // deep copy
+      },
+
+      openCopyPresentationPanel() {
+        this.isCopyDialogVisible = true;
       },
 
       addSelection() {
@@ -455,6 +468,10 @@
             });
           })
       },
+    },
+
+    components: {
+      CopyPresentationPanel
     },
   }
 </script>

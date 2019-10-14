@@ -5,7 +5,7 @@
       type="error"
       v-if="!isLogin && !isAppLoading"
     >
-      <el-button type="warning" plain size="mini" @click="navigateToHomPage">Return to the Home Page</el-button>
+      <el-button type="warning" plain size="mini" @click="navigateToHomePage">Return to the Home Page</el-button>
     </el-alert>
 
     <div v-if="isLogin">
@@ -18,6 +18,7 @@
       >
         <el-table-column label="Date" prop="datetime"></el-table-column>
         <el-table-column label="File Name" prop="name"></el-table-column>
+        <el-table-column label="Table Type" prop="tableType"></el-table-column>
         <el-table-column label="File Type" prop="type"></el-table-column>
         <el-table-column label="Operations">
           <template>
@@ -27,7 +28,7 @@
       </el-table>
     </div>
   </div>
-</template> 
+</template>
 
 <script>
 import moment from "moment";
@@ -48,6 +49,11 @@ export default {
         duration: 0
       });
     }
+  },
+  methods: {
+    navigateToHomePage() {
+      this.$router.replace("/home");
+    },
   },
   computed: {
     isLogin() {
@@ -72,6 +78,7 @@ export default {
         currFile["id"] = userFiles[i].id;
         currFile["name"] = userFiles[i].fileName;
         currFile["type"] = userFiles[i].fileType;
+        currFile["tableType"] = userFiles[i].tableType;
         currFile["datetime"] = moment(userFiles[i].createdAt).format(
           "YYYY-MM-DD HH:mm"
         );

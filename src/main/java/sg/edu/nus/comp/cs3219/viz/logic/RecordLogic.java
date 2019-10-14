@@ -41,7 +41,7 @@ public class RecordLogic {
     @Transactional
     public void persistAuthorRecordForDataSet(String dataSet, AuthorUploadRequest authorUploadRequest) {
         UserFile userFile = userFileRepository.save(new UserFile(dataSet, authorUploadRequest.getFileName(),
-                authorUploadRequest.getFileType()));
+                authorUploadRequest.getFileType(), authorUploadRequest.getTableType()));
         authorRecordRepository.saveAll(authorUploadRequest.getRecordList().stream().peek(r -> {
             // should not set ID when creating records
             r.setId(null);
@@ -55,7 +55,7 @@ public class RecordLogic {
     @Transactional
     public void persistReviewRecordForDataSet(String dataSet, ReviewUploadRequest reviewUploadRequest) {
         UserFile userFile = userFileRepository.save(new UserFile(dataSet, reviewUploadRequest.getFileName(),
-                reviewUploadRequest.getFileType()));
+                reviewUploadRequest.getFileType(), reviewUploadRequest.getTableType()));
         reviewRecordRepository.saveAll(reviewUploadRequest.getRecordList().stream().peek(r -> {
             // should not set ID when creating records
             r.setId(null);
@@ -69,7 +69,7 @@ public class RecordLogic {
     @Transactional
     public void persistSubmissionRecordForDataSet(String dataSet, SubmissionUploadRequest submissionUploadRequest) {
         UserFile userFile = userFileRepository.save(new UserFile(dataSet, submissionUploadRequest.getFileName(),
-                submissionUploadRequest.getFileType()));
+                submissionUploadRequest.getFileType(), submissionUploadRequest.getTableType()));
         submissionRecordRepository.saveAll(submissionUploadRequest.getRecordList().stream().peek(s -> {
             // should not set ID when creating records
             s.setId(null);

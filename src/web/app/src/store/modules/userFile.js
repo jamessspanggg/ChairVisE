@@ -12,6 +12,7 @@ export default {
       id: '',
       fileName: '',
       fileType: '',
+      tableType: '',
       createdAt: '',
     },
     userFileFormStatus: {

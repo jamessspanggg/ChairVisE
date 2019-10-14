@@ -10,4 +10,5 @@ public interface UploadRequestInterface<T> {
     public void setFileType(String fileType);
     public List<T> getRecordList();
     public void setRecordList(List<T> recordList);
+    public String getTableType();
 }

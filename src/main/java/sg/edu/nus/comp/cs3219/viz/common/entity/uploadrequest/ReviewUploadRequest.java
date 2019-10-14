@@ -10,7 +10,7 @@ public class ReviewUploadRequest implements UploadRequestInterface<ReviewRecord>
     private String fileName;
     private String fileType;
     private List<ReviewRecord> recordList;
-
+    private final String tableType = "review";
 
     @Override
     public String getFileName() {
@@ -38,5 +38,8 @@ public class ReviewUploadRequest implements UploadRequestInterface<ReviewRecord>
         this.recordList = recordList;
     }
 
-
+    @Override
+    public String getTableType() {
+        return this.tableType;
+    }
 }
