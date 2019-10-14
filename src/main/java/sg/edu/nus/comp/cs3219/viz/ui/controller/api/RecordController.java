@@ -56,23 +56,23 @@ public class RecordController extends BaseRestController {
     }
 
     @DeleteMapping("/record/author/{id}")
-    public ResponseEntity<?> deleteAuthorRecord(@PathVariable(value = "id") Long file_id) {
+    public ResponseEntity<?> deleteAuthorRecord(@PathVariable(value = "id") Long fileId) {
         UserInfo userInfo = gateKeeper.verifyLoginAccess();
-        this.recordLogic.removeAuthorRecordByFileId(userInfo.getUserEmail(), file_id);
+        this.recordLogic.removeAuthorRecordByFileId(userInfo.getUserEmail(), fileId);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/record/review/{id}")
-    public ResponseEntity<?> deleteReviewRecord(@PathVariable(value = "id") Long file_id) {
+    public ResponseEntity<?> deleteReviewRecord(@PathVariable(value = "id") Long fileId) {
         UserInfo userInfo = gateKeeper.verifyLoginAccess();
-        this.recordLogic.removeReviewRecordByFileId(userInfo.getUserEmail(), file_id);
+        this.recordLogic.removeReviewRecordByFileId(userInfo.getUserEmail(), fileId);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/record/submission/{id}")
-    public ResponseEntity<?> deleteSubmissionRecord(@PathVariable(value = "id") Long file_id) {
+    public ResponseEntity<?> deleteSubmissionRecord(@PathVariable(value = "id") Long fileId) {
         UserInfo userInfo = gateKeeper.verifyLoginAccess();
-        this.recordLogic.removeSubmissionRecordByFileId(userInfo.getUserEmail(), file_id);
+        this.recordLogic.removeSubmissionRecordByFileId(userInfo.getUserEmail(), fileId);
         return ResponseEntity.noContent().build();
     }
 }
