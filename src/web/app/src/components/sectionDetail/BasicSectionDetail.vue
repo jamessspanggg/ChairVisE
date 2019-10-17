@@ -50,7 +50,7 @@
                       :key="'s' + index"
                       :prop="'selections.' + index" :rules="editFormSelectionsRule">
           <el-input v-model="selection.expression" placeholder="Expression" style="width: 300px"></el-input>&nbsp;
-          <el-input v-model="selection.rename" placeholder="Rename Field" style="width: 200px"></el-input>&nbsp;
+          <el-input v-model="selection.rename" placeholder="Custom Field Name" style="width: 200px"></el-input>&nbsp;
           <el-button type="danger" icon="el-icon-delete" circle @click="removeSelection(selection)"></el-button>
         </el-form-item>
 
@@ -124,6 +124,12 @@
           <el-button type="danger" icon="el-icon-delete" circle @click="removeFilter(filter)"></el-button>
         </el-form-item>
 
+        <el-form-item>
+          <el-button type="success" plain @click="addSelection" v-if="isInAdvancedMode">Add selection</el-button>
+          <el-button type="success" plain @click="addJoiner" v-if="isInAdvancedMode">Add joiner</el-button>
+          <el-button type="success" plain @click="addFilter">Add filter</el-button>
+        </el-form-item>
+
         <el-form-item label="Description for the section">
           <el-input
             type="textarea"
@@ -163,6 +169,7 @@
           </el-select>&nbsp;
           <el-button type="danger" icon="el-icon-delete" circle @click="removeSorter(sorter)"></el-button>
         </el-form-item>
+        <el-form-item><el-button type="success" plain @click="addSorter" v-if="isInAdvancedMode">Add sorting</el-button></el-form-item>
 
         <slot name="extraFormItems" :editForm="editForm" :extraData="editForm.extraData"
               :isInAdvancedMode="isInAdvancedMode"></slot>
@@ -171,10 +178,6 @@
           <el-button type="primary" @click="previewAnalysisResult('editForm')" plain>Preview</el-button>
           <el-button type="success" @click="saveSectionDetail('editForm')">Save</el-button>
           <el-button @click="cancelEditing">Cancel</el-button>
-          <el-button type="success" plain @click="addSelection" v-if="isInAdvancedMode">Add selection</el-button>
-          <el-button type="success" plain @click="addJoiner" v-if="isInAdvancedMode">Add joiner</el-button>
-          <el-button type="success" plain @click="addFilter">Add filter</el-button>
-          <el-button type="success" plain @click="addSorter" v-if="isInAdvancedMode">Add sorting</el-button>
         </el-form-item>
       </div>
     </el-form>
