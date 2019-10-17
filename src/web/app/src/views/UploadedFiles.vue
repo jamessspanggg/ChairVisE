@@ -13,7 +13,6 @@
 
       <el-table
         :data="userFile"
-        :default-sort="{prop: 'datetime', order: 'descending'}"
         class="files-layout-centered"
       >
         <el-table-column label="Date" prop="datetime"></el-table-column>
@@ -21,8 +20,8 @@
         <el-table-column label="Table Type" prop="tableType"></el-table-column>
         <el-table-column label="File Type" prop="type"></el-table-column>
         <el-table-column label="Operations">
-          <template>
-            <el-button icon="el-icon-delete" type="danger"></el-button>
+          <template slot-scope="scope">
+            <el-button icon="el-icon-delete" type="danger" @click="openDeleteConfirmation(scope.$index)"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -54,6 +53,28 @@ export default {
     navigateToHomePage() {
       this.$router.replace("/home");
     },
+    openDeleteConfirmation(index) {
+      this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
+      }).then(() => {
+        this.deleteUploadedFile(index);
+        this.$message({
+          type: 'success',
+          message: 'Delete Successful'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete Cancelled'
+        });
+      })
+    },
+    deleteUploadedFile(index) {
+      this.$store.commit("setSelectedFileIndex", index);
+      this.$store.dispatch("deleteUploadedFile");
+    }
   },
   computed: {
     isLogin() {

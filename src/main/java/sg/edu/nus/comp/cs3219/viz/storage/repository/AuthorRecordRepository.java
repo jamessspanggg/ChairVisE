@@ -8,7 +8,5 @@ import java.util.List;
 public interface AuthorRecordRepository extends JpaRepository<AuthorRecord, Long> {
 
     List<AuthorRecord> findByDataSetEquals(String dataSet);
-
-    void deleteAllByDataSetEquals(String dataSet);
-
+    void deleteAuthorRecordByDataSetAndFileId(String dataSet, Long fileId);
 }
