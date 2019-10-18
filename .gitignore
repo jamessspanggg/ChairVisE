@@ -21,3 +21,4 @@ src/main/webapp/dist/*
 # Fronend dependency
 src/web/app/node_modules/*
 
+bin/*
