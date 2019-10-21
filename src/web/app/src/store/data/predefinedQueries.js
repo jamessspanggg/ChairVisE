@@ -3544,7 +3544,7 @@ export default {
       title: 'Between 2 authors, how many papers are they working together on',
       dataSet: '${PLACEHOLDER_DATA_SET}',
       description:
-        'Between 2 authors, how many papers are they working together on',
+        'This data shows between 2 authors, how many papers they have worked together on. This will give us insights into how collaborative each authors are.',
       selections: [
         {
           expression: 'pair',
@@ -3557,19 +3557,20 @@ export default {
       ],
       involvedRecords: [
         {
-          name: '(SELECT CONCAT(ar1.a_person_id, "-" ,ar2.a_person_id) as pair, COUNT(*) as c'
-          + ' FROM viz.author_record as ar1, viz.author_record as ar2'
-          + ' WHERE ar1.a_person_id <> ar2.a_person_id'
-          + ' AND ar1.a_person_id <> ""'
-          + ' AND ar2.a_person_id <> ""'
-          + ' AND ar1.a_submission_id = ar2.a_submission_id'
-          + ' AND ar1.file_id = ar2.file_id'
-          + " AND ar1.file_id = ${PLACEHOLDER_FILE_ID}"
-          + ' AND ar1.a_person_id > ar2.a_person_id' 
-          + ' AND ar1.data_set = ar2.data_set'
-          + " AND ar1.data_set = '${PLACEHOLDER_DATA_SET}'"
-          + ' GROUP BY ar1.a_person_id, ar2.a_person_id'
-          + ' ORDER BY c DESC) as combined',
+          name:
+            '(SELECT CONCAT(ar1.a_person_id, "-" ,ar2.a_person_id) as pair, COUNT(*) as c' +
+            ' FROM viz.author_record as ar1, viz.author_record as ar2' +
+            ' WHERE ar1.a_person_id <> ar2.a_person_id' +
+            ' AND ar1.a_person_id <> ""' +
+            ' AND ar2.a_person_id <> ""' +
+            ' AND ar1.a_submission_id = ar2.a_submission_id' +
+            ' AND ar1.file_id = ar2.file_id' +
+            ' AND ar1.file_id = ${PLACEHOLDER_FILE_ID}' +
+            ' AND ar1.a_person_id > ar2.a_person_id' +
+            ' AND ar1.data_set = ar2.data_set' +
+            " AND ar1.data_set = '${PLACEHOLDER_DATA_SET}'" +
+            ' GROUP BY ar1.a_person_id, ar2.a_person_id' +
+            ' ORDER BY c DESC) as combined',
           customized: true
         }
       ],
@@ -3597,7 +3598,7 @@ export default {
       title: 'Between 2 countries, how many paper they  worked on together',
       dataSet: '${PLACEHOLDER_DATA_SET}',
       description:
-        'Between 2 countries, how many paper they  worked on together',
+        'This data shows between 2 countries, how many papers they have worked together on. This will give us insights into how collaborative each countries are.',
       selections: [
         {
           expression: 'pair',
@@ -3610,22 +3611,23 @@ export default {
       ],
       involvedRecords: [
         {
-          name: '(SELECT CONCAT(ar1.a_country, "-" ,ar2.a_country) as pair, COUNT(*) as c'
-          + ' FROM author_record as ar1, author_record as ar2, (SELECT distinct'
-          + ' case when ar1.a_country < ar2.a_country then ar1.a_country else ar2.a_country end as country1,'
-          + ' case when ar1.a_country < ar2.a_country then ar2.a_country else ar1.a_country end as country2'
-          + ' FROM author_record as ar1, author_record as ar2'
-          + ' WHERE ar1.a_country <> ar2.a_country) as T'
-          + ' WHERE ar1.a_country <> ar2.a_country'
-          + ' AND ar1.a_submission_id = ar2.a_submission_id'
-          + ' AND ar1.file_id = ar2.file_id'
-          + " AND ar1.file_id = ${PLACEHOLDER_FILE_ID}"
-          + ' AND ar1.a_country = T.country1'
-          + ' AND ar2.a_country = T.country2'
-          + ' AND ar1.data_set = ar2.data_set'
-          + " AND ar1.data_set = '${PLACEHOLDER_DATA_SET}'"
-          + ' GROUP BY ar1.a_country, ar2.a_country'
-          + ' ORDER BY c DESC) as combined',
+          name:
+            '(SELECT CONCAT(ar1.a_country, "-" ,ar2.a_country) as pair, COUNT(*) as c' +
+            ' FROM author_record as ar1, author_record as ar2, (SELECT distinct' +
+            ' case when ar1.a_country < ar2.a_country then ar1.a_country else ar2.a_country end as country1,' +
+            ' case when ar1.a_country < ar2.a_country then ar2.a_country else ar1.a_country end as country2' +
+            ' FROM author_record as ar1, author_record as ar2' +
+            ' WHERE ar1.a_country <> ar2.a_country) as T' +
+            ' WHERE ar1.a_country <> ar2.a_country' +
+            ' AND ar1.a_submission_id = ar2.a_submission_id' +
+            ' AND ar1.file_id = ar2.file_id' +
+            ' AND ar1.file_id = ${PLACEHOLDER_FILE_ID}' +
+            ' AND ar1.a_country = T.country1' +
+            ' AND ar2.a_country = T.country2' +
+            ' AND ar1.data_set = ar2.data_set' +
+            " AND ar1.data_set = '${PLACEHOLDER_DATA_SET}'" +
+            ' GROUP BY ar1.a_country, ar2.a_country' +
+            ' ORDER BY c DESC) as combined',
           customized: true
         }
       ],
@@ -3639,6 +3641,64 @@ export default {
         xAxisFieldName: 'pair',
         yAxisFieldName: 'c',
         xLabel: 'Country-Country Name',
+        yLabel: 'Submission Count',
+        numOfResultToDisplay: 10,
+        isColorfulBar: true
+      }
+    }
+  },
+  author_coauthorship_queries_organisation_organisation: {
+    name: 'Coauthorship query - Organisation-Organisation',
+    group: 'Author Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Between 2 organisation, how many paper they  worked on together',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description:
+        'This data shows between 2 organisation, how many papers they have worked together on. This will give us insights into how collaborative each organisations are.',
+      selections: [
+        {
+          expression: 'pair',
+          rename: 'pair'
+        },
+        {
+          expression: 'c',
+          rename: 'c'
+        }
+      ],
+      involvedRecords: [
+        {
+          name:
+            '(SELECT CONCAT(ar1.a_organisation,"-", ar2.a_organisation) as pair, COUNT(*) as c' +
+            ' FROM viz.author_record as ar1, viz.author_record as ar2, (SELECT distinct' +
+            ' case when ar1.a_organisation < ar2.a_organisation then ar1.a_organisation else ar2.a_organisation end as org1,' +
+            ' case when ar1.a_organisation < ar2.a_organisation then ar2.a_organisation else ar1.a_organisation end as org2' +
+            ' FROM viz.author_record as ar1, viz.author_record as ar2' +
+            ' WHERE ar1.a_organisation <> ar2.a_organisation) as T' +
+            ' WHERE ar1.a_organisation = T.org1' +
+            ' AND ar2.a_organisation = T.org2' +
+            ' AND ar1.a_organisation <> ar2.a_organisation' +
+            ' AND ar1.file_id = ar2.file_id' +
+            ' AND ar1.file_id = ${PLACEHOLDER_FILE_ID}' +
+            ' AND ar1.a_submission_id = ar2.a_submission_id' +
+            ' AND ar1.data_set = ar2.data_set' +
+            " AND ar1.data_set = '${PLACEHOLDER_DATA_SET}'" +
+            ' GROUP BY ar1.a_organisation, ar2.a_organisation' +
+            ' ORDER BY c DESC' +
+            ') as combined',
+          customized: true
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [],
+      sorters: [],
+      extraData: {
+        dataSetLabel: 'Submission Counts',
+        fieldsShownInToolTips: [{ label: 'Organisation-Organisation', field: 'pair' }],
+        xAxisFieldName: 'pair',
+        yAxisFieldName: 'c',
+        xLabel: 'Organisation-Organisation Name',
         yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true
