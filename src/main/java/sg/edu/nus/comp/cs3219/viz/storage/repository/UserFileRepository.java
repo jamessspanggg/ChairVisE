@@ -6,5 +6,6 @@ import sg.edu.nus.comp.cs3219.viz.common.entity.UserFile;
 import java.util.List;
 
 public interface UserFileRepository extends JpaRepository<UserFile, Long> {
-    List<UserFile> findByUserEmail (String userEmail);
+    List<UserFile> findByUserEmailOrderByCreatedAtDesc (String userEmail);
+    void deleteUserFileByUserEmailAndId(String email, Long id);
 }
