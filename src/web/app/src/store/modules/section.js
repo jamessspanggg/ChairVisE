@@ -58,7 +58,7 @@ export default {
       state.sectionList.splice(index, 1)
     },
 
-    updateSectionDetail(state, {id, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData}) {
+    updateSectionDetail(state, { id, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData }) {
       let section = findSectionDetailById(state.sectionList, id);
 
       section.title = title;
@@ -73,7 +73,7 @@ export default {
       section.extraData = extraData;
     },
 
-    setSectionDetailLoading(state, {id, isLoading}) {
+    setSectionDetailLoading(state, { id, isLoading }) {
       let section = findSectionDetailById(state.sectionList, id);
       if (isLoading) {
         section.status.isApiError = false;
@@ -81,25 +81,25 @@ export default {
       section.status.isLoading = isLoading;
     },
 
-    setSectionDetailApiError(state, {id, msg, msgDetail}) {
+    setSectionDetailApiError(state, { id, msg, msgDetail }) {
       let section = findSectionDetailById(state.sectionList, id);
       section.status.isApiError = true;
       section.status.apiErrorMsg = msg;
       section.status.apiErrorMsgDetail = msgDetail;
     },
 
-    updateSectionAnalysisResult(state, {id, result}) {
+    updateSectionAnalysisResult(state, { id, result }) {
       let section = findSectionDetailById(state.sectionList, id);
       section.result = result;
     },
 
-    updateSectionAnalysisPreviewResult(state, {id, result}) {
+    updateSectionAnalysisPreviewResult(state, { id, result }) {
       let section = findSectionDetailById(state.sectionList, id);
       section.previewResult = result;
     }
   },
   actions: {
-    async fetchSectionList({commit}, presentationId) {
+    async fetchSectionList({ commit }, presentationId) {
       commit('setSectionListLoading', true);
 
       await axios.get(`/api/presentations/${presentationId}/sections`)
@@ -117,11 +117,15 @@ export default {
         })
     },
 
-    async addSectionDetail({commit}, {presentationId, selectedNewSection, dataSet}) {
+    async addSectionDetail({ commit }, { presentationId, selectedNewSection, dataSet, keys }) {
       commit('setSectionListLoading', true);
 
       let newSection = PredefinedQueries[selectedNewSection].data;
-      newSection = JSON.parse(JSON.stringify(newSection).replace(/\${PLACEHOLDER_DATA_SET}/g, dataSet));
+      newSection = JSON.stringify(newSection).replace(/\${PLACEHOLDER_DATA_SET}/g, dataSet);
+      newSection = newSection.replace(/\${PLACEHOLDER_AUTHOR_FILE_ID}/g, keys['author_id']);
+      newSection = newSection.replace(/\${PLACEHOLDER_SUBMISSION_FILE_ID}/g, keys['submission_id']);
+      newSection = newSection.replace(/\${PLACEHOLDER_REVIEW_FILE_ID}/g, keys['review_id']);
+      newSection = JSON.parse(newSection);
 
       await axios.post(`/api/presentations/${presentationId}/sections`, newSection)
         .then(response => {
@@ -135,7 +139,7 @@ export default {
         })
     },
 
-    async copySectionDetail({commit}, {id, presentationId}) {
+    async copySectionDetail({ commit }, { id, presentationId }) {
       commit('setSectionListLoading', true);
 
       await axios.post(`/api/presentations/${presentationId}/sections/${id}`)
@@ -150,8 +154,8 @@ export default {
         })
     },
 
-    async saveSectionDetail({commit}, {id, presentationId, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData}) {
-      commit('setSectionDetailLoading', {id, isLoading: true});
+    async saveSectionDetail({ commit }, { id, presentationId, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData }) {
+      commit('setSectionDetailLoading', { id, isLoading: true });
 
       await axios.put(`/api/presentations/${presentationId}/sections/${id}`, {
         title,
@@ -182,28 +186,28 @@ export default {
           })
         })
         .catch(e => {
-          commit('setSectionDetailApiError', {id, msg: e.toString(), msgDetail: JSON.stringify(e.response)});
+          commit('setSectionDetailApiError', { id, msg: e.toString(), msgDetail: JSON.stringify(e.response) });
         })
         .finally(() => {
-          commit('setSectionDetailLoading', {id, isLoading: false});
+          commit('setSectionDetailLoading', { id, isLoading: false });
         })
     },
 
-    async deleteSectionDetail({commit}, {id, presentationId}) {
-      commit('setSectionDetailLoading', {id, isLoading: true});
+    async deleteSectionDetail({ commit }, { id, presentationId }) {
+      commit('setSectionDetailLoading', { id, isLoading: true });
 
       await axios.delete(`/api/presentations/${presentationId}/sections/${id}`)
         .then(() => {
           commit('deleteSectionDetail', id)
         })
         .catch(e => {
-          commit('setSectionDetailApiError', {id, msg: e.toString(), msgDetail: JSON.stringify(e.response)});
-          commit('setSectionDetailLoading', {id, isLoading: false});
+          commit('setSectionDetailApiError', { id, msg: e.toString(), msgDetail: JSON.stringify(e.response) });
+          commit('setSectionDetailLoading', { id, isLoading: false });
         })
     },
 
-    async sendPreviewAnalysisRequest({commit}, {presentationId, id, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters}) {
-      commit('setSectionDetailLoading', {id, isLoading: true});
+    async sendPreviewAnalysisRequest({ commit }, { presentationId, id, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters }) {
+      commit('setSectionDetailLoading', { id, isLoading: true });
 
       await axios.post(`/api/presentations/${presentationId}/analysis`, {
         dataSet,
@@ -215,19 +219,19 @@ export default {
         sorters
       })
         .then(response => {
-          commit('updateSectionAnalysisPreviewResult', {id, result: response.data});
+          commit('updateSectionAnalysisPreviewResult', { id, result: response.data });
         })
         .catch(e => {
-          commit('setSectionDetailApiError', {id, msg: e.toString(), msgDetail: JSON.stringify(e.response)});
+          commit('setSectionDetailApiError', { id, msg: e.toString(), msgDetail: JSON.stringify(e.response) });
         })
         .finally(() => {
-          commit('setSectionDetailLoading', {id, isLoading: false});
+          commit('setSectionDetailLoading', { id, isLoading: false });
         })
     },
 
-    async sendAnalysisRequest({state, commit}, {id, presentationId}) {
+    async sendAnalysisRequest({ state, commit }, { id, presentationId }) {
       let sectionToAnalysis = findSectionDetailById(state.sectionList, id);
-      commit('setSectionDetailLoading', {id: sectionToAnalysis.id, isLoading: true});
+      commit('setSectionDetailLoading', { id: sectionToAnalysis.id, isLoading: true });
 
       await axios.post(`/api/presentations/${presentationId}/analysis`, {
         dataSet: sectionToAnalysis.dataSet,
@@ -239,14 +243,14 @@ export default {
         sorters: sectionToAnalysis.sorters
       })
         .then(response => {
-          commit('updateSectionAnalysisResult', {id: sectionToAnalysis.id, result: response.data});
+          commit('updateSectionAnalysisResult', { id: sectionToAnalysis.id, result: response.data });
         })
         .catch(e => {
           commit('setSectionDetailApiError',
-            {id: sectionToAnalysis.id, msg: e.toString(), msgDetail: JSON.stringify(e.response)});
+            { id: sectionToAnalysis.id, msg: e.toString(), msgDetail: JSON.stringify(e.response) });
         })
         .finally(() => {
-          commit('setSectionDetailLoading', {id: sectionToAnalysis.id, isLoading: false});
+          commit('setSectionDetailLoading', { id: sectionToAnalysis.id, isLoading: false });
         })
     }
   }
