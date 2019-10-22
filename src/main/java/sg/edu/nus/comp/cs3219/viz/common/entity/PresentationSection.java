@@ -77,6 +77,9 @@ public class PresentationSection {
     @Column(columnDefinition = "TEXT")
     private String extraData;
 
+    @Column(columnDefinition = "TEXT")
+    private String filesId;
+
     public static class Selection {
         private String expression;
 
@@ -375,6 +378,24 @@ public class PresentationSection {
     public void setExtraData(Map<String, Object> extraData) {
         try {
             this.extraData = objectMapper.writeValueAsString(extraData);
+        } catch (JsonProcessingException e) {
+            log.severe(e.getMessage());
+        }
+    }
+
+    public Map<String, Integer> getFilesId() {
+        try {
+            return objectMapper.readValue(filesId, new TypeReference<Map<String, Integer>>() {
+            });
+        } catch (IOException e) {
+            log.severe(e.getMessage());
+            return new HashMap<>();
+        }
+    }
+
+    public void setFilesId(Map<String, Integer> filesId) {
+        try {
+            this.filesId = objectMapper.writeValueAsString(filesId);
         } catch (JsonProcessingException e) {
             log.severe(e.getMessage());
         }

@@ -6,6 +6,7 @@ import sg.edu.nus.comp.cs3219.viz.common.entity.PresentationSection;
 import sg.edu.nus.comp.cs3219.viz.storage.repository.PresentationSectionRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Component
@@ -36,6 +37,7 @@ public class PresentationSectionLogic {
         newPresentationSection.setGroupers(presentationSection.getGroupers());
         newPresentationSection.setSorters(presentationSection.getSorters());
         newPresentationSection.setExtraData(presentationSection.getExtraData());
+        newPresentationSection.setFilesId(presentationSection.getFilesId());
 
         return presentationSectionRepository.save(newPresentationSection);
     }
@@ -55,6 +57,7 @@ public class PresentationSectionLogic {
         oldPresentationSection.setGroupers(newPresentationSection.getGroupers());
         oldPresentationSection.setSorters(newPresentationSection.getSorters());
         oldPresentationSection.setExtraData(newPresentationSection.getExtraData());
+        oldPresentationSection.setFilesId(newPresentationSection.getFilesId());
 
         return presentationSectionRepository.save(oldPresentationSection);
     }
