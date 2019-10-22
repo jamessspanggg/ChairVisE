@@ -128,6 +128,25 @@ export default {
       return this.$store.state.userFile.userFileList;
     },
 
+    userFileIdMappings() {
+      let mappings = {};
+
+      let userFiles = this.userFileList;
+
+      for (let i in userFiles) {
+        let key = userFiles[i].id;
+        let keyAttrs = {};
+
+        keyAttrs["table_type"] = userFiles[i].tableType + " record";
+        keyAttrs["display_name"] =
+          userFiles[i].fileName + " (" + userFiles[i].fileType + ")";
+
+        mappings[key] = keyAttrs;
+      }
+
+      return mappings;
+    },
+
     allUserTableType() {
       let tableTypes = [];
 
@@ -185,25 +204,6 @@ export default {
       return userFileMappings;
     },
 
-    userFileIdMappings() {
-      let mappings = {};
-
-      let userFiles = this.userFileList;
-
-      for (let i in userFiles) {
-        let key = userFiles[i].id;
-        let keyAttrs = {};
-
-        keyAttrs["table_type"] = userFiles[i].tableType + " record";
-        keyAttrs["display_name"] =
-          userFiles[i].fileName + " (" + userFiles[i].fileType + ")";
-
-        mappings[key] = keyAttrs;
-      }
-
-      return mappings;
-    },
-
     existingTableTypeToPredefindeSectionMapping() {
       let tableTypeToPredefindeSectionMapping = {};
 
@@ -230,15 +230,25 @@ export default {
     },
 
     sectionList() {
+      let userFiles = this.userFileList;
       let sectionList = this.$store.state.section.sectionList;
-      let userFiles = this.userFileIdMappings;
+
+      let mappings = {};
+
+      for (let i in userFiles) {
+        let key = userFiles[i].id;
+        let keyAttrs = {};
+
+        mappings[key] =
+          userFiles[i].fileName + " (" + userFiles[i].fileType + ")";
+      }
 
       for (let index in sectionList) {
         let fileNames = [];
         for (let key in sectionList[index]["filesId"]) {
           let fileType = key.split("_").join(" ");
-          let fileName =
-            userFiles[sectionList[index]["filesId"][key]]["display_name"];
+
+          let fileName = mappings[sectionList[index]["filesId"][key]];
           fileNames.push(fileType + ": " + fileName);
         }
 
@@ -310,7 +320,8 @@ export default {
       for (let i = 0; i < this.selectedTableTypeSection.length; i++) {
         if (
           typeof this.selectedTableTypeSection[i] != "undefined" &&
-          this.selectedTableTypeSection[i] !== "" && this.selectedTableTypeSection[i] != -1
+          this.selectedTableTypeSection[i] !== "" &&
+          this.selectedTableTypeSection[i] != -1
         ) {
           let tableType = this.userFileIdMappings[
             this.selectedTableTypeSection[i]
