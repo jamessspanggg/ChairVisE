@@ -237,7 +237,6 @@ export default {
 
       for (let i in userFiles) {
         let key = userFiles[i].id;
-        let keyAttrs = {};
 
         mappings[key] =
           userFiles[i].fileName + " (" + userFiles[i].fileType + ")";
