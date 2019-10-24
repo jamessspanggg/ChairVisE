@@ -138,6 +138,7 @@
 
         <el-form-item
           v-for="(filter, index) in editForm.filters"
+          v-if="!filter.field.includes('file_id')"
           :label="'Filter ' + index"
           :key="'f' + index"
           :prop="'filters.' + index"
@@ -157,13 +158,13 @@
               ></el-option>
             </el-option-group>
           </el-select>&nbsp;
-          <el-select v-model="filter.comparator" style="width: 80px">
+          <el-select v-model="filter.comparator" style="width: 80px" >
             <el-option label=">" value=">" />
             <el-option label="=" value="=" />
             <el-option label="<" value="<" />
           </el-select>&nbsp;
           <el-input v-model="filter.value" placeholder="Value" style="width: 200px"></el-input>&nbsp;
-          <el-button type="danger" icon="el-icon-delete" circle @click="removeFilter(filter)"></el-button>
+          <el-buttontype="danger" icon="el-icon-delete" circle @click="removeFilter(filter)"></el-buttontype="danger">
         </el-form-item>
 
         <el-form-item>
