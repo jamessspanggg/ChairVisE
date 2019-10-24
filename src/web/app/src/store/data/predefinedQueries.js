@@ -420,7 +420,7 @@ export default {
         },
         {
           expression: "s_author_name",
-          rename: 's_author_name'
+          rename: 'author_name'
         }
       ],
       involvedRecords: [
@@ -440,7 +440,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "s_author_name"
+          field: "author_name"
         }
       ],
       sorters: [
@@ -449,7 +449,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 's_author_name',
+          field: 'author_name',
           order: 'ASC',
         }
       ],
@@ -457,7 +457,7 @@ export default {
         type: 'category',
         dataSetLabel: 'Paper Counts',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_author_name',
+        xAxisFieldName: 'author_name',
         yAxisFieldName: 'paper_count',
         xLabel: 'Author Name',
         yLabel: 'Paper Count',
@@ -476,20 +476,20 @@ export default {
       description: 'This bar chart shows the percentage of acceptance rate of each author\'s papers in descending order. This tells us which authors has higher acceptance rate than other authors. We have split the authors field in each submission into individual authors and calculate the acceptance rate for each author.',
       selections: [
         {
+          expression: "acceptance_rate",
+          rename: 'acceptance_rate'
+        },
+        {
+          expression: "s_author_name",
+          rename: 'author_name'
+        },
+        {
           expression: "accepted",
           rename: 'accepted'
         },
         {
           expression: "submitted",
           rename: 'submitted'
-        },
-        {
-          expression: "acceptance_rate",
-          rename: 'acceptance_rate'
-        },
-        {
-          expression: "s_author_name",
-          rename: 's_author_name'
         },
       ],
       involvedRecords: [
@@ -513,7 +513,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 's_author_name',
+          field: 'author_name',
           order: 'ASC',
         }
       ],
@@ -529,7 +529,7 @@ export default {
             field: 'submitted',
           },
         ],
-        xAxisFieldName: 's_author_name',
+        xAxisFieldName: 'author_name',
         yAxisFieldName: 'acceptance_rate',
         xLabel: 'Author Name',
         yLabel: 'Acceptance Rate',
@@ -549,7 +549,11 @@ export default {
       selections: [
         {
           expression: "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)",
-          rename: 'accepted'
+          rename: 'num_accepted_papers'
+        },
+        {
+          expression: "s_author_name",
+          rename: 'author_name'
         },
         {
           expression: "COUNT(*)",
@@ -558,10 +562,6 @@ export default {
         {
           expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2)",
           rename: 'acceptance_rate'
-        },
-        {
-          expression: "s_author_name",
-          rename: 's_author_name'
         },
       ],
       involvedRecords: [
@@ -575,16 +575,16 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "s_author_name"
+          field: "author_name"
         },
       ],
       sorters: [
         {
-          field: 'accepted',
+          field: 'num_accepted_papers',
           order: 'DESC',
         },
         {
-          field: 's_author_name',
+          field: 'author_name',
           order: 'ASC',
         }
       ],
@@ -600,8 +600,8 @@ export default {
             field: 'submitted',
           },
         ],
-        xAxisFieldName: 's_author_name',
-        yAxisFieldName: 'accepted',
+        xAxisFieldName: 'author_name',
+        yAxisFieldName: 'num_accepted_papers',
         xLabel: 'Author Name',
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
@@ -617,6 +617,50 @@ export default {
       title: 'Submission Rank Country',
       dataSet: '${PLACEHOLDER_DATA_SET}',
       description: 'This pie chart shows the percentage and number of papers submitted from each country. This tells us which country has more submissions than other countries. We have included others to account for all countries involved.',
+      selections: [
+        {
+          expression: 'COUNT(*)',
+          rename: 'submission_count'
+        },
+        {
+          expression: "a_country",
+          rename: 'country_name'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: 'author_record',
+          customized: false,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "country_name"
+        }
+      ],
+      sorters: [
+        {
+          field: 'submission_count',
+          order: 'DESC',
+        }
+      ],
+      extraData: {
+        categoryFieldName: 'country_name',
+        valueFieldName: 'submission_count',
+        numOfResultToDisplay: 10,
+      }
+    }
+  },
+  "submission_rank_country1": {
+    name: "Submission Rank Country1",
+    group: 'Author Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Submission Rank Country',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'This bar chart shows the percentage and number of papers submitted from each country. This tells us which country has more submissions than other countries. We have included others to account for all countries involved.',
       selections: [
         {
           expression: 'COUNT(*)',
@@ -647,9 +691,14 @@ export default {
         }
       ],
       extraData: {
-        categoryFieldName: 'a_country',
-        valueFieldName: 'submission_count',
+        dataSetLabel: 'Submission Count',
+        fieldsShownInToolTips: [],
+        xAxisFieldName: 'a_country',
+        yAxisFieldName: 'submission_count',
+        xLabel: 'Author Country',
+        yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
+        isColorfulBar: true,
       }
     }
   },
@@ -668,7 +717,7 @@ export default {
         },
         {
           expression: "a_organisation",
-          rename: 'a_organisation'
+          rename: 'organisation_name'
         }
       ],
       involvedRecords: [
@@ -681,7 +730,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "a_organisation"
+          field: "organisation_name"
         }
       ],
       sorters: [
@@ -691,7 +740,7 @@ export default {
         }
       ],
       extraData: {
-        categoryFieldName: 'a_organisation',
+        categoryFieldName: 'organisation_name',
         valueFieldName: 'submission_count',
         numOfResultToDisplay: 10,
       }
@@ -707,12 +756,12 @@ export default {
       description: 'This bar chart shows the distribution of the weighted review score for all papers. This is calculated by retrieving the overall reviewed score and reviewer\'s confidence score in order to obtain a weighted average of all the scores. This gives us an insight on how the weighted score ranges for each submission in general.',
       selections: [
         {
-          expression: 'weighted_score_interval',
-          rename: 'weighted_score_interval'
-        },
-        {
           expression: "COUNT(*) - 1",
           rename: 'submission_count',
+        },
+        {
+          expression: 'weighted_score_interval',
+          rename: 'weighted_score_interval'
         }
       ],
       involvedRecords: [
@@ -931,7 +980,7 @@ export default {
         },
         {
           expression: "s_track_name",
-          rename: 's_track_name'
+          rename: 'track_name'
         }
       ],
       involvedRecords: [
@@ -944,19 +993,19 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "s_track_name"
+          field: "track_name"
         }
       ],
       sorters: [
         {
-          field: 's_track_name',
+          field: 'track_name',
           order: 'ASC',
         }
       ],
       extraData: {
         dataSetLabel: 'Submission Count',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_track_name',
+        xAxisFieldName: 'track_name',
         yAxisFieldName: 'submission_count',
         xLabel: 'Track Name',
         yLabel: 'Submission Count',
@@ -980,7 +1029,7 @@ export default {
         },
         {
           expression: "s_track_name",
-          rename: 's_track_name'
+          rename: 'track_name'
         }
       ],
       involvedRecords: [
@@ -993,19 +1042,19 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "s_track_name"
+          field: "track_name"
         }
       ],
       sorters: [
         {
-          field: 's_track_name',
+          field: 'track_name',
           order: 'ASC',
         }
       ],
       extraData: {
         dataSetLabel: 'Acceptance Ratio',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_track_name',
+        xAxisFieldName: 'track_name',
         yAxisFieldName: 'acceptance_ratio',
         xLabel: 'Track Name',
         yLabel: 'Acceptance Ratio',
@@ -1071,12 +1120,12 @@ export default {
       description: 'This pie chart shows the number and percentage of papers recommended and not recommended for best paper. This tells us how many papers are worthy to be submitted for the best paper. We have plotted into a pie chart as it is clearer to show a binary value.',
       selections: [
         {
-          expression: "CASE WHEN r_has_recommended_for_best_paper = 'yes' THEN 'Recommended' ELSE 'Not Recommended' END",
-          rename: 'label'
-        },
-        {
           expression: "COUNT(*)",
           rename: 'review_count'
+        },
+        {
+          expression: "CASE WHEN r_has_recommended_for_best_paper = 'yes' THEN 'Recommended' ELSE 'Not Recommended' END",
+          rename: 'label'
         }
       ],
       involvedRecords: [
@@ -1386,12 +1435,16 @@ export default {
       description: 'By combining author and submission data, this bar chart shows the number of accepted papers submitted by each author in descending order. This tells us which authors has more accepted papers than other authors.',
       selections: [
         {
-          expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2)",
-          rename: 'acceptance_rate'
+          expression: "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)",
+          rename: 'num_accepted_papers'
         },
         {
           expression: "CONCAT(a_first_name, ' ', a_last_name)",
           rename: 'author_name'
+        },
+        {
+          expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2)",
+          rename: 'acceptance_rate'
         },
         {
           expression: "a_email",
@@ -1400,10 +1453,6 @@ export default {
         {
           expression: "COUNT(*)",
           rename: 'submitted'
-        },
-        {
-          expression: "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)",
-          rename: 'accepted'
         }
       ],
       involvedRecords: [
@@ -1436,7 +1485,7 @@ export default {
       ],
       sorters: [
         {
-          field: 'accepted',
+          field: 'num_accepted_papers',
           order: 'DESC',
         },
         {
@@ -1461,7 +1510,7 @@ export default {
           },
         ],
         xAxisFieldName: 'author_name',
-        yAxisFieldName: 'accepted',
+        yAxisFieldName: 'num_accepted_papers',
         xLabel: 'Author Name',
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
@@ -1484,7 +1533,7 @@ export default {
         },
         {
           expression: "a_organisation",
-          rename: 'a_organisation'
+          rename: 'organisation_name'
         },
         {
           expression: "submitted",
@@ -1514,7 +1563,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'a_organisation',
+          field: 'organisation_name',
           order: 'ASC',
         }
       ],
@@ -1530,7 +1579,7 @@ export default {
             field: 'submitted',
           },
         ],
-        xAxisFieldName: 'a_organisation',
+        xAxisFieldName: 'organisation_name',
         yAxisFieldName: 'acceptance_rate',
         xLabel: 'Organisation Name',
         yLabel: 'Acceptance Rate',
@@ -1549,20 +1598,20 @@ export default {
       description: 'By combining author and submission data, this bar chart shows the number of accepted papers submitted by each organization in descending order. This tells us which organizations has more accepted papers than other organizations.',
       selections: [
         {
+          expression: "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)",
+          rename: 'num_accepted_papers'
+        },
+        {
+          expression: "a_organisation",
+          rename: 'organisation_name'
+        },
+        {
           expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2)",
           rename: 'acceptance_rate'
         },
         {
-          expression: "a_organisation",
-          rename: 'a_organisation'
-        },
-        {
           expression: "COUNT(*)",
           rename: 'submitted'
-        },
-        {
-          expression: "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)",
-          rename: 'accepted'
         }
       ],
       involvedRecords: [
@@ -1584,16 +1633,16 @@ export default {
       ],
       groupers: [
         {
-          field: "a_organisation"
+          field: "organisation_name"
         }
       ],
       sorters: [
         {
-          field: 'accepted',
+          field: 'num_accepted_papers',
           order: 'DESC',
         },
         {
-          field: 'a_organisation',
+          field: 'organisation_name',
           order: 'ASC',
         }
       ],
@@ -1602,15 +1651,15 @@ export default {
         fieldsShownInToolTips: [
           {
             label: 'Total Accepted',
-            field: 'accepted',
+            field: 'num_accepted_papers',
           },
           {
             label: 'Acceptance Rate',
             field: 'acceptance_rate',
           },
         ],
-        xAxisFieldName: 'a_organisation',
-        yAxisFieldName: 'accepted',
+        xAxisFieldName: 'organisation_name',
+        yAxisFieldName: 'num_accepted_papers',
         xLabel: 'Organisation Name',
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
@@ -1633,7 +1682,7 @@ export default {
         },
         {
           expression: "a_country",
-          rename: 'a_country'
+          rename: 'country_name'
         },
         {
           expression: "COUNT(*)",
@@ -1663,7 +1712,7 @@ export default {
       ],
       groupers: [
         {
-          field: "a_country"
+          field: "country_name"
         }
       ],
       sorters: [
@@ -1672,7 +1721,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'a_country',
+          field: 'country_name',
           order: 'ASC',
         }
       ],
@@ -1688,7 +1737,7 @@ export default {
             field: 'submitted',
           },
         ],
-        xAxisFieldName: 'a_country',
+        xAxisFieldName: 'country_name',
         yAxisFieldName: 'acceptance_rate',
         xLabel: 'Country Name',
         yLabel: 'Acceptance Rate',
@@ -1707,20 +1756,20 @@ export default {
       description: 'By combining author and submission data, this bar chart shows the number of accepted papers submitted by each country in descending order. This tells us which countries has more accepted papers than other countries.',
       selections: [
         {
+          expression: "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)",
+          rename: 'num_accepted_papers'
+        },
+        {
+          expression: "a_country",
+          rename: 'country_name'
+        },
+        {
           expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2)",
           rename: 'acceptance_rate'
         },
         {
-          expression: "a_country",
-          rename: 'a_country'
-        },
-        {
           expression: "COUNT(*)",
           rename: 'submitted'
-        },
-        {
-          expression: "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)",
-          rename: 'accepted'
         }
       ],
       involvedRecords: [
@@ -1742,16 +1791,16 @@ export default {
       ],
       groupers: [
         {
-          field: "a_country"
+          field: "country_name"
         }
       ],
       sorters: [
         {
-          field: 'accepted',
+          field: 'num_accepted_papers',
           order: 'DESC',
         },
         {
-          field: 'a_country',
+          field: 'country_name',
           order: 'ASC',
         }
       ],
@@ -1767,8 +1816,8 @@ export default {
             field: 'submitted',
           },
         ],
-        xAxisFieldName: 'a_country',
-        yAxisFieldName: 'accepted',
+        xAxisFieldName: 'country_name',
+        yAxisFieldName: 'num_accepted_papers',
         xLabel: 'Country Name',
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
@@ -1791,7 +1840,7 @@ export default {
         },
         {
           expression: "r_reviewer_name",
-          rename: 'r_reviewer_name'
+          rename: 'reviewer_name'
         }
       ],
       involvedRecords: [
@@ -1804,7 +1853,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "r_reviewer_name"
+          field: "reviewer_name"
         }
       ],
       sorters: [
@@ -1813,14 +1862,14 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'r_reviewer_name',
+          field: 'reviewer_name',
           order: 'ASC',
         }
       ],
       extraData: {
         dataSetLabel: 'Average Num of Review Assignment',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 'r_reviewer_name',
+        xAxisFieldName: 'reviewer_name',
         yAxisFieldName: 'review_assignment',
         xLabel: 'Reviewer Name',
         yLabel: 'Average No. Review Assignment',
@@ -1839,20 +1888,20 @@ export default {
       description: 'This bar chart shows the average expertise level for each reviewer in descending order. This tells us how skilled each reviewer is in reviewer the papers.',
       selections: [
         {
-          expression: 'ROUND(AVG(r_confidence_level), 2)',
-          rename: 'avg_confidence_level'
-        },
-        {
           expression: 'ROUND(AVG(r_expertise_level), 2)',
           rename: 'avg_expertise_level'
         },
         {
-          expression: 'ROUND(AVG(r_overall_evaluation_score), 2)',
-          rename: 'avg_evaluation_score'
+          expression: "r_reviewer_name",
+          rename: 'reviewer_name'
         },
         {
-          expression: "r_reviewer_name",
-          rename: 'r_reviewer_name'
+          expression: 'ROUND(AVG(r_confidence_level), 2)',
+          rename: 'avg_confidence_level'
+        },
+        {
+          expression: 'ROUND(AVG(r_overall_evaluation_score), 2)',
+          rename: 'avg_evaluation_score'
         }
       ],
       involvedRecords: [
@@ -1865,7 +1914,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "r_reviewer_name"
+          field: "reviewer_name"
         }
       ],
       sorters: [
@@ -1874,7 +1923,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'r_reviewer_name',
+          field: 'reviewer_name',
           order: 'ASC',
         }
       ],
@@ -1890,7 +1939,7 @@ export default {
             field: 'avg_confidence_level',
           },
         ],
-        xAxisFieldName: 'r_reviewer_name',
+        xAxisFieldName: 'reviewer_name',
         yAxisFieldName: 'avg_expertise_level',
         xLabel: 'Reviewer Name',
         yLabel: 'Average Expertise Level',
@@ -1913,16 +1962,16 @@ export default {
           rename: 'avg_confidence_level'
         },
         {
+          expression: "r_reviewer_name",
+          rename: 'reviewer_name'
+        },
+        {
           expression: 'ROUND(AVG(r_expertise_level), 2)',
           rename: 'avg_expertise_level'
         },
         {
           expression: 'ROUND(AVG(r_overall_evaluation_score), 2)',
           rename: 'avg_evaluation_score'
-        },
-        {
-          expression: "r_reviewer_name",
-          rename: 'r_reviewer_name'
         }
       ],
       involvedRecords: [
@@ -1935,7 +1984,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "r_reviewer_name"
+          field: "reviewer_name"
         }
       ],
       sorters: [
@@ -1944,7 +1993,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'r_reviewer_name',
+          field: 'reviewer_name',
           order: 'ASC',
         }
       ],
@@ -1960,7 +2009,7 @@ export default {
             field: 'avg_expertise_level',
           },
         ],
-        xAxisFieldName: 'r_reviewer_name',
+        xAxisFieldName: 'reviewer_name',
         yAxisFieldName: 'avg_confidence_level',
         xLabel: 'Reviewer Name',
         yLabel: 'Average Confidence Level',
@@ -1979,20 +2028,20 @@ export default {
       description: 'This bar chart shows the average evaluation score given by each reviewer in descending order. This gives us an insight of how generous the reviewer grade other papers in general.',
       selections: [
         {
+          expression: 'ROUND(AVG(r_overall_evaluation_score), 2)',
+          rename: 'avg_evaluation_score'
+        },
+        {
+          expression: "r_reviewer_name",
+          rename: 'reviewer_name'
+        },
+        {
           expression: 'ROUND(AVG(r_confidence_level), 2)',
           rename: 'avg_confidence_level'
         },
         {
           expression: 'ROUND(AVG(r_expertise_level), 2)',
           rename: 'avg_expertise_level'
-        },
-        {
-          expression: 'ROUND(AVG(r_overall_evaluation_score), 2)',
-          rename: 'avg_evaluation_score'
-        },
-        {
-          expression: "r_reviewer_name",
-          rename: 'r_reviewer_name'
         }
       ],
       involvedRecords: [
@@ -2005,7 +2054,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "r_reviewer_name"
+          field: "reviewer_name"
         }
       ],
       sorters: [
@@ -2014,7 +2063,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'r_reviewer_name',
+          field: 'reviewer_name',
           order: 'ASC',
         }
       ],
@@ -2030,7 +2079,7 @@ export default {
             field: 'avg_expertise_level',
           },
         ],
-        xAxisFieldName: 'r_reviewer_name',
+        xAxisFieldName: 'reviewer_name',
         yAxisFieldName: 'avg_evaluation_score',
         xLabel: 'Reviewer Name',
         yLabel: 'Average Evaluation Score',
@@ -2107,12 +2156,12 @@ export default {
       description: 'This bar chart shows the distribution of the expertise level of each reviewer in reviewing all the papers. This gives us an insight of how specialized each reviewer is in giving the review.',
       selections: [
         {
-          expression: 'avg_expertise_level_interval',
-          rename: 'avg_expertise_level_interval'
-        },
-        {
           expression: "COUNT(*) - 1",
           rename: 'num_of_reviewer',
+        },
+        {
+          expression: 'avg_expertise_level_interval',
+          rename: 'avg_expertise_level_interval'
         },
         {
           expression: "ROUND(SUM(avg_evaluation_score) / (COUNT(*) - 1), 2)",
@@ -2239,12 +2288,12 @@ export default {
       description: 'This bar chart shows the distribution of the confidence level of each reviewer in reviewing all the papers. This gives us an insight of how confident each reviewer is in giving the review.',
       selections: [
         {
-          expression: 'avg_confidence_level_interval',
-          rename: 'avg_confidence_level_interval'
-        },
-        {
           expression: "COUNT(*) - 1",
           rename: 'num_of_reviewer',
+        },
+        {
+          expression: 'avg_confidence_level_interval',
+          rename: 'avg_confidence_level_interval'
         },
         {
           expression: "ROUND(SUM(avg_evaluation_score) / (COUNT(*) - 1), 2)",
@@ -2371,12 +2420,12 @@ export default {
       description: 'This bar chart shows the distribution of the evaluation level of each reviewer in reviewing all the papers. This gives us an insight of the evaluation score given by each reviewer.',
       selections: [
         {
-          expression: 'avg_evaluation_score_interval',
-          rename: 'avg_evaluation_score_interval'
-        },
-        {
           expression: "COUNT(*) - 1",
           rename: 'num_of_reviewer',
+        },
+        {
+          expression: 'avg_evaluation_score_interval',
+          rename: 'avg_evaluation_score_interval'
         },
         {
           expression: "ROUND(SUM(avg_confidence_level) / (COUNT(*) - 1), 2)",
@@ -2516,6 +2565,10 @@ export default {
       description: 'By combining review and submission, this bar chart shows the percentage of acceptance rate of based on the weighted score of the submissions. This gives us an insight on what percentage of the papers will be accepted given a review score.',
       selections: [
         {
+          expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END) / (COUNT(*) - 1), 2)",
+          rename: 'acceptance_rate'
+        },
+        {
           expression: 'weighted_score_interval',
           rename: 'weighted_score_interval'
         },
@@ -2526,11 +2579,7 @@ export default {
         {
           expression: "COUNT(*) - 1",
           rename: 'submitted'
-        },
-        {
-          expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END) / (COUNT(*) - 1), 2)",
-          rename: 'acceptance_rate'
-        },
+        }
       ],
       involvedRecords: [
         {
@@ -2663,7 +2712,7 @@ export default {
         },
         {
           expression: "s_track_name",
-          rename: 's_track_name'
+          rename: 'track_name'
         },
       ],
       involvedRecords: [
@@ -2677,18 +2726,18 @@ export default {
       filters: [],
       joiners: [],
       groupers: [{
-        field: 's_track_name'
+        field: 'track_name'
       }],
       sorters: [
         {
-          field: 's_track_name',
+          field: 'track_name',
           order: 'ASC',
         }
       ],
       extraData: {
         dataSetLabel: 'Average Weighted Score',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_track_name',
+        xAxisFieldName: 'track_name',
         yAxisFieldName: 'avg_weighted_score',
         xLabel: 'Track Name',
         yLabel: 'Average Weighted Score',
@@ -2711,13 +2760,13 @@ export default {
           rename: 'num_of_submission'
         },
         {
-          expression: "duration_get_reviewed",
-          rename: 'duration_get_reviewed'
+          expression: "IF(duration_get_reviewed = 21, '>21', duration_get_reviewed)",
+          rename: 'num_days_taken_to_review'
         },
         {
-          expression: "IF(duration_get_reviewed = 21, '>21', duration_get_reviewed)",
-          rename: 'duration_get_reviewed_group'
-        },
+          expression: "duration_get_reviewed",
+          rename: 'duration_get_reviewed'
+        }
       ],
       involvedRecords: [
         {
@@ -2763,7 +2812,7 @@ export default {
       extraData: {
         dataSetLabel: 'Num of Submission',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 'duration_get_reviewed_group',
+        xAxisFieldName: 'num_days_taken_to_review',
         yAxisFieldName: 'num_of_submission',
         xLabel: 'No. Days Taken To Review',
         yLabel: 'No. Submissions',
@@ -3015,7 +3064,7 @@ export default {
         },
         {
           expression: "s_author_name",
-          rename: 's_author_name'
+          rename: 'author_name'
         }
       ],
       involvedRecords: [
@@ -3030,7 +3079,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "s_author_name"
+          field: "author_name"
         }
       ],
       sorters: [
@@ -3039,7 +3088,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 's_author_name',
+          field: 'author_name',
           order: 'ASC',
         }
       ],
@@ -3047,7 +3096,7 @@ export default {
         type: 'category',
         dataSetLabel: 'Average Weighted Score',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_author_name',
+        xAxisFieldName: 'author_name',
         yAxisFieldName: 'avg_weighted_score',
         xLabel: 'Author Name',
         yLabel: 'Average Weighted Score',
@@ -3070,12 +3119,12 @@ export default {
           rename: 'avg_weighted_score'
         },
         {
-          expression: "COUNT(*)",
-          rename: 'submission_count'
-        },
-        {
           expression: "CONCAT(a_first_name, ' ', a_last_name)",
           rename: 'author_name'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
         },
         {
           expression: "a_email",
@@ -3149,12 +3198,12 @@ export default {
           rename: 'avg_weighted_score'
         },
         {
-          expression: "COUNT(*)",
-          rename: 'submission_count'
+          expression: "a_organisation",
+          rename: 'organisation_name'
         },
         {
-          expression: "a_organisation",
-          rename: 'a_organisation'
+          expression: "COUNT(*)",
+          rename: 'submission_count'
         }
       ],
       involvedRecords: [
@@ -3169,7 +3218,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "a_organisation"
+          field: "organisation_name"
         }
       ],
       sorters: [
@@ -3178,7 +3227,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'a_organisation',
+          field: 'organisation_name',
           order: 'ASC',
         }
       ],
@@ -3191,7 +3240,7 @@ export default {
             field: 'submission_count'
           }
         ],
-        xAxisFieldName: 'a_organisation',
+        xAxisFieldName: 'organisation_name',
         yAxisFieldName: 'avg_weighted_score',
         xLabel: 'Organisation Name',
         yLabel: 'Average Weighted Score',
@@ -3214,12 +3263,12 @@ export default {
           rename: 'avg_weighted_score'
         },
         {
-          expression: "COUNT(*)",
-          rename: 'submission_count'
+          expression: "a_country",
+          rename: 'country_name'
         },
         {
-          expression: "a_country",
-          rename: 'a_country'
+          expression: "COUNT(*)",
+          rename: 'submission_count'
         }
       ],
       involvedRecords: [
@@ -3234,7 +3283,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "a_country"
+          field: "country_name"
         }
       ],
       sorters: [
@@ -3243,7 +3292,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'a_country',
+          field: 'country_name',
           order: 'ASC',
         }
       ],
@@ -3256,7 +3305,7 @@ export default {
             field: 'submission_count'
           }
         ],
-        xAxisFieldName: 'a_country',
+        xAxisFieldName: 'country_name',
         yAxisFieldName: 'avg_weighted_score',
         xLabel: 'Country Name',
         yLabel: 'Average Weighted Score',
@@ -3331,18 +3380,18 @@ export default {
           //determine the selections for select query
           selections: [
             {
+              //expression: "CASE When r_overall_evaluation_score <3 then 'low' else 'high' end",
+              expression: '(r_score_high/(r_score_low+r_score_high)*100)',
+              rename: 'high_score_percentage'
+            },
+            {
               expression: "r_confidence_level",
-              rename: 'r_confidence_level'
+              rename: 'confidence_level'
             },
             {
               //expression: "CASE When r_overall_evaluation_score <3 then 'low' else 'high' end",
               expression: '(r_score_low/(r_score_low+r_score_high)*100)',
               rename: 'r_score_low_per'
-            },
-            {
-              //expression: "CASE When r_overall_evaluation_score <3 then 'low' else 'high' end",
-              expression: '(r_score_high/(r_score_low+r_score_high)*100)',
-              rename: 'r_score_high_per'
             }
           ],
           //determine the table name for query
@@ -3380,8 +3429,8 @@ export default {
           // set the labels, x and y axis, and modify chart style
           extraData: {
             dataSetLabel: 'Percentage of High Scores',
-            xAxisFieldName:'r_confidence_level' ,
-            yAxisFieldName: 'r_score_high_per',
+            xAxisFieldName:'confidence_level' ,
+            yAxisFieldName: 'high_score_percentage',
             xLabel: 'Confidence Level',
             yLabel: 'High Score Percentage',
             numOfResultToDisplay: 10,
