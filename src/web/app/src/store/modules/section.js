@@ -58,11 +58,12 @@ export default {
       state.sectionList.splice(index, 1)
     },
 
-    updateSectionDetail(state, {id, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData}) {
+    updateSectionDetail(state, {id, title, description, type, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData}) {
       let section = findSectionDetailById(state.sectionList, id);
 
       section.title = title;
       section.description = description;
+      section.type = type;
       section.dataSet = dataSet;
       section.selections = selections;
       section.involvedRecords = involvedRecords;
@@ -150,12 +151,13 @@ export default {
         })
     },
 
-    async saveSectionDetail({commit}, {id, presentationId, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData}) {
+    async saveSectionDetail({commit}, {id, presentationId, title, description, type, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData}) {
       commit('setSectionDetailLoading', {id, isLoading: true});
 
       await axios.put(`/api/presentations/${presentationId}/sections/${id}`, {
         title,
         description,
+        type,
         dataSet,
         selections,
         involvedRecords,
@@ -171,6 +173,7 @@ export default {
             id: section.id,
             title: section.title,
             description: section.description,
+            type: section.type,
             dataSet: section.dataSet,
             selections: section.selections,
             involvedRecords: section.involvedRecords,
