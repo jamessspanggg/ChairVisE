@@ -41,7 +41,7 @@
           ></Copy-Presentation-Panel>
         </el-dialog>
       </div>
-      <div class="files" v-if="!isEditing">{{ sectionDetail.filesName }}</div>
+      <div class="files" v-if="!isEditing">{{ sectionDetail.fileNames }}</div>
       <div class="title" v-else>
         <el-input v-model="editForm.title"></el-input>
       </div>

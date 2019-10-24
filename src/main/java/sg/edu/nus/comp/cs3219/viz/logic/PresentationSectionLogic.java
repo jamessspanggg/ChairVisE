@@ -37,7 +37,6 @@ public class PresentationSectionLogic {
         newPresentationSection.setGroupers(presentationSection.getGroupers());
         newPresentationSection.setSorters(presentationSection.getSorters());
         newPresentationSection.setExtraData(presentationSection.getExtraData());
-        newPresentationSection.setFilesId(presentationSection.getFilesId());
 
         return presentationSectionRepository.save(newPresentationSection);
     }
@@ -57,7 +56,6 @@ public class PresentationSectionLogic {
         oldPresentationSection.setGroupers(newPresentationSection.getGroupers());
         oldPresentationSection.setSorters(newPresentationSection.getSorters());
         oldPresentationSection.setExtraData(newPresentationSection.getExtraData());
-        oldPresentationSection.setFilesId(newPresentationSection.getFilesId());
 
         return presentationSectionRepository.save(oldPresentationSection);
     }

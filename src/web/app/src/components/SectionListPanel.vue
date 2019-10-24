@@ -233,28 +233,45 @@ export default {
       let userFiles = this.userFileList;
       let sectionList = this.$store.state.section.sectionList;
 
+      let sectionListWithFiles = [];
+
       let mappings = {};
 
       for (let i in userFiles) {
         let key = userFiles[i].id;
 
-        mappings[key] =
+        let attrs = {};
+        attrs["fileName"] =
           userFiles[i].fileName + " (" + userFiles[i].fileType + ")";
+        attrs["tableType"] = userFiles[i].tableType;
+
+        mappings[key] = attrs;
       }
 
-      for (let index in sectionList) {
-        let fileNames = [];
-        for (let key in sectionList[index]["filesId"]) {
-          let fileType = key.split("_").join(" ");
+      if (Object.keys(mappings).length !== 0) {
+        for (let index in sectionList) {
+          let fileNames = [];
+          for (let i in sectionList[index]["fileIds"]) {
+            let fileName =
+              mappings[sectionList[index]["fileIds"][i]]["fileName"];
+            let fileType =
+              mappings[sectionList[index]["fileIds"][i]]["tableType"];
+            fileNames.push(fileType + ": " + fileName);
+          }
 
-          let fileName = mappings[sectionList[index]["filesId"][key]];
-          fileNames.push(fileType + ": " + fileName);
+          let currSectionListWithFiles = sectionList[index].presentationSection;
+          currSectionListWithFiles["previewResult"] =
+            sectionList[index].previewResult;
+          currSectionListWithFiles["result"] = sectionList[index].result;
+          currSectionListWithFiles["status"] = sectionList[index].status;
+          currSectionListWithFiles["fileIds"] = sectionList[index].fileIds;
+          currSectionListWithFiles["fileNames"] = fileNames.join(", ");
+
+          sectionListWithFiles.push(currSectionListWithFiles);
         }
-
-        sectionList[index]["filesName"] = fileNames.join(", ");
       }
 
-      return sectionList;
+      return sectionListWithFiles;
     },
     isLoadingSectionList() {
       return this.$store.state.section.sectionListStatus.isLoading;

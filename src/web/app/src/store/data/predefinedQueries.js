@@ -33,10 +33,10 @@ export default {
         delimiters: ['\\r', '\\n'],
         ignoreWords: [],
       },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
-      }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "word_cloud_keywords_accepted_submission": {
     name: "Word Cloud for Accepted Submissions Keywords",
@@ -77,10 +77,10 @@ export default {
         delimiters: ['\\r', '\\n'],
         ignoreWords: [],
       },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
-      }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "word_cloud_keywords_rejected_submission": {
     name: "Word Cloud for Rejected Submissions Keywords",
@@ -121,10 +121,10 @@ export default {
         delimiters: ['\\r', '\\n'],
         ignoreWords: [],
       },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
-      }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "word_cloud_keywords_submission_in_full_papers": {
     name: "Word Cloud for All Full Papers Submissions Keywords",
@@ -164,11 +164,11 @@ export default {
       extraData: {
         delimiters: ['\\r', '\\n'],
         ignoreWords: [],
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "word_cloud_keywords_submission_in_posters_amd_demos": {
     name: "Word Cloud for All Posters and Demos Submissions Keywords",
@@ -208,11 +208,11 @@ export default {
       extraData: {
         delimiters: ['\\r', '\\n'],
         ignoreWords: [],
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "word_cloud_keywords_submission_in_short_papers": {
     name: "Word Cloud for All Short Papers Submissions Keywords",
@@ -252,11 +252,11 @@ export default {
       extraData: {
         delimiters: ['\\r', '\\n'],
         ignoreWords: [],
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "word_cloud_keywords_submission_in_workshops": {
     name: "Word Cloud for All Workshop Submissions Keywords",
@@ -296,11 +296,11 @@ export default {
       extraData: {
         delimiters: ['\\r', '\\n'],
         ignoreWords: [],
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "word_cloud_keywords_reviewer_comment": {
     name: "Word Cloud for Reviewer Comment",
@@ -337,11 +337,11 @@ export default {
         ignoreWords: ["the", "to", "of", "and", "in", "a", "are", "is", "this", "it", "that", "on", "be", "have",
           "for", "as", "an", "would", "some", "there", "from", "or", "by", "they", "can", "with", "should", "how", "what",
           "at", "could", "if"],
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "submission_rank_author": {
     name: "Submission Rank Author",
@@ -409,11 +409,11 @@ export default {
         yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_AUTHOR_FILE_ID}'
       }
     },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}'
+    ],
     options: {
       scales: {
         xAxes: [{
@@ -539,10 +539,13 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       },
-      filesId: {
+      fileIds: {
         'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_acceptance_rate_rank_paper_author": {
     name: "Submission Acceptance Rate Rank Paper Author",
@@ -614,10 +617,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
-      }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_accepted_rank_paper_author": {
     name: "Submission Accepted Rank Paper Author",
@@ -687,11 +690,11 @@ export default {
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_rank_country": {
     name: "Submission Rank Country",
@@ -740,11 +743,11 @@ export default {
         categoryFieldName: 'a_country',
         valueFieldName: 'submission_count',
         numOfResultToDisplay: 10,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}'
+    ]
   },
   "submission_rank_organization": {
     name: "Submission Rank Organization",
@@ -793,11 +796,11 @@ export default {
         categoryFieldName: 'a_organisation',
         valueFieldName: 'submission_count',
         numOfResultToDisplay: 10,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}'
+    ]
   },
   "review_weighted_score_distribution": {
     name: "Review Weighted Score Distribution",
@@ -920,11 +923,11 @@ export default {
         yLabel: 'Submission Count',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "review_weighted_evaluation_score_stats_summary": {
     name: "Review Weighted Evaluation Score Statistic Summary",
@@ -961,10 +964,10 @@ export default {
       extraData: {
         types: ['min', 'max', 'avg', 'median', 'std'],
       },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
-      }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "review_expertise_level_stats_summary": {
     name: "Reviewer Expertise Level Statistic Summary",
@@ -1001,10 +1004,10 @@ export default {
       extraData: {
         types: ['min', 'max', 'avg', 'median', 'std'],
       },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
-      }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "review_confidence_level_stats_summary": {
     name: "Reviewer Confidence Level Statistic Summary",
@@ -1042,11 +1045,11 @@ export default {
       sorters: [],
       extraData: {
         types: ['min', 'max', 'avg', 'median', 'std'],
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "submission_rank_track": {
     name: "Submission Rank Track",
@@ -1100,11 +1103,11 @@ export default {
         yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "acceptance_ratio_track": {
     name: "Acceptance Ratio Track",
@@ -1158,11 +1161,11 @@ export default {
         yLabel: 'Acceptance Ratio',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "acceptance_ratio_by_year": {
     name: "Acceptance Ratio by Year",
@@ -1213,11 +1216,11 @@ export default {
         yAxisFieldName: 'acceptance_ratio',
         xLabel: 'Year',
         yLabel: 'Acceptance Ratio',
-      },
-      filesId: {
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "recommendation_for_best_paper_distribution": {
     name: "Recommendation for Best Paper Distribution",
@@ -1262,11 +1265,11 @@ export default {
         categoryFieldName: 'label',
         valueFieldName: 'review_count',
         numOfResultToDisplay: 10,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "review_count_summary_for_each_submission": {
     name: "Review Count Summary for Each Submission",
@@ -1304,11 +1307,11 @@ export default {
       sorters: [],
       extraData: {
         types: ['min', 'max', 'avg', 'median'],
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "submission_rank_author_in_full_papers": {
     name: "Submission Rank Author in Full Papers",
@@ -1393,12 +1396,11 @@ export default {
         yLabel: 'Submission Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_acceptance_rate_rank_author": {
     name: "Submission Acceptance Rate Rank Author",
@@ -1479,12 +1481,11 @@ export default {
         yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_acceptance_rate_author_distribution": {
     name: "Submission Acceptance Rate Author Distribution",
@@ -1572,12 +1573,11 @@ export default {
         yLabel: 'No. Authors',
         numOfResultToDisplay: 20,
         isColorfulBar: false,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_accepted_rank_author": {
     name: "Submission Accepted Rank Author",
@@ -1680,12 +1680,11 @@ export default {
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_acceptance_rate_rank_organisation": {
     name: "Submission Acceptance Rate Rank Organization",
@@ -1755,12 +1754,11 @@ export default {
         yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_accepted_rank_organisation": {
     name: "Submission Accepted Rank Organization",
@@ -1849,12 +1847,11 @@ export default {
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_acceptance_rate_rank_country": {
     name: "Submission Acceptance Rate Rank Country",
@@ -1943,12 +1940,11 @@ export default {
         yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "submission_accepted_rank_country": {
     name: "Submission Accepted Rank Country",
@@ -2037,12 +2033,11 @@ export default {
         yLabel: 'No. Accepted Papers',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "reviewer_assignment_rank": {
     name: "Reviewer Assignment Rank",
@@ -2100,11 +2095,11 @@ export default {
         yLabel: 'Average No. Review Assignment',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "reviewer_avg_expertise_level_rank": {
     name: "Reviewer Average Expertise Level Rank",
@@ -2179,11 +2174,11 @@ export default {
         yLabel: 'Average Expertise Level',
         numOfResultToDisplay: 30,
         isColorfulBar: true,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "reviewer_avg_confidence_level_rank": {
     name: "Reviewer Average Confidence Level Rank",
@@ -2258,11 +2253,11 @@ export default {
         yLabel: 'Average Confidence Level',
         numOfResultToDisplay: 30,
         isColorfulBar: true,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "reviewer_avg_evaluation_score_rank": {
     name: "Reviewer Average Evaluation Score Rank",
@@ -2337,11 +2332,11 @@ export default {
         yLabel: 'Average Evaluation Score',
         numOfResultToDisplay: 30,
         isColorfulBar: true,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "num_of_review_distribution": {
     name: "Number of Review Distribution",
@@ -2398,11 +2393,11 @@ export default {
         yLabel: 'No. Submissions',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
-      },
-      filesId: {
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "reviewer_avg_expertise_level_distribution": {
     name: "Reviewer Average Expertise Level Distribution",
@@ -2535,11 +2530,11 @@ export default {
         yLabel: 'No. Reviewers',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "reviewer_avg_confidence_level_distribution": {
     name: "Reviewer Average Confidence Level Distribution",
@@ -2672,11 +2667,11 @@ export default {
         yLabel: 'No. Reviewers',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "reviewer_avg_evaluation_score_distribution": {
     name: "Reviewer Average Evaluation Score Distribution",
@@ -2821,11 +2816,11 @@ export default {
         yLabel: 'No. Reviewers',
         numOfResultToDisplay: 30,
         isColorfulBar: false,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
 
   "acceptance_rate_and_weighted_score": {
@@ -2969,12 +2964,11 @@ export default {
         yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
-      },
-      filesId: {
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "avg_weighted_score_by_track": {
     name: "Average Weighted Score By Track",
@@ -3024,12 +3018,11 @@ export default {
         yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 50,
         isColorfulBar: true,
-      },
-      filesId: {
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "earliest_review_for_submission": {
     name: "Earliest Review in Days For Submission",
@@ -3105,12 +3098,11 @@ export default {
         yLabel: 'No. Submissions',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
-      },
-      filesId: {
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "average_expert_level_for_submission": {
     name: "Average Expert Level For Submission",
@@ -3223,11 +3215,11 @@ export default {
         yLabel: 'No. Submissions',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "average_confidence_level_for_submission": {
     name: "Average Confidence Level For Submission",
@@ -3340,11 +3332,11 @@ export default {
         yLabel: 'No. Submissions',
         numOfResultToDisplay: 50,
         isColorfulBar: false,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "avg_weighted_score_paper_author": {
     name: "Average Weighted Score Rank Paper Author",
@@ -3399,12 +3391,11 @@ export default {
         yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}',
-        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   "avg_weighted_score_author": {
     name: "Average Weighted Score Rank Author",
@@ -3483,12 +3474,11 @@ export default {
         yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "avg_weighted_score_organization": {
     name: "Average Weighted Score Rank Organization",
@@ -3553,12 +3543,11 @@ export default {
         yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   "avg_weighted_score_country": {
     name: "Average Weighted Score Rank Country",
@@ -3623,12 +3612,11 @@ export default {
         yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
-      },
-      filesId: {
-        'author_file': '${PLACEHOLDER_AUTHOR_FILE_ID}',
-        'reivew_file_id': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
 
   /*
@@ -3752,11 +3740,11 @@ export default {
         yLabel: 'High Score Percentage',
         numOfResultToDisplay: 10,
         isColorfulBar: false,
-      },
-      filesId: {
-        'review_file': '${PLACEHOLDER_REVIEW_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   }
 
 }

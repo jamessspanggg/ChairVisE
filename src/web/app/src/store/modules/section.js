@@ -54,7 +54,7 @@ export default {
     },
 
     deleteSectionDetail(state, payload) {
-      let index = state.sectionList.findIndex(s => s.id === payload);
+      let index = state.sectionList.findIndex(s => s.presentationSection.id === payload);
       state.sectionList.splice(index, 1)
     },
 
@@ -127,7 +127,18 @@ export default {
       newSection = newSection.replace(/\${PLACEHOLDER_REVIEW_FILE_ID}/g, keys['review_id']);
       newSection = JSON.parse(newSection);
 
-      await axios.post(`/api/presentations/${presentationId}/sections`, newSection)
+      let fileIds = PredefinedQueries[selectedNewSection].fileIds;
+      fileIds = JSON.stringify(fileIds).replace(/\${PLACEHOLDER_AUTHOR_FILE_ID}/g, keys['author_id']);
+      fileIds = fileIds.replace(/\${PLACEHOLDER_SUBMISSION_FILE_ID}/g, keys['submission_id']);
+      fileIds = fileIds.replace(/\${PLACEHOLDER_REVIEW_FILE_ID}/g, keys['review_id']);
+      fileIds = JSON.parse(fileIds);
+
+      let bodyContent = {
+        presentationSection: newSection,
+        fileIds: fileIds
+      }
+
+      await axios.post(`/api/presentations/${presentationId}/sections`, bodyContent)
         .then(response => {
           commit('addSectionDetail', response.data)
         })
@@ -231,31 +242,32 @@ export default {
 
     async sendAnalysisRequest({ state, commit }, { id, presentationId }) {
       let sectionToAnalysis = findSectionDetailById(state.sectionList, id);
-      commit('setSectionDetailLoading', { id: sectionToAnalysis.id, isLoading: true });
+      let presentationSectionToAnalysis = sectionToAnalysis.presentationSection;
+      commit('setSectionDetailLoading', { id: presentationSectionToAnalysis.id, isLoading: true });
 
       await axios.post(`/api/presentations/${presentationId}/analysis`, {
-        dataSet: sectionToAnalysis.dataSet,
-        selections: sectionToAnalysis.selections,
-        involvedRecords: sectionToAnalysis.involvedRecords,
-        filters: sectionToAnalysis.filters,
-        joiners: sectionToAnalysis.joiners,
-        groupers: sectionToAnalysis.groupers,
-        sorters: sectionToAnalysis.sorters
+        dataSet: presentationSectionToAnalysis.dataSet,
+        selections: presentationSectionToAnalysis.selections,
+        involvedRecords: presentationSectionToAnalysis.involvedRecords,
+        filters: presentationSectionToAnalysis.filters,
+        joiners: presentationSectionToAnalysis.joiners,
+        groupers: presentationSectionToAnalysis.groupers,
+        sorters: presentationSectionToAnalysis.sorters
       })
         .then(response => {
-          commit('updateSectionAnalysisResult', { id: sectionToAnalysis.id, result: response.data });
+          commit('updateSectionAnalysisResult', { id: presentationSectionToAnalysis.id, result: response.data });
         })
         .catch(e => {
           commit('setSectionDetailApiError',
-            { id: sectionToAnalysis.id, msg: e.toString(), msgDetail: JSON.stringify(e.response) });
+            { id: presentationSectionToAnalysis.id, msg: e.toString(), msgDetail: JSON.stringify(e.response) });
         })
         .finally(() => {
-          commit('setSectionDetailLoading', { id: sectionToAnalysis.id, isLoading: false });
+          commit('setSectionDetailLoading', { id: presentationSectionToAnalysis.id, isLoading: false });
         })
     }
   }
 }
 
 function findSectionDetailById(sectionList, id) {
-  return sectionList.find(element => element.id === id);
+  return sectionList.find(element => element.presentationSection.id === id);
 }
