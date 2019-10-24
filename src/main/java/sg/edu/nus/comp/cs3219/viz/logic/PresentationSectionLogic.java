@@ -47,6 +47,7 @@ public class PresentationSectionLogic {
     public PresentationSection updatePresentation(PresentationSection oldPresentationSection, PresentationSection newPresentationSection) {
         oldPresentationSection.setTitle(newPresentationSection.getTitle());
         oldPresentationSection.setDescription(newPresentationSection.getDescription());
+        oldPresentationSection.setType(newPresentationSection.getType());
         oldPresentationSection.setDataSet(newPresentationSection.getDataSet());
         oldPresentationSection.setSelections(newPresentationSection.getSelections());
         oldPresentationSection.setInvolvedRecords(newPresentationSection.getInvolvedRecords());
