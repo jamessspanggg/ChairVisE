@@ -39,10 +39,30 @@
 
         <el-form-item label="Editing Mode">
           <el-switch
+            :disabled="isDisabledInAdvancedMode == 1 ? true : false"
             v-model="isInAdvancedMode"
             active-text="Advanced"
             inactive-text="Basic">
           </el-switch>
+        </el-form-item>
+
+        <el-dialog
+          title="Warning"
+          :visible.sync="changeTypeDialogVisible"
+          width="29%"
+          center>
+          <span>As you have changed the chart type, editing mode will be disabled. Please save to proceed.</span>
+          <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="changeTypeDialogVisible = false">Ok</el-button>
+          </span>
+        </el-dialog>
+
+        <el-form-item label="Chart Type"
+                      v-if="(sectionDetail.type == 'pie_chart' ||  sectionDetail.type == 'bar_chart') && !isInAdvancedMode">
+          <el-radio-group v-model="chartMode" size="small">
+            <el-radio-button @click.native="toBarChart" label="bar_chart">Bar Chart</el-radio-button>
+            <el-radio-button @click.native="toPieChart" label="pie_chart">Pie Chart</el-radio-button>
+          </el-radio-group>
         </el-form-item>
 
         <el-form-item v-if="isInAdvancedMode" v-for="(selection, index) in editForm.selections"
@@ -99,7 +119,7 @@
           <el-button type="danger" icon="el-icon-delete" circle @click="removeJoiner(joiner)"></el-button>
         </el-form-item>
 
-        <el-form-item v-for="(filter, index) in editForm.filters" :label="'Filter ' + index"
+        <el-form-item v-if="isInAdvancedMode" v-for="(filter, index) in editForm.filters" :label="'Filter ' + index"
                       :key="'f' + index"
                       :prop="'filters.' + index" :rules="editFormFiltersRule">
           <el-select placeholder="Field" v-model="filter.field" filterable allow-create>
@@ -127,7 +147,7 @@
         <el-form-item>
           <el-button type="success" plain @click="addSelection" v-if="isInAdvancedMode">Add selection</el-button>
           <el-button type="success" plain @click="addJoiner" v-if="isInAdvancedMode">Add joiner</el-button>
-          <el-button type="success" plain @click="addFilter">Add filter</el-button>
+          <el-button type="success" plain @click="addFilter" v-if="isInAdvancedMode">Add filter</el-button>
         </el-form-item>
 
         <el-form-item label="Description for the section">
@@ -169,13 +189,16 @@
           </el-select>&nbsp;
           <el-button type="danger" icon="el-icon-delete" circle @click="removeSorter(sorter)"></el-button>
         </el-form-item>
-        <el-form-item><el-button type="success" plain @click="addSorter" v-if="isInAdvancedMode">Add sorting</el-button></el-form-item>
+        <el-form-item>
+          <el-button type="success" plain @click="addSorter" v-if="isInAdvancedMode">Add sorting</el-button>
+        </el-form-item>
 
         <slot name="extraFormItems" :editForm="editForm" :extraData="editForm.extraData"
               :isInAdvancedMode="isInAdvancedMode"></slot>
 
         <el-form-item>
-          <el-button type="primary" @click="previewAnalysisResult('editForm')" plain>Preview</el-button>
+          <el-button type="primary" v-if="isInAdvancedMode" @click="previewAnalysisResult('editForm')" plain>Preview
+          </el-button>
           <el-button type="success" @click="saveSectionDetail('editForm')">Save</el-button>
           <el-button @click="cancelEditing">Cancel</el-button>
         </el-form-item>
@@ -246,13 +269,17 @@
 
     data() {
       return {
+        isDisabledInAdvancedMode: 0,
+        chartMode: this.sectionDetail.type,
         isInAdvancedMode: false,
         isEditing: false,
         isCopyDialogVisible: false,
+        changeTypeDialogVisible: false,
 
         editForm: {
           title: '',
           description: '',
+          type: '',
           dataSet: '',
           selections: [],
           involvedRecords: [],
@@ -313,6 +340,7 @@
       },
 
       cancelEditing() {
+        this.chartMode = this.sectionDetail.type;
         this.isEditing = false;
         this.syncDataWithProps();
         this.sendAnalysisRequest();
@@ -321,6 +349,7 @@
       syncDataWithProps() {
         this.editForm.title = this.sectionDetail.title;
         this.editForm.description = this.sectionDetail.description;
+        this.editForm.type = this.sectionDetail.type;
         this.editForm.dataSet = this.sectionDetail.dataSet;
         this.editForm.selections = deepCopy(this.sectionDetail.selections); // deep copy
         this.editForm.involvedRecords = this.sectionDetail.involvedRecords.map(r => r.name);
@@ -392,6 +421,7 @@
               presentationId: this.presentationId,
               title: this.editForm.title,
               description: this.editForm.description,
+              type: this.editForm.type,
               dataSet: this.sectionDetail.dataSet,
               selections: this.editForm.selections,
               involvedRecords: deepCopy(this.editFormInvolvedRecords),
@@ -421,6 +451,52 @@
           presentationId: this.presentationId,
           id: this.sectionDetail.id
         });
+      },
+
+      capitalizeString(str) {
+        let array1 = str.split(' ');
+        let newarray1 = [];
+
+        for (let x = 0; x < array1.length; x++) {
+          newarray1.push(array1[x].charAt(0).toUpperCase() + array1[x].slice(1));
+        }
+        return newarray1.join(' ');
+      },
+
+      disableAdvancedMode() {
+        if (this.editForm.type != this.sectionDetail.type) {
+          this.isDisabledInAdvancedMode = 1;
+          this.changeTypeDialogVisible = true;
+        } else {
+          this.isDisabledInAdvancedMode = 0;
+        }
+      },
+
+      toBarChart() {
+        this.editForm.type = 'bar_chart';
+        this.disableAdvancedMode();
+        this.editForm.description = this.sectionDetail.description.replace(/pie/g, "bar");
+        this.editForm.extraData = {
+          dataSetLabel: (this.capitalizeString((this.editForm.selections[0].rename).replace(/_/g, " "))),
+          fieldsShownInToolTips: [],
+          xAxisFieldName: this.editForm.selections[1].rename,
+          yAxisFieldName: this.editForm.selections[0].rename,
+          xLabel: (this.capitalizeString((this.editForm.selections[1].rename).replace(/_/g, " "))),
+          yLabel: (this.capitalizeString((this.editForm.selections[0].rename).replace(/_/g, " "))),
+          numOfResultToDisplay: 10,
+          isColorfulBar: true,
+        }
+      },
+
+      toPieChart() {
+        this.editForm.type = 'pie_chart';
+        this.disableAdvancedMode();
+        this.editForm.description = this.sectionDetail.description.replace(/bar/g, "pie");
+        this.editForm.extraData = {
+          categoryFieldName: this.editForm.selections[1].rename,
+          valueFieldName: this.editForm.selections[0].rename,
+          numOfResultToDisplay: 10,
+        }
       },
 
       previewAnalysisResult(formName) {
