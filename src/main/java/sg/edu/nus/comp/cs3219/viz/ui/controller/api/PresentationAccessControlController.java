@@ -65,7 +65,6 @@ public class PresentationAccessControlController extends BaseRestController {
                 baseAnalyzeUrl + presentation.getId() ,
                 newAccessControl.getAccessLevel(),
                 presentation.getName());
-        //TODO: send email here.
         return ResponseEntity
                 .created(new URI("/presentations/" + presentation.getId() + "/accessControl/" + newAccessControl.getId()))
                 .body(newAccessControl);
