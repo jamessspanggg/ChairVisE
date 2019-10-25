@@ -3266,6 +3266,218 @@ export default {
     }
   },
 
+  "avg_reviewer_expertise_level_author": {
+    name: "Average Reviewer's Expertise Level Per Author",
+    group: 'Author Record + Review Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level Per Author',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining author and review, this bar chart shows the average reviewer\'s expertise level that reviews all the submissions for each author. This gives us an insight on which author\'s submissions are being reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_reviewer_expertise'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
+        },
+        {
+          expression: "CONCAT(a_first_name, ' ', a_last_name)",
+          rename: 'author_name'
+        },
+        {
+          expression: "a_email",
+          rename: 'author_email'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT a_first_name, a_last_name, a_email, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level FROM review_record, author_record " +
+              "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_first_name, a_last_name, a_email) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "a_first_name"
+        },
+        {
+          field: "a_last_name"
+        },
+        {
+          field: "a_email"
+        }
+      ],
+      sorters: [
+        {
+          field: 'avg_reviewer_expertise',
+          order: 'DESC',
+        },
+        {
+          field: 'a_email',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        type: 'category',
+        dataSetLabel: 'Average Reviewer\'s Expertise',
+        fieldsShownInToolTips: [
+          {
+            label: 'Email',
+            field: 'author_email'
+          },
+          {
+            label: 'Submission',
+            field: 'submission_count'
+          }
+        ],
+        xAxisFieldName: 'author_name',
+        yAxisFieldName: 'avg_reviewer_expertise',
+        xLabel: 'Author Name',
+        yLabel: 'Average Reviewer\'s Expertise',
+        numOfResultToDisplay: 15,
+        isColorfulBar: true,
+      }
+    }
+  },
+
+  "avg_reviewer_expertise_level_organization": {
+    name: "Average Reviewer's Expertise Level Per Organization",
+    group: 'Author Record + Review Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level Per Organization',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining author and review, this bar chart shows the average reviewer\'s expertise level that reviews all the submissions for each organization. This gives us an insight on which organization\'s submissions are being reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_reviewer_expertise'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
+        },
+        {
+          expression: "a_organisation",
+          rename: 'a_organisation'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT a_organisation, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level FROM review_record, author_record " +
+              "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_organisation) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "a_organisation"
+        }
+      ],
+      sorters: [
+        {
+          field: 'avg_reviewer_expertise',
+          order: 'DESC',
+        },
+        {
+          field: 'a_organisation',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        type: 'category',
+        dataSetLabel: 'Average Reviewer\'s Expertise',
+        fieldsShownInToolTips: [
+          {
+            label: 'Submission',
+            field: 'submission_count'
+          }
+        ],
+        xAxisFieldName: 'a_organisation',
+        yAxisFieldName: 'avg_reviewer_expertise',
+        xLabel: 'Organisation Name',
+        yLabel: 'Average Reviewer\'s Expertise',
+        numOfResultToDisplay: 15,
+        isColorfulBar: true,
+      }
+    }
+  },
+
+  "avg_reviewer_expertise_level_country": {
+    name: "Average Reviewer's Expertise Level Per Country",
+    group: 'Author Record + Review Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level Per Country',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining author and review, this bar chart shows the average reviewer\'s expertise level that reviews all the submissions for each country. This gives us an insight on which country\'s submissions are being reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_reviewer_expertise'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
+        },
+        {
+          expression: "a_country",
+          rename: 'a_country'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT a_country, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level FROM review_record, author_record " +
+              "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_country) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "a_country"
+        }
+      ],
+      sorters: [
+        {
+          field: 'avg_reviewer_expertise',
+          order: 'DESC',
+        },
+        {
+          field: 'a_country',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        type: 'category',
+        dataSetLabel: 'Average Reviewer\'s Expertise',
+        fieldsShownInToolTips: [
+          {
+            label: 'Submission',
+            field: 'submission_count'
+          }
+        ],
+        xAxisFieldName: 'a_country',
+        yAxisFieldName: 'avg_reviewer_expertise',
+        xLabel: 'Country Name',
+        yLabel: 'Average Reviewer\'s Expertise',
+        numOfResultToDisplay: 15,
+        isColorfulBar: true,
+      }
+    }
+  },
+
 /*
 // visualization for gender distribution.
   "author_gender_ratio": {
