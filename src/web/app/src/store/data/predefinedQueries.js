@@ -20,15 +20,24 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [],
       sorters: [],
       extraData: {
         delimiters: ['\\r', '\\n'],
-        ignoreWords: []
-      }
-    }
+        ignoreWords: [],
+      },
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   word_cloud_keywords_accepted_submission: {
     name: 'Word Cloud for Accepted Submissions Keywords',
@@ -56,6 +65,11 @@ export default {
           field: 's_is_accepted',
           comparator: '=',
           value: 'accept'
+        },
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
         }
       ],
       joiners: [],
@@ -63,19 +77,21 @@ export default {
       sorters: [],
       extraData: {
         delimiters: ['\\r', '\\n'],
-        ignoreWords: []
-      }
-    }
+        ignoreWords: [],
+      },
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
-  word_cloud_keywords_rejected_submission: {
-    name: 'Word Cloud for Rejected Submissions Keywords',
+  "word_cloud_keywords_rejected_submission": {
+    name: "Word Cloud for Rejected Submissions Keywords",
     group: 'Submission Record',
     data: {
       type: 'word_cloud',
       title: 'Word Cloud for Rejected Submissions Keywords',
       dataSet: '${PLACEHOLDER_DATA_SET}',
-      description:
-        'This word cloud shows a list of key words found under the abstract section for all the rejected papers.',
+      description: 'This word cloud shows a list of key words found under the abstract section for all the rejected papers.',
       selections: [
         {
           expression: 's_keywords',
@@ -85,7 +101,7 @@ export default {
       involvedRecords: [
         {
           name: 'submission_record',
-          customized: false
+          customized: false,
         }
       ],
       filters: [
@@ -93,6 +109,11 @@ export default {
           field: 's_is_accepted',
           comparator: '=',
           value: 'reject'
+        },
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
         }
       ],
       joiners: [],
@@ -100,12 +121,15 @@ export default {
       sorters: [],
       extraData: {
         delimiters: ['\\r', '\\n'],
-        ignoreWords: []
-      }
-    }
+        ignoreWords: [],
+      },
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
-  word_cloud_keywords_submission_in_full_papers: {
-    name: 'Word Cloud for All Full Papers Submissions Keywords',
+  "word_cloud_keywords_submission_in_full_papers": {
+    name: "Word Cloud for All Full Papers Submissions Keywords",
     group: 'Submission Record',
     data: {
       type: 'word_cloud',
@@ -130,6 +154,11 @@ export default {
           field: 's_track_name',
           comparator: '=',
           value: 'Full Papers'
+        },
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
         }
       ],
       joiners: [],
@@ -139,17 +168,19 @@ export default {
         delimiters: ['\\r', '\\n'],
         ignoreWords: []
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
-  word_cloud_keywords_submission_in_posters_amd_demos: {
-    name: 'Word Cloud for All Posters and Demos Submissions Keywords',
+  "word_cloud_keywords_submission_in_posters_amd_demos": {
+    name: "Word Cloud for All Posters and Demos Submissions Keywords",
     group: 'Submission Record',
     data: {
       type: 'word_cloud',
       title: 'Word Cloud for All Posters and Demos Submissions Keywords',
       dataSet: '${PLACEHOLDER_DATA_SET}',
-      description:
-        'This word cloud shows a list of key words found under the abstract section for all the submitted papers in Posters and Demos Track.',
+      description: 'This word cloud shows a list of key words found under the abstract section for all the submitted papers in Posters and Demos Track.',
       selections: [
         {
           expression: 's_keywords',
@@ -159,7 +190,7 @@ export default {
       involvedRecords: [
         {
           name: 'submission_record',
-          customized: false
+          customized: false,
         }
       ],
       filters: [
@@ -167,6 +198,11 @@ export default {
           field: 's_track_name',
           comparator: '=',
           value: 'Posters and Demos'
+        },
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
         }
       ],
       joiners: [],
@@ -174,12 +210,15 @@ export default {
       sorters: [],
       extraData: {
         delimiters: ['\\r', '\\n'],
-        ignoreWords: []
+        ignoreWords: [],
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
-  word_cloud_keywords_submission_in_short_papers: {
-    name: 'Word Cloud for All Short Papers Submissions Keywords',
+  "word_cloud_keywords_submission_in_short_papers": {
+    name: "Word Cloud for All Short Papers Submissions Keywords",
     group: 'Submission Record',
     data: {
       type: 'word_cloud',
@@ -204,6 +243,11 @@ export default {
           field: 's_track_name',
           comparator: '=',
           value: 'Short Papers'
+        },
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
         }
       ],
       joiners: [],
@@ -213,17 +257,19 @@ export default {
         delimiters: ['\\r', '\\n'],
         ignoreWords: []
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
-  word_cloud_keywords_submission_in_workshops: {
-    name: 'Word Cloud for All Workshop Submissions Keywords',
+  "word_cloud_keywords_submission_in_workshops": {
+    name: "Word Cloud for All Workshop Submissions Keywords",
     group: 'Submission Record',
     data: {
       type: 'word_cloud',
       title: 'Word Cloud for All Workshop Submissions Keywords',
       dataSet: '${PLACEHOLDER_DATA_SET}',
-      description:
-        'This word cloud shows a list of key words found under the abstract section for all the submitted papers in Workshop Track.',
+      description: 'This word cloud shows a list of key words found under the abstract section for all the submitted papers in Workshop Track.',
       selections: [
         {
           expression: 's_keywords',
@@ -233,7 +279,7 @@ export default {
       involvedRecords: [
         {
           name: 'submission_record',
-          customized: false
+          customized: false,
         }
       ],
       filters: [
@@ -241,6 +287,11 @@ export default {
           field: 's_track_name',
           comparator: '=',
           value: 'JCDL 2018 - Workshops'
+        },
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
         }
       ],
       joiners: [],
@@ -248,12 +299,15 @@ export default {
       sorters: [],
       extraData: {
         delimiters: ['\\r', '\\n'],
-        ignoreWords: []
+        ignoreWords: [],
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
-  word_cloud_keywords_reviewer_comment: {
-    name: 'Word Cloud for Reviewer Comment',
+  "word_cloud_keywords_reviewer_comment": {
+    name: "Word Cloud for Reviewer Comment",
     group: 'Review Record',
     data: {
       type: 'word_cloud',
@@ -273,7 +327,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [],
       sorters: [],
@@ -314,7 +374,10 @@ export default {
           'if'
         ]
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   submission_rank_author: {
     name: 'Submission Rank Author',
@@ -345,7 +408,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -379,18 +448,17 @@ export default {
         isColorfulBar: true
       }
     },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}'
+    ],
     options: {
       scales: {
-        xAxes: [
-          {
-            stacked: true // this should be set to make the bars stacked
-          }
-        ],
-        yAxes: [
-          {
-            stacked: true // this also..
-          }
-        ]
+        xAxes: [{
+          stacked: true // this should be set to make the bars stacked
+        }],
+        yAxes: [{
+          stacked: true // this also..
+        }]
       }
     }
   },
@@ -470,10 +538,9 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT s_author_name, s_track_name FROM submission_record, submission_record_author_set, submission_author_record ' +
-            "WHERE s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp`",
-          customized: true
+          name: "(SELECT s_author_name, s_track_name FROM submission_record, submission_record_author_set, submission_author_record " +
+            "WHERE submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND submission_author_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp`",
+          customized: true,
         }
       ],
       filters: [
@@ -481,7 +548,7 @@ export default {
           field: 's_track_name',
           comparator: '=',
           value: 'Full Papers'
-        }
+        },
       ],
       joiners: [],
       groupers: [
@@ -508,9 +575,15 @@ export default {
         xLabel: 'Author Name',
         yLabel: 'Paper Count',
         numOfResultToDisplay: 10,
-        isColorfulBar: true
+        isColorfulBar: true,
+      },
+      fileIds: {
+        'submission_file': '${PLACEHOLDER_SUBMISSION_FILE_ID}'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_acceptance_rate_rank_paper_author: {
     name: 'Submission Acceptance Rate Rank Paper Author',
@@ -545,11 +618,11 @@ export default {
             "(SELECT SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END) AS `accepted`, " +
             'COUNT(*) AS `submitted`, ' +
             "ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2) AS `acceptance_rate`, " +
-            's_author_name FROM ' +
-            '(SELECT s_author_name, s_is_accepted FROM submission_record, submission_record_author_set, submission_author_record ' +
-            "WHERE s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp1` " +
-            'GROUP BY s_author_name) AS `tmp2`',
-          customized: true
+            "s_author_name FROM " +
+            "(SELECT s_author_name, s_is_accepted FROM submission_record, submission_record_author_set, submission_author_record " +
+            "WHERE submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND submission_author_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp1` " +
+            "GROUP BY s_author_name) AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -582,9 +655,12 @@ export default {
         xLabel: 'Author Name',
         yLabel: 'Acceptance Rate',
         numOfResultToDisplay: 10,
-        isColorfulBar: true
-      }
-    }
+        isColorfulBar: true,
+      },
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_accepted_rank_paper_author: {
     name: 'Submission Accepted Rank Paper Author',
@@ -617,10 +693,9 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT s_author_name, s_is_accepted FROM submission_record, submission_record_author_set, submission_author_record ' +
-            "WHERE s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp`",
-          customized: true
+          name: "(SELECT s_author_name, s_is_accepted FROM submission_record, submission_record_author_set, submission_author_record " +
+            "WHERE submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND submission_author_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp`",
+          customized: true,
         }
       ],
       filters: [],
@@ -659,7 +734,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_rank_country: {
     name: 'Submission Rank Country',
@@ -686,7 +764,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -704,7 +788,10 @@ export default {
         valueFieldName: 'submission_count',
         numOfResultToDisplay: 10
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}'
+    ]
   },
   submission_rank_organization: {
     name: 'Submission Rank Organization',
@@ -731,7 +818,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -749,7 +842,10 @@ export default {
         valueFieldName: 'submission_count',
         numOfResultToDisplay: 10
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}'
+    ]
   },
   review_weighted_score_distribution: {
     name: 'Review Weighted Score Distribution',
@@ -823,33 +919,33 @@ export default {
             "  WHEN weighted_score <= 2.50 THEN '2.25 ~ 2.50'\n" +
             "  WHEN weighted_score <= 2.75 THEN '2.50 ~ 2.75'\n" +
             "  WHEN weighted_score <= 3.00 THEN '2.75 ~ 3.00'\n" +
-            'END AS `weighted_score_interval` FROM (SELECT SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` ' +
-            "FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' GROUP BY r_submission_id " +
-            'UNION ALL SELECT -2.75\n' +
-            'UNION ALL SELECT -2.50\n' +
-            'UNION ALL SELECT -2.25\n' +
-            'UNION ALL SELECT -2.00\n' +
-            'UNION ALL SELECT -1.75\n' +
-            'UNION ALL SELECT -1.50\n' +
-            'UNION ALL SELECT -1.25\n' +
-            'UNION ALL SELECT -1.00\n' +
-            'UNION ALL SELECT -0.75\n' +
-            'UNION ALL SELECT -0.50\n' +
-            'UNION ALL SELECT -0.25\n' +
-            'UNION ALL SELECT 0.00\n' +
-            'UNION ALL SELECT 0.25\n' +
-            'UNION ALL SELECT 0.50\n' +
-            'UNION ALL SELECT 0.75\n' +
-            'UNION ALL SELECT 1.00\n' +
-            'UNION ALL SELECT 1.25\n' +
-            'UNION ALL SELECT 1.50\n' +
-            'UNION ALL SELECT 1.75\n' +
-            'UNION ALL SELECT 2.00\n' +
-            'UNION ALL SELECT 2.25\n' +
-            'UNION ALL SELECT 2.50\n' +
-            'UNION ALL SELECT 2.75\n' +
-            'UNION ALL SELECT 3.00) AS `tmp1`) AS `tmp2`',
-          customized: true
+            "END AS `weighted_score_interval` FROM (SELECT SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` " +
+            "FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} GROUP BY r_submission_id " +
+            "UNION ALL SELECT -2.75\n" +
+            "UNION ALL SELECT -2.50\n" +
+            "UNION ALL SELECT -2.25\n" +
+            "UNION ALL SELECT -2.00\n" +
+            "UNION ALL SELECT -1.75\n" +
+            "UNION ALL SELECT -1.50\n" +
+            "UNION ALL SELECT -1.25\n" +
+            "UNION ALL SELECT -1.00\n" +
+            "UNION ALL SELECT -0.75\n" +
+            "UNION ALL SELECT -0.50\n" +
+            "UNION ALL SELECT -0.25\n" +
+            "UNION ALL SELECT 0.00\n" +
+            "UNION ALL SELECT 0.25\n" +
+            "UNION ALL SELECT 0.50\n" +
+            "UNION ALL SELECT 0.75\n" +
+            "UNION ALL SELECT 1.00\n" +
+            "UNION ALL SELECT 1.25\n" +
+            "UNION ALL SELECT 1.50\n" +
+            "UNION ALL SELECT 1.75\n" +
+            "UNION ALL SELECT 2.00\n" +
+            "UNION ALL SELECT 2.25\n" +
+            "UNION ALL SELECT 2.50\n" +
+            "UNION ALL SELECT 2.75\n" +
+            "UNION ALL SELECT 3.00) AS `tmp1`) AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -878,7 +974,10 @@ export default {
         numOfResultToDisplay: 50,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   review_weighted_evaluation_score_stats_summary: {
     name: 'Review Weighted Evaluation Score Statistic Summary',
@@ -902,7 +1001,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -911,9 +1016,12 @@ export default {
       ],
       sorters: [],
       extraData: {
-        types: ['min', 'max', 'avg', 'median', 'std']
-      }
-    }
+        types: ['min', 'max', 'avg', 'median', 'std'],
+      },
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   review_expertise_level_stats_summary: {
     name: 'Reviewer Expertise Level Statistic Summary',
@@ -936,7 +1044,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -945,9 +1059,12 @@ export default {
       ],
       sorters: [],
       extraData: {
-        types: ['min', 'max', 'avg', 'median', 'std']
-      }
-    }
+        types: ['min', 'max', 'avg', 'median', 'std'],
+      },
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   review_confidence_level_stats_summary: {
     name: 'Reviewer Confidence Level Statistic Summary',
@@ -970,7 +1087,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -981,7 +1104,10 @@ export default {
       extraData: {
         types: ['min', 'max', 'avg', 'median', 'std']
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   submission_rank_track: {
     name: 'Submission Rank Track',
@@ -1008,7 +1134,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -1031,7 +1163,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   acceptance_ratio_track: {
     name: 'Acceptance Ratio Track',
@@ -1059,7 +1194,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -1082,7 +1223,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   acceptance_ratio_by_year: {
     name: 'Acceptance Ratio by Year',
@@ -1110,7 +1254,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -1130,7 +1280,10 @@ export default {
         xLabel: 'Year',
         yLabel: 'Acceptance Ratio'
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   recommendation_for_best_paper_distribution: {
     name: 'Recommendation for Best Paper Distribution',
@@ -1159,7 +1312,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -1172,7 +1331,10 @@ export default {
         valueFieldName: 'review_count',
         numOfResultToDisplay: 10
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   review_count_summary_for_each_submission: {
     name: 'Review Count Summary for Each Submission',
@@ -1195,7 +1357,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -1206,7 +1374,10 @@ export default {
       extraData: {
         types: ['min', 'max', 'avg', 'median']
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   submission_rank_author_in_full_papers: {
     name: 'Submission Rank Author in Full Papers',
@@ -1238,22 +1409,30 @@ export default {
         },
         {
           name: 'submission_record',
-          customized: false
+          customized: false,
         }
       ],
       filters: [
         {
           field: 's_track_name',
           comparator: '=',
-          value: 'Full Papers'
-        }
-      ],
-      joiners: [
+          value: 'Full Papers',
+        },
         {
-          left: 'a_submission_id',
-          right: 's_submission_id'
+          field: 'author_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        },
+        {
+          field: 'submission_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
         }
       ],
+      joiners: [{
+        left: 'a_submission_id',
+        right: 's_submission_id',
+      }],
       groupers: [
         {
           field: 'a_email'
@@ -1285,7 +1464,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_acceptance_rate_rank_author: {
     name: 'Submission Acceptance Rate Rank Author',
@@ -1327,7 +1509,8 @@ export default {
             'COUNT(*) AS `submitted`,' +
             "SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END) AS `accepted` " +
             'FROM author_record, submission_record WHERE ' +
-            "author_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            'author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} ' +
+            "AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
             'AND a_submission_id = s_submission_id GROUP BY a_email, a_first_name, a_last_name) AS `tmp`',
           customized: true
         }
@@ -1368,7 +1551,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_acceptance_rate_author_distribution: {
     name: 'Submission Acceptance Rate Author Distribution',
@@ -1417,7 +1603,8 @@ export default {
             'END AS `acceptance_rate_interval` FROM ' +
             "(SELECT ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2) AS `acceptance_rate`" +
             'FROM author_record, submission_record WHERE ' +
-            "author_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            'author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} ' +
+            "AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
             'AND a_submission_id = s_submission_id GROUP BY a_email, a_first_name, a_last_name ' +
             'UNION ALL SELECT 0.1 ' +
             'UNION ALL SELECT 0.2 ' +
@@ -1458,7 +1645,10 @@ export default {
         numOfResultToDisplay: 20,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_accepted_rank_author: {
     name: 'Submission Accepted Rank Author',
@@ -1503,7 +1693,18 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'author_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        },
+        {
+          field: 'submission_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [
         {
           left: 'a_submission_id',
@@ -1554,7 +1755,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_acceptance_rate_rank_organisation: {
     name: 'Submission Acceptance Rate Rank Organization',
@@ -1588,11 +1792,12 @@ export default {
           name:
             "(SELECT ROUND(SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END)/COUNT(*), 2) AS `acceptance_rate`," +
             "a_organisation, COUNT(*) AS `submitted`, SUM(CASE WHEN s_is_accepted = 'accept' THEN 1 ELSE 0 END) AS `accepted` FROM " +
-            'author_record, submission_record WHERE ' +
-            "author_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'AND a_submission_id = s_submission_id GROUP BY a_organisation) AS `tmp`',
-          customized: true
-        }
+            "author_record, submission_record WHERE " +
+            "author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} " +
+            "AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            "AND a_submission_id = s_submission_id GROUP BY a_organisation) AS `tmp`",
+          customized: true,
+        },
       ],
       filters: [],
       joiners: [],
@@ -1626,7 +1831,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_accepted_rank_organisation: {
     name: 'Submission Accepted Rank Organization',
@@ -1667,7 +1875,18 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'author_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        },
+        {
+          field: 'submission_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [
         {
           left: 'a_submission_id',
@@ -1708,7 +1927,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_acceptance_rate_rank_country: {
     name: 'Submission Acceptance Rate Rank Country',
@@ -1749,7 +1971,18 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'author_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        },
+        {
+          field: 'submission_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [
         {
           left: 'a_submission_id',
@@ -1790,7 +2023,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   submission_accepted_rank_country: {
     name: 'Submission Accepted Rank Country',
@@ -1831,7 +2067,18 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'author_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_AUTHOR_FILE_ID}'
+        },
+        {
+          field: 'submission_record.file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
       joiners: [
         {
           left: 'a_submission_id',
@@ -1872,7 +2119,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   reviewer_assignment_rank: {
     name: 'Reviewer Assignment Rank',
@@ -1899,7 +2149,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -1926,7 +2182,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   reviewer_avg_expertise_level_rank: {
     name: 'Reviewer Average Expertise Level Rank',
@@ -1961,7 +2220,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -1997,7 +2262,10 @@ export default {
         numOfResultToDisplay: 30,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   reviewer_avg_confidence_level_rank: {
     name: 'Reviewer Average Confidence Level Rank',
@@ -2032,7 +2300,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -2068,7 +2342,10 @@ export default {
         numOfResultToDisplay: 30,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   reviewer_avg_evaluation_score_rank: {
     name: 'Reviewer Average Evaluation Score Rank',
@@ -2103,7 +2380,13 @@ export default {
           customized: false
         }
       ],
-      filters: [],
+      filters: [
+        {
+          field: 'file_id',
+          comparator: '=',
+          value: '${PLACEHOLDER_REVIEW_FILE_ID}'
+        }
+      ],
       joiners: [],
       groupers: [
         {
@@ -2139,7 +2422,10 @@ export default {
         numOfResultToDisplay: 30,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   num_of_review_distribution: {
     name: 'Number of Review Distribution',
@@ -2157,29 +2443,26 @@ export default {
         },
         {
           expression: 'num_of_review',
-          rename: 'num_of_review'
+          rename: 'num_of_review',
         }
       ],
-      involvedRecords: [
-        {
-          name:
-            "(SELECT IF(COUNT(*)<10, CONVERT(COUNT(*), char), '>=10') AS `num_of_review` FROM review_record WHERE " +
-            "review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'GROUP BY r_submission_id ' +
-            "UNION ALL SELECT '0'" +
-            "UNION ALL SELECT '1'" +
-            "UNION ALL SELECT '2'" +
-            "UNION ALL SELECT '3'" +
-            "UNION ALL SELECT '4'" +
-            "UNION ALL SELECT '5'" +
-            "UNION ALL SELECT '6'" +
-            "UNION ALL SELECT '7'" +
-            "UNION ALL SELECT '8'" +
-            "UNION ALL SELECT '9'" +
-            "UNION ALL SELECT '>=10') AS `tmp`",
-          customized: true
-        }
-      ],
+      involvedRecords: [{
+        name: "(SELECT IF(COUNT(*)<10, CONVERT(COUNT(*), char), '>=10') AS `num_of_review` FROM review_record WHERE " +
+          "review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} " +
+          "GROUP BY r_submission_id " +
+          "UNION ALL SELECT '0'" +
+          "UNION ALL SELECT '1'" +
+          "UNION ALL SELECT '2'" +
+          "UNION ALL SELECT '3'" +
+          "UNION ALL SELECT '4'" +
+          "UNION ALL SELECT '5'" +
+          "UNION ALL SELECT '6'" +
+          "UNION ALL SELECT '7'" +
+          "UNION ALL SELECT '8'" +
+          "UNION ALL SELECT '9'" +
+          "UNION ALL SELECT '>=10') AS `tmp`",
+        customized: true,
+      }],
       filters: [],
       joiners: [],
       groupers: [
@@ -2203,7 +2486,10 @@ export default {
         numOfResultToDisplay: 30,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   reviewer_avg_expertise_level_distribution: {
     name: 'Reviewer Average Expertise Level Distribution',
@@ -2277,29 +2563,31 @@ export default {
             "  WHEN avg_expertise_level <= 4.50 THEN '4.25 ~ 4.50'\n" +
             "  WHEN avg_expertise_level <= 4.75 THEN '4.50 ~ 4.75'\n" +
             "  WHEN avg_expertise_level <= 5.00 THEN '4.75 ~ 5.00'\n" +
-            'END AS `avg_expertise_level_interval`, avg_evaluation_score, avg_confidence_level FROM (SELECT AVG(r_confidence_level) AS `avg_confidence_level`, AVG(r_overall_evaluation_score) AS `avg_evaluation_score`, AVG(r_expertise_level) AS `avg_expertise_level` ' +
-            "FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' GROUP BY r_reviewer_name " +
-            'UNION ALL SELECT 0, 0, 0.25\n' +
-            'UNION ALL SELECT 0, 0, 0.50\n' +
-            'UNION ALL SELECT 0, 0, 0.75\n' +
-            'UNION ALL SELECT 0, 0, 1.00\n' +
-            'UNION ALL SELECT 0, 0, 1.25\n' +
-            'UNION ALL SELECT 0, 0, 1.50\n' +
-            'UNION ALL SELECT 0, 0, 1.75\n' +
-            'UNION ALL SELECT 0, 0, 2.00\n' +
-            'UNION ALL SELECT 0, 0, 2.25\n' +
-            'UNION ALL SELECT 0, 0, 2.50\n' +
-            'UNION ALL SELECT 0, 0, 2.75\n' +
-            'UNION ALL SELECT 0, 0, 3.00\n' +
-            'UNION ALL SELECT 0, 0, 3.25\n' +
-            'UNION ALL SELECT 0, 0, 3.50\n' +
-            'UNION ALL SELECT 0, 0, 3.75\n' +
-            'UNION ALL SELECT 0, 0, 4.00\n' +
-            'UNION ALL SELECT 0, 0, 4.25\n' +
-            'UNION ALL SELECT 0, 0, 4.50\n' +
-            'UNION ALL SELECT 0, 0, 4.75\n' +
-            'UNION ALL SELECT 0, 0, 5.00) AS `tmp1`) AS `tmp2`',
-          customized: true
+            "END AS `avg_expertise_level_interval`, avg_evaluation_score, avg_confidence_level FROM (SELECT AVG(r_confidence_level) AS `avg_confidence_level`, AVG(r_overall_evaluation_score) AS `avg_evaluation_score`, AVG(r_expertise_level) AS `avg_expertise_level` " +
+            "FROM review_record " +
+            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} " +
+            "GROUP BY r_reviewer_name " +
+            "UNION ALL SELECT 0, 0, 0.25\n" +
+            "UNION ALL SELECT 0, 0, 0.50\n" +
+            "UNION ALL SELECT 0, 0, 0.75\n" +
+            "UNION ALL SELECT 0, 0, 1.00\n" +
+            "UNION ALL SELECT 0, 0, 1.25\n" +
+            "UNION ALL SELECT 0, 0, 1.50\n" +
+            "UNION ALL SELECT 0, 0, 1.75\n" +
+            "UNION ALL SELECT 0, 0, 2.00\n" +
+            "UNION ALL SELECT 0, 0, 2.25\n" +
+            "UNION ALL SELECT 0, 0, 2.50\n" +
+            "UNION ALL SELECT 0, 0, 2.75\n" +
+            "UNION ALL SELECT 0, 0, 3.00\n" +
+            "UNION ALL SELECT 0, 0, 3.25\n" +
+            "UNION ALL SELECT 0, 0, 3.50\n" +
+            "UNION ALL SELECT 0, 0, 3.75\n" +
+            "UNION ALL SELECT 0, 0, 4.00\n" +
+            "UNION ALL SELECT 0, 0, 4.25\n" +
+            "UNION ALL SELECT 0, 0, 4.50\n" +
+            "UNION ALL SELECT 0, 0, 4.75\n" +
+            "UNION ALL SELECT 0, 0, 5.00) AS `tmp1`) AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -2337,7 +2625,10 @@ export default {
         numOfResultToDisplay: 30,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   reviewer_avg_confidence_level_distribution: {
     name: 'Reviewer Average Confidence Level Distribution',
@@ -2411,29 +2702,31 @@ export default {
             "  WHEN avg_confidence_level <= 4.50 THEN '4.25 ~ 4.50'\n" +
             "  WHEN avg_confidence_level <= 4.75 THEN '4.50 ~ 4.75'\n" +
             "  WHEN avg_confidence_level <= 5.00 THEN '4.75 ~ 5.00'\n" +
-            'END AS `avg_confidence_level_interval`, avg_evaluation_score, avg_expertise_level FROM (SELECT AVG(r_confidence_level) AS `avg_confidence_level`, AVG(r_overall_evaluation_score) AS `avg_evaluation_score`, AVG(r_expertise_level) AS `avg_expertise_level` ' +
-            "FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' GROUP BY r_reviewer_name " +
-            'UNION ALL SELECT 0.25, 0, 0\n' +
-            'UNION ALL SELECT 0.50, 0, 0\n' +
-            'UNION ALL SELECT 0.75, 0, 0\n' +
-            'UNION ALL SELECT 1.00, 0, 0\n' +
-            'UNION ALL SELECT 1.25, 0, 0\n' +
-            'UNION ALL SELECT 1.50, 0, 0\n' +
-            'UNION ALL SELECT 1.75, 0, 0\n' +
-            'UNION ALL SELECT 2.00, 0, 0\n' +
-            'UNION ALL SELECT 2.25, 0, 0\n' +
-            'UNION ALL SELECT 2.50, 0, 0\n' +
-            'UNION ALL SELECT 2.75, 0, 0\n' +
-            'UNION ALL SELECT 3.00, 0, 0\n' +
-            'UNION ALL SELECT 3.25, 0, 0\n' +
-            'UNION ALL SELECT 3.50, 0, 0\n' +
-            'UNION ALL SELECT 3.75, 0, 0\n' +
-            'UNION ALL SELECT 4.00, 0, 0\n' +
-            'UNION ALL SELECT 4.25, 0, 0\n' +
-            'UNION ALL SELECT 4.50, 0, 0\n' +
-            'UNION ALL SELECT 4.75, 0, 0\n' +
-            'UNION ALL SELECT 5.00, 0, 0) AS `tmp1`) AS `tmp2`',
-          customized: true
+            "END AS `avg_confidence_level_interval`, avg_evaluation_score, avg_expertise_level FROM (SELECT AVG(r_confidence_level) AS `avg_confidence_level`, AVG(r_overall_evaluation_score) AS `avg_evaluation_score`, AVG(r_expertise_level) AS `avg_expertise_level` " +
+            "FROM review_record " +
+            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} " +
+            "GROUP BY r_reviewer_name " +
+            "UNION ALL SELECT 0.25, 0, 0\n" +
+            "UNION ALL SELECT 0.50, 0, 0\n" +
+            "UNION ALL SELECT 0.75, 0, 0\n" +
+            "UNION ALL SELECT 1.00, 0, 0\n" +
+            "UNION ALL SELECT 1.25, 0, 0\n" +
+            "UNION ALL SELECT 1.50, 0, 0\n" +
+            "UNION ALL SELECT 1.75, 0, 0\n" +
+            "UNION ALL SELECT 2.00, 0, 0\n" +
+            "UNION ALL SELECT 2.25, 0, 0\n" +
+            "UNION ALL SELECT 2.50, 0, 0\n" +
+            "UNION ALL SELECT 2.75, 0, 0\n" +
+            "UNION ALL SELECT 3.00, 0, 0\n" +
+            "UNION ALL SELECT 3.25, 0, 0\n" +
+            "UNION ALL SELECT 3.50, 0, 0\n" +
+            "UNION ALL SELECT 3.75, 0, 0\n" +
+            "UNION ALL SELECT 4.00, 0, 0\n" +
+            "UNION ALL SELECT 4.25, 0, 0\n" +
+            "UNION ALL SELECT 4.50, 0, 0\n" +
+            "UNION ALL SELECT 4.75, 0, 0\n" +
+            "UNION ALL SELECT 5.00, 0, 0) AS `tmp1`) AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -2471,7 +2764,10 @@ export default {
         numOfResultToDisplay: 30,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   reviewer_avg_evaluation_score_distribution: {
     name: 'Reviewer Average Evaluation Score Distribution',
@@ -2553,33 +2849,35 @@ export default {
             "  WHEN avg_evaluation_score <= 2.50 THEN '2.25 ~ 2.50'\n" +
             "  WHEN avg_evaluation_score <= 2.75 THEN '2.50 ~ 2.75'\n" +
             "  WHEN avg_evaluation_score <= 3.00 THEN '2.75 ~ 3.00'\n" +
-            'END AS `avg_evaluation_score_interval`, avg_confidence_level, avg_expertise_level FROM (SELECT AVG(r_confidence_level) AS `avg_confidence_level`, AVG(r_overall_evaluation_score) AS `avg_evaluation_score`, AVG(r_expertise_level) AS `avg_expertise_level` ' +
-            "FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' GROUP BY r_reviewer_name " +
-            'UNION ALL SELECT 0, -2.75, 0\n' +
-            'UNION ALL SELECT 0, -2.50, 0\n' +
-            'UNION ALL SELECT 0, -2.25, 0\n' +
-            'UNION ALL SELECT 0, -2.00, 0\n' +
-            'UNION ALL SELECT 0, -1.75, 0\n' +
-            'UNION ALL SELECT 0, -1.50, 0\n' +
-            'UNION ALL SELECT 0, -1.25, 0\n' +
-            'UNION ALL SELECT 0, -1.00, 0\n' +
-            'UNION ALL SELECT 0, -0.75, 0\n' +
-            'UNION ALL SELECT 0, -0.50, 0\n' +
-            'UNION ALL SELECT 0, -0.25, 0\n' +
-            'UNION ALL SELECT 0, 0.00, 0\n' +
-            'UNION ALL SELECT 0, 0.25, 0\n' +
-            'UNION ALL SELECT 0, 0.50, 0\n' +
-            'UNION ALL SELECT 0, 0.75, 0\n' +
-            'UNION ALL SELECT 0, 1.00, 0\n' +
-            'UNION ALL SELECT 0, 1.25, 0\n' +
-            'UNION ALL SELECT 0, 1.50, 0\n' +
-            'UNION ALL SELECT 0, 1.75, 0\n' +
-            'UNION ALL SELECT 0, 2.00, 0\n' +
-            'UNION ALL SELECT 0, 2.25, 0\n' +
-            'UNION ALL SELECT 0, 2.50, 0\n' +
-            'UNION ALL SELECT 0, 2.75, 0\n' +
-            'UNION ALL SELECT 0, 3.00, 0) AS `tmp1`) AS `tmp2`',
-          customized: true
+            "END AS `avg_evaluation_score_interval`, avg_confidence_level, avg_expertise_level FROM (SELECT AVG(r_confidence_level) AS `avg_confidence_level`, AVG(r_overall_evaluation_score) AS `avg_evaluation_score`, AVG(r_expertise_level) AS `avg_expertise_level` " +
+            "FROM review_record " +
+            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} " +
+            "GROUP BY r_reviewer_name " +
+            "UNION ALL SELECT 0, -2.75, 0\n" +
+            "UNION ALL SELECT 0, -2.50, 0\n" +
+            "UNION ALL SELECT 0, -2.25, 0\n" +
+            "UNION ALL SELECT 0, -2.00, 0\n" +
+            "UNION ALL SELECT 0, -1.75, 0\n" +
+            "UNION ALL SELECT 0, -1.50, 0\n" +
+            "UNION ALL SELECT 0, -1.25, 0\n" +
+            "UNION ALL SELECT 0, -1.00, 0\n" +
+            "UNION ALL SELECT 0, -0.75, 0\n" +
+            "UNION ALL SELECT 0, -0.50, 0\n" +
+            "UNION ALL SELECT 0, -0.25, 0\n" +
+            "UNION ALL SELECT 0, 0.00, 0\n" +
+            "UNION ALL SELECT 0, 0.25, 0\n" +
+            "UNION ALL SELECT 0, 0.50, 0\n" +
+            "UNION ALL SELECT 0, 0.75, 0\n" +
+            "UNION ALL SELECT 0, 1.00, 0\n" +
+            "UNION ALL SELECT 0, 1.25, 0\n" +
+            "UNION ALL SELECT 0, 1.50, 0\n" +
+            "UNION ALL SELECT 0, 1.75, 0\n" +
+            "UNION ALL SELECT 0, 2.00, 0\n" +
+            "UNION ALL SELECT 0, 2.25, 0\n" +
+            "UNION ALL SELECT 0, 2.50, 0\n" +
+            "UNION ALL SELECT 0, 2.75, 0\n" +
+            "UNION ALL SELECT 0, 3.00, 0) AS `tmp1`) AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -2617,7 +2915,10 @@ export default {
         numOfResultToDisplay: 30,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
 
   acceptance_rate_and_weighted_score: {
@@ -2702,9 +3003,11 @@ export default {
             "  WHEN weighted_score <= 2.50 THEN '2.25 ~ 2.50'\n" +
             "  WHEN weighted_score <= 2.75 THEN '2.50 ~ 2.75'\n" +
             "  WHEN weighted_score <= 3.00 THEN '2.75 ~ 3.00'\n" +
-            'END AS `weighted_score_interval`, s_is_accepted FROM (SELECT SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score`, s_is_accepted ' +
-            "FROM review_record, submission_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_is_accepted ' +
+            "END AS `weighted_score_interval`, s_is_accepted FROM (SELECT SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score`, s_is_accepted " +
+            "FROM review_record, submission_record " +
+            "WHERE review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} " +
+            "AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            "AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_is_accepted " +
             "UNION ALL SELECT -2.75, 'no'\n" +
             "UNION ALL SELECT -2.50, 'no'\n" +
             "UNION ALL SELECT -2.25, 'no'\n" +
@@ -2767,7 +3070,10 @@ export default {
         numOfResultToDisplay: 50,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   avg_weighted_score_by_track: {
     name: 'Average Weighted Score By Track',
@@ -2790,11 +3096,12 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT s_track_name, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` ' +
-            "FROM review_record, submission_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_track_name) AS `tmp`',
-          customized: true
+          name: "(SELECT s_track_name, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` " +
+            "FROM review_record, submission_record " +
+            "WHERE review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} " +
+            "AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            "AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_track_name) AS `tmp`",
+          customized: true,
         }
       ],
       filters: [],
@@ -2820,7 +3127,10 @@ export default {
         numOfResultToDisplay: 50,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   earliest_review_for_submission: {
     name: 'Earliest Review in Days For Submission',
@@ -2848,33 +3158,34 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT IF(DATEDIFF(MIN(r_review_submission_time), s_submission_time) < 21, DATEDIFF(MIN(r_review_submission_time), s_submission_time), 21)  AS `duration_get_reviewed` ' +
-            "FROM review_record, submission_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_submission_time ' +
-            'UNION ALL SELECT 0 ' +
-            'UNION ALL SELECT 1 ' +
-            'UNION ALL SELECT 2 ' +
-            'UNION ALL SELECT 3 ' +
-            'UNION ALL SELECT 4 ' +
-            'UNION ALL SELECT 5 ' +
-            'UNION ALL SELECT 6 ' +
-            'UNION ALL SELECT 7 ' +
-            'UNION ALL SELECT 8 ' +
-            'UNION ALL SELECT 9 ' +
-            'UNION ALL SELECT 10 ' +
-            'UNION ALL SELECT 11 ' +
-            'UNION ALL SELECT 12 ' +
-            'UNION ALL SELECT 13 ' +
-            'UNION ALL SELECT 14 ' +
-            'UNION ALL SELECT 15 ' +
-            'UNION ALL SELECT 16 ' +
-            'UNION ALL SELECT 17 ' +
-            'UNION ALL SELECT 18 ' +
-            'UNION ALL SELECT 19 ' +
-            'UNION ALL SELECT 20 ' +
-            'UNION ALL SELECT 21) AS `tmp`',
-          customized: true
+          name: "(SELECT IF(DATEDIFF(MIN(r_review_submission_time), s_submission_time) < 21, DATEDIFF(MIN(r_review_submission_time), s_submission_time), 21)  AS `duration_get_reviewed` " +
+            "FROM review_record, submission_record " +
+            "WHERE review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} " +
+            "AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            "AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_submission_time " +
+            "UNION ALL SELECT 0 " +
+            "UNION ALL SELECT 1 " +
+            "UNION ALL SELECT 2 " +
+            "UNION ALL SELECT 3 " +
+            "UNION ALL SELECT 4 " +
+            "UNION ALL SELECT 5 " +
+            "UNION ALL SELECT 6 " +
+            "UNION ALL SELECT 7 " +
+            "UNION ALL SELECT 8 " +
+            "UNION ALL SELECT 9 " +
+            "UNION ALL SELECT 10 " +
+            "UNION ALL SELECT 11 " +
+            "UNION ALL SELECT 12 " +
+            "UNION ALL SELECT 13 " +
+            "UNION ALL SELECT 14 " +
+            "UNION ALL SELECT 15 " +
+            "UNION ALL SELECT 16 " +
+            "UNION ALL SELECT 17 " +
+            "UNION ALL SELECT 18 " +
+            "UNION ALL SELECT 19 " +
+            "UNION ALL SELECT 20 " +
+            "UNION ALL SELECT 21) AS `tmp`",
+          customized: true,
         }
       ],
       filters: [],
@@ -2900,7 +3211,10 @@ export default {
         numOfResultToDisplay: 50,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   average_expert_level_for_submission: {
     name: 'Average Expert Level For Submission',
@@ -2966,31 +3280,31 @@ export default {
             "  WHEN avg_expertise_level <= 4.50 THEN '4.25 ~ 4.50'\n" +
             "  WHEN avg_expertise_level <= 4.75 THEN '4.50 ~ 4.75'\n" +
             "  WHEN avg_expertise_level <= 5.00 THEN '4.75 ~ 5.00'\n" +
-            'END AS `avg_expertise_level_interval` FROM ' +
-            '(SELECT AVG(r_expertise_level) AS `avg_expertise_level` FROM review_record ' +
-            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}'" +
-            'GROUP BY r_submission_id ' +
-            'UNION ALL SELECT 0.25\n' +
-            'UNION ALL SELECT 0.50\n' +
-            'UNION ALL SELECT 0.75\n' +
-            'UNION ALL SELECT 1.00\n' +
-            'UNION ALL SELECT 1.25\n' +
-            'UNION ALL SELECT 1.50\n' +
-            'UNION ALL SELECT 1.75\n' +
-            'UNION ALL SELECT 2.00\n' +
-            'UNION ALL SELECT 2.25\n' +
-            'UNION ALL SELECT 2.50\n' +
-            'UNION ALL SELECT 2.75\n' +
-            'UNION ALL SELECT 3.00\n' +
-            'UNION ALL SELECT 3.25\n' +
-            'UNION ALL SELECT 3.50\n' +
-            'UNION ALL SELECT 3.75\n' +
-            'UNION ALL SELECT 4.00\n' +
-            'UNION ALL SELECT 4.25\n' +
-            'UNION ALL SELECT 4.50\n' +
-            'UNION ALL SELECT 4.75\n' +
-            'UNION ALL SELECT 5.00) AS `tmp1`) AS `tmp2`',
-          customized: true
+            "END AS `avg_expertise_level_interval` FROM " +
+            "(SELECT AVG(r_expertise_level) AS `avg_expertise_level` FROM review_record " +
+            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} " +
+            "GROUP BY r_submission_id " +
+            "UNION ALL SELECT 0.25\n" +
+            "UNION ALL SELECT 0.50\n" +
+            "UNION ALL SELECT 0.75\n" +
+            "UNION ALL SELECT 1.00\n" +
+            "UNION ALL SELECT 1.25\n" +
+            "UNION ALL SELECT 1.50\n" +
+            "UNION ALL SELECT 1.75\n" +
+            "UNION ALL SELECT 2.00\n" +
+            "UNION ALL SELECT 2.25\n" +
+            "UNION ALL SELECT 2.50\n" +
+            "UNION ALL SELECT 2.75\n" +
+            "UNION ALL SELECT 3.00\n" +
+            "UNION ALL SELECT 3.25\n" +
+            "UNION ALL SELECT 3.50\n" +
+            "UNION ALL SELECT 3.75\n" +
+            "UNION ALL SELECT 4.00\n" +
+            "UNION ALL SELECT 4.25\n" +
+            "UNION ALL SELECT 4.50\n" +
+            "UNION ALL SELECT 4.75\n" +
+            "UNION ALL SELECT 5.00) AS `tmp1`) AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -3019,7 +3333,10 @@ export default {
         numOfResultToDisplay: 50,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   average_confidence_level_for_submission: {
     name: 'Average Confidence Level For Submission',
@@ -3085,31 +3402,31 @@ export default {
             "  WHEN avg_confidence_level <= 4.50 THEN '4.25 ~ 4.50'\n" +
             "  WHEN avg_confidence_level <= 4.75 THEN '4.50 ~ 4.75'\n" +
             "  WHEN avg_confidence_level <= 5.00 THEN '4.75 ~ 5.00'\n" +
-            'END AS `avg_confidence_level_interval` FROM ' +
-            '(SELECT AVG(r_confidence_level) AS `avg_confidence_level` FROM review_record ' +
-            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}'" +
-            'GROUP BY r_submission_id ' +
-            'UNION ALL SELECT 0.25\n' +
-            'UNION ALL SELECT 0.50\n' +
-            'UNION ALL SELECT 0.75\n' +
-            'UNION ALL SELECT 1.00\n' +
-            'UNION ALL SELECT 1.25\n' +
-            'UNION ALL SELECT 1.50\n' +
-            'UNION ALL SELECT 1.75\n' +
-            'UNION ALL SELECT 2.00\n' +
-            'UNION ALL SELECT 2.25\n' +
-            'UNION ALL SELECT 2.50\n' +
-            'UNION ALL SELECT 2.75\n' +
-            'UNION ALL SELECT 3.00\n' +
-            'UNION ALL SELECT 3.25\n' +
-            'UNION ALL SELECT 3.50\n' +
-            'UNION ALL SELECT 3.75\n' +
-            'UNION ALL SELECT 4.00\n' +
-            'UNION ALL SELECT 4.25\n' +
-            'UNION ALL SELECT 4.50\n' +
-            'UNION ALL SELECT 4.75\n' +
-            'UNION ALL SELECT 5.00) AS `tmp1`) AS `tmp2`',
-          customized: true
+            "END AS `avg_confidence_level_interval` FROM " +
+            "(SELECT AVG(r_confidence_level) AS `avg_confidence_level` FROM review_record " +
+            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} " +
+            "GROUP BY r_submission_id " +
+            "UNION ALL SELECT 0.25\n" +
+            "UNION ALL SELECT 0.50\n" +
+            "UNION ALL SELECT 0.75\n" +
+            "UNION ALL SELECT 1.00\n" +
+            "UNION ALL SELECT 1.25\n" +
+            "UNION ALL SELECT 1.50\n" +
+            "UNION ALL SELECT 1.75\n" +
+            "UNION ALL SELECT 2.00\n" +
+            "UNION ALL SELECT 2.25\n" +
+            "UNION ALL SELECT 2.50\n" +
+            "UNION ALL SELECT 2.75\n" +
+            "UNION ALL SELECT 3.00\n" +
+            "UNION ALL SELECT 3.25\n" +
+            "UNION ALL SELECT 3.50\n" +
+            "UNION ALL SELECT 3.75\n" +
+            "UNION ALL SELECT 4.00\n" +
+            "UNION ALL SELECT 4.25\n" +
+            "UNION ALL SELECT 4.50\n" +
+            "UNION ALL SELECT 4.75\n" +
+            "UNION ALL SELECT 5.00) AS `tmp1`) AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -3138,7 +3455,10 @@ export default {
         numOfResultToDisplay: 50,
         isColorfulBar: false
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   avg_weighted_score_paper_author: {
     name: 'Average Weighted Score Rank Paper Author',
@@ -3161,11 +3481,10 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT s_author_name, weighted_score FROM ' +
-            "(SELECT r_submission_id, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' GROUP BY r_submission_id) AS `tmp1`, submission_record, submission_record_author_set, submission_author_record " +
-            "WHERE r_submission_id = s_submission_id AND s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp2`",
-          customized: true
+          name: "(SELECT s_author_name, weighted_score FROM " +
+            "(SELECT r_submission_id, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} GROUP BY r_submission_id) AS `tmp1`, submission_record, submission_record_author_set, submission_author_record " +
+            "WHERE submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND submission_author_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND r_submission_id = s_submission_id AND s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp2`",
+          customized: true,
         }
       ],
       filters: [],
@@ -3196,7 +3515,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}', '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
   },
   avg_weighted_score_author: {
     name: 'Average Weighted Score Rank Author',
@@ -3227,11 +3549,11 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT a_first_name, a_last_name, a_email, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record, author_record ' +
-            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_first_name, a_last_name, a_email) AS `tmp`',
-          customized: true
+          name: "(SELECT a_first_name, a_last_name, a_email, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record, author_record " +
+            "WHERE review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} " +
+            "AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_first_name, a_last_name, a_email) AS `tmp`",
+          customized: true,
         }
       ],
       filters: [],
@@ -3277,7 +3599,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   avg_weighted_score_organization: {
     name: 'Average Weighted Score Rank Organization',
@@ -3304,11 +3629,11 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT a_organisation, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record, author_record ' +
-            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_organisation) AS `tmp`',
-          customized: true
+          name: "(SELECT a_organisation, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record, author_record " +
+            "WHERE review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} " +
+            "AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_organisation) AS `tmp`",
+          customized: true,
         }
       ],
       filters: [],
@@ -3344,7 +3669,10 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
   avg_weighted_score_country: {
     name: 'Average Weighted Score Rank Country',
@@ -3371,11 +3699,11 @@ export default {
       ],
       involvedRecords: [
         {
-          name:
-            '(SELECT a_country, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record, author_record ' +
-            "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
-            'AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_country) AS `tmp`',
-          customized: true
+          name: "(SELECT a_country, SUM(r_confidence_level * r_overall_evaluation_score) / SUM(r_confidence_level) AS `weighted_score` FROM review_record, author_record " +
+            "WHERE review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} " +
+            "AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+            "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_country) AS `tmp`",
+          customized: true,
         }
       ],
       filters: [],
@@ -3411,76 +3739,79 @@ export default {
         numOfResultToDisplay: 10,
         isColorfulBar: true
       }
-    }
+    },
+    fileIds: [
+      '${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}'
+    ]
   },
 
   /*
-// visualization for gender distribution.
-  "author_gender_ratio": {
-        name: "Author Gender Distribution", // define the name of the chart
-        group: 'Author Record', // classify the group of record (author/submission/review)
-        data: {
-          // set the variables for bar chart
-          type: 'bar_chart',
-          title: 'Author Gender Distribution',
-          dataSet: '${PLACEHOLDER_DATA_SET}',
-          description: 'This bar chart shows the number of male and female authors. This tells us about the gender distribution of the authors.',
-          //determine the selections for select query
-          selections: [
-            {
-              expression: "COUNT(*)",
-              rename: 'a_gender_count'
-            },
-            {
-              expression: "CASE When a_first_name LIKE 'A%' then 'male' else 'female' end",
-              rename: "a_gender"
+  // visualization for gender distribution.
+    "author_gender_ratio": {
+          name: "Author Gender Distribution", // define the name of the chart
+          group: 'Author Record', // classify the group of record (author/submission/review)
+          data: {
+            // set the variables for bar chart
+            type: 'bar_chart',
+            title: 'Author Gender Distribution',
+    
+            dataSet: '${PLACEHOLDER_DATA_SET}',
+            description: 'This bar chart shows the number of male and female authors. This tells us about the gender distribution of the authors.',
+            //determine the selections for select query
+            selections: [
+              {
+                expression: "COUNT(*)",
+                rename: 'a_gender_count'
+              },
+              {
+                expression: "CASE When a_first_name LIKE 'A%' then 'male' else 'female' end",
+                rename: "a_gender"
+              }
+            ],
+            //determine the table name for query
+            involvedRecords: [
+              {
+                name: 'author_record',
+                customized: true,
+              }
+            ],
+            filters: [],
+            joiners: [],
+            //determine the field for group by clause
+            groupers: [
+              {
+               field:'a_gender'
+              }
+            ],
+            sorters: [
+  
+            ],
+            // set the labels, x and y axis, and modify chart style
+            extraData: {
+              dataSetLabel: 'Gender Distribution',
+              xAxisFieldName: 'a_gender',
+              yAxisFieldName: 'a_gender_count',
+              numOfResultToDisplay: 10,
+              isColorfulBar: true,
             }
-          ],
-          //determine the table name for query
-          involvedRecords: [
-            {
-              name: 'author_record',
-              customized: true,
-            }
-          ],
-          filters: [],
-          joiners: [],
-          //determine the field for group by clause
-          groupers: [
-            {
-             field:'a_gender'
-            }
-          ],
-          sorters: [
-
-          ],
-          // set the labels, x and y axis, and modify chart style
-          extraData: {
-            dataSetLabel: 'Gender Distribution',
-            xAxisFieldName: 'a_gender',
-            yAxisFieldName: 'a_gender_count',
-            numOfResultToDisplay: 10,
-            isColorfulBar: true,
           }
-        }
-      },
-*/
+        },
+  */
 
   // visualization for conf score test
-  all_conf_all_scores_test: {
-    name: 'Reviewer Confidence vs Score', // define the name of the chart
+  "all_conf_all_scores_test": {
+    name: "Reviewer Confidence vs Score", // define the name of the chart
     group: 'Review Record', // classify the group of record (author/submission/review)
     data: {
       // set the variables for bar chart
       type: 'bar_chart',
       title: 'Reviewer Confidence vs Score',
       dataSet: '${PLACEHOLDER_DATA_SET}',
-      description:
-        'This bar chart shows percentage of high/low scores for all confidence values. By default, it shows the percentage of high scores per confidence. You may toggle to high score percentage using advanced features',
+      description: 'This bar chart shows percentage of high/low scores for all confidence values. By default, it shows the percentage of high scores per confidence. You may toggle to high score percentage using advanced features',
       //determine the selections for select query
       selections: [
         {
-          expression: 'r_confidence_level',
+          expression: "r_confidence_level",
           rename: 'r_confidence_level'
         },
         {
@@ -3498,32 +3829,34 @@ export default {
       //change min-max logic once we revamp db supporting two datasets simultaneously(softconf,easychair)
       involvedRecords: [
         {
-          name:
-            '(select A.r_confidence_level as r_confidence_level, IFNULL(A.tot_score,0) AS r_score_low, IFNULL(B.tot_score,0) AS r_score_high' +
-            ' from (select r_confidence_level, r_low_or_high, count(*) as tot_score' +
-            ' from (select r_confidence_level,case when r_overall_evaluation_score<' +
-            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}')as temp1  where r_low_or_high like 'low' group by r_confidence_level,r_low_or_high) as A" +
-            ' LEFT JOIN (select r_confidence_level, r_low_or_high, count(*) as tot_score' +
-            ' from (select r_confidence_level,case when r_overall_evaluation_score<' +
-            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}')as temp1  where r_low_or_high like 'high' group by r_confidence_level,r_low_or_high) as B" +
-            ' ON A.r_confidence_level=B.r_confidence_level' +
-            ' union' +
-            ' select B.r_confidence_level as r_confidence_level, IFNULL(A.tot_score,0) AS r_score_low, IFNULL(B.tot_score,0) AS r_score_high' +
-            ' from (select r_confidence_level, r_low_or_high, count(*) as tot_score' +
-            ' from (select r_confidence_level,case when r_overall_evaluation_score<' +
-            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}')as temp1  where r_low_or_high like 'low' group by r_confidence_level,r_low_or_high) as A" +
-            ' RIGHT JOIN (select r_confidence_level, r_low_or_high, count(*) as tot_score' +
-            ' from (select r_confidence_level,case when r_overall_evaluation_score<' +
-            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}') then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}')as temp1  where r_low_or_high like 'high' group by r_confidence_level,r_low_or_high) as B" +
-            ' ON A.r_confidence_level=B.r_confidence_level)as temp',
-          customized: true
+          name: "(select A.r_confidence_level as r_confidence_level, IFNULL(A.tot_score,0) AS r_score_low, IFNULL(B.tot_score,0) AS r_score_high" +
+            " from (select r_confidence_level, r_low_or_high, count(*) as tot_score" +
+            " from (select r_confidence_level,case when r_overall_evaluation_score<" +
+            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID})as temp1  where r_low_or_high like 'low' group by r_confidence_level,r_low_or_high) as A" +
+            " LEFT JOIN (select r_confidence_level, r_low_or_high, count(*) as tot_score" +
+            " from (select r_confidence_level,case when r_overall_evaluation_score<" +
+            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID})as temp1  where r_low_or_high like 'high' group by r_confidence_level,r_low_or_high) as B" +
+            " ON A.r_confidence_level=B.r_confidence_level" +
+            " union" +
+            " select B.r_confidence_level as r_confidence_level, IFNULL(A.tot_score,0) AS r_score_low, IFNULL(B.tot_score,0) AS r_score_high" +
+            " from (select r_confidence_level, r_low_or_high, count(*) as tot_score" +
+            " from (select r_confidence_level,case when r_overall_evaluation_score<" +
+            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID})as temp1  where r_low_or_high like 'low' group by r_confidence_level,r_low_or_high) as A" +
+            " RIGHT JOIN (select r_confidence_level, r_low_or_high, count(*) as tot_score" +
+            " from (select r_confidence_level,case when r_overall_evaluation_score<" +
+            "(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'low' when r_overall_evaluation_score=(select case when ((MAX(r_overall_evaluation_score)-MIN(r_overall_evaluation_score))/2)<3 then 3 else 0 end as medium FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID}) then 'medium' else 'high' end as r_low_or_high FROM review_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID})as temp1  where r_low_or_high like 'high' group by r_confidence_level,r_low_or_high) as B" +
+            " ON A.r_confidence_level=B.r_confidence_level)as temp",
+          customized: true,
         }
       ],
-      filters: [],
+      filters: [
+      ],
       joiners: [],
       //determine the field for group by clause
       groupers: [],
-      sorters: [],
+      sorters: [
+
+      ],
       // set the labels, x and y axis, and modify chart style
       extraData: {
         dataSetLabel: 'Percentage of High Scores',
