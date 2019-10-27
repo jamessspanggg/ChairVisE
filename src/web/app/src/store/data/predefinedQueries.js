@@ -609,6 +609,77 @@ export default {
       }
     }
   },
+  "submission_rejected_rank_paper_author": {
+    name: "Submission Rejected Rank Paper Author",
+    group: 'Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Submission Rejected Rank Paper Author',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'This bar chart shows the number of rejected papers submitted by each author in descending order. This tells us which authors has more rejected papers than other authors. We have split the authors field in each submission into individual authors and aggregate the rejected submissions for each author.',
+      selections: [
+        {
+          expression: "SUM(CASE WHEN s_is_accepted = 'reject' THEN 1 ELSE 0 END)",
+          rename: 'rejected'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submitted'
+        },
+        {
+          expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'reject' THEN 1 ELSE 0 END)/COUNT(*), 2)",
+          rename: 'rejection_rate'
+        },
+        {
+          expression: "s_author_name",
+          rename: 's_author_name'
+        },
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT s_author_name, s_is_accepted FROM submission_record, submission_record_author_set, submission_author_record " +
+              "WHERE s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "s_author_name"
+        },
+      ],
+      sorters: [
+        {
+          field: 'rejected',
+          order: 'DESC',
+        },
+        {
+          field: 's_author_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Rejected Papers',
+        fieldsShownInToolTips: [
+          {
+            label: 'Rejection Rate',
+            field: 'rejection_rate',
+          },
+          {
+            label: 'Total Submitted',
+            field: 'submitted',
+          },
+        ],
+        xAxisFieldName: 's_author_name',
+        yAxisFieldName: 'rejected',
+        xLabel: 'Author Name',
+        yLabel: 'No. Rejected Papers',
+        numOfResultToDisplay: 10,
+        isColorfulBar: true,
+      }
+    }
+  },
   "submission_rank_country": {
     name: "Submission Rank Country",
     group: 'Author Record',
@@ -960,6 +1031,61 @@ export default {
         yAxisFieldName: 'submission_count',
         xLabel: 'Track Name',
         yLabel: 'Submission Count',
+        numOfResultToDisplay: 10,
+        isColorfulBar: true,
+      }
+    }
+  },
+  "submission_rejected_rank_track": {
+    name: "Submission Rejected Rank Track",
+    group: 'Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Submission Rejected Rank Track',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'This bar chart shows the number of papers that are rejected in each track. This tells us which track is more often being rejected than other tracks.',
+      selections: [
+        {
+          expression: 'COUNT(*)',
+          rename: 'rejection_count'
+        },
+        {
+          expression: "s_track_name",
+          rename: 's_track_name'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: 'submission_record',
+          customized: false,
+        }
+      ],
+      filters: [
+        {
+          field: 's_is_accepted',
+          comparator: '=',
+          value: 'reject'
+        }
+      ],
+      joiners: [],
+      groupers: [
+        {
+          field: "s_track_name"
+        }
+      ],
+      sorters: [
+        {
+          field: 's_track_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Submission Rejected Count',
+        fieldsShownInToolTips: [],
+        xAxisFieldName: 's_track_name',
+        yAxisFieldName: 'rejection_count',
+        xLabel: 'Track Name',
+        yLabel: 'Submission Rejected Count',
         numOfResultToDisplay: 10,
         isColorfulBar: true,
       }
@@ -2694,6 +2820,105 @@ export default {
         yLabel: 'Average Weighted Score',
         numOfResultToDisplay: 50,
         isColorfulBar: true,
+      }
+    }
+  },
+  "avg_reviewer_expertise_level_by_track": {
+    name: "Average Reviewer's Expertise Level By Track",
+    group: 'Review Record + Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level By Track',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining review and submission, this bar chart shows the average reviewer\'s expertise level for papers in each track. This gives us an insight on which track has been reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_expertise_level'
+        },
+        {
+          expression: "s_track_name",
+          rename: 's_track_name'
+        },
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT s_track_name, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level " +
+              "FROM review_record, submission_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              "AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_track_name) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [{
+        field: 's_track_name'
+      }],
+      sorters: [
+        {
+          field: 's_track_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Average Reviewer\'s Expertise Level',
+        fieldsShownInToolTips: [],
+        xAxisFieldName: 's_track_name',
+        yAxisFieldName: 'avg_expertise_level',
+        xLabel: 'Track Name',
+        yLabel: 'Average Reviewer\'s Expertise Level',
+        numOfResultToDisplay: 50,
+        isColorfulBar: true,
+      }
+    }
+  },
+  "average_days_for_review_by_track": {
+    name: "Average Number of Days to Review by Track",
+    group: 'Review Record + Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Number of Days to Review by Track',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining review and submission, this bar chart shows the average number of days taken to review each track. This gives us an insight on the efficiency of the reviewers with each track.',
+      selections: [
+        {
+          expression: "ROUND(SUM(duration_get_reviewed) / COUNT(*), 2)",
+          rename: 'average_duration_get_reviewed'
+        },
+        {
+          expression: "s_track_name",
+          rename: 's_track_name'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT DATEDIFF(MIN(r_review_submission_time), s_submission_time) AS `duration_get_reviewed`, s_track_name " +
+              "FROM review_record, submission_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              "AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_submission_time, s_track_name) " +
+              "AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [{
+        field: 's_track_name'
+      }],
+      sorters: [
+        {
+          field: 's_track_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Average Number of Days to Review',
+        fieldsShownInToolTips: [],
+        xAxisFieldName: 's_track_name',
+        yAxisFieldName: 'average_duration_get_reviewed',
+        xLabel: 'Track Name',
+        yLabel: 'Average Number of Days to Review',
+        numOfResultToDisplay: 50,
+        isColorfulBar: false,
       }
     }
   },
