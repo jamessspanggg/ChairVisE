@@ -3679,7 +3679,7 @@ export default {
             ' AND ar2.a_organisation = T.org2' +
             ' AND ar1.a_organisation <> ar2.a_organisation' +
             ' AND ar1.file_id = ar2.file_id' +
-            ' AND ar1.file_id = ${PLACEHOLDER_FILE_ID}' +
+            ' AND ar1.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID}' +
             ' AND ar1.a_submission_id = ar2.a_submission_id' +
             ' AND ar1.data_set = ar2.data_set' +
             " AND ar1.data_set = '${PLACEHOLDER_DATA_SET}'" +
