@@ -5,7 +5,7 @@
       type="error"
       v-if="!isLogin && !isAppLoading"
     >
-      <el-button type="warning" plain size="mini" @click="navigateToHomPage">Return to the Home Page</el-button>
+      <el-button type="warning" plain size="mini" @click="navigateToHomePage">Return to the Home Page</el-button>
     </el-alert>
 
     <div v-if="isLogin">
@@ -13,21 +13,21 @@
 
       <el-table
         :data="userFile"
-        :default-sort="{prop: 'datetime', order: 'descending'}"
         class="files-layout-centered"
       >
         <el-table-column label="Date" prop="datetime"></el-table-column>
         <el-table-column label="File Name" prop="name"></el-table-column>
+        <el-table-column label="Table Type" prop="tableType"></el-table-column>
         <el-table-column label="File Type" prop="type"></el-table-column>
         <el-table-column label="Operations">
-          <template>
-            <el-button icon="el-icon-delete" type="danger"></el-button>
+          <template slot-scope="scope">
+            <el-button icon="el-icon-delete" type="danger" @click="openDeleteConfirmation(scope.$index)"></el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
   </div>
-</template> 
+</template>
 
 <script>
 import moment from "moment";
@@ -47,6 +47,33 @@ export default {
         message: this.$store.state.userFile.userFileListStatus.apiErrorMsg,
         duration: 0
       });
+    }
+  },
+  methods: {
+    navigateToHomePage() {
+      this.$router.replace("/home");
+    },
+    openDeleteConfirmation(index) {
+      this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
+      }).then(() => {
+        this.deleteUploadedFile(index);
+        this.$message({
+          type: 'success',
+          message: 'Delete Successful'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete Cancelled'
+        });
+      })
+    },
+    deleteUploadedFile(index) {
+      this.$store.commit("setSelectedFileIndex", index);
+      this.$store.dispatch("deleteUploadedFile");
     }
   },
   computed: {
@@ -72,6 +99,7 @@ export default {
         currFile["id"] = userFiles[i].id;
         currFile["name"] = userFiles[i].fileName;
         currFile["type"] = userFiles[i].fileType;
+        currFile["tableType"] = userFiles[i].tableType;
         currFile["datetime"] = moment(userFiles[i].createdAt).format(
           "YYYY-MM-DD HH:mm"
         );

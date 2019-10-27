@@ -10,7 +10,7 @@ public class AuthorUploadRequest implements UploadRequestInterface<AuthorRecord>
     private String fileName;
     private String fileType;
     private List<AuthorRecord> recordList;
-
+    private final String tableType = "author";
 
     @Override
     public String getFileName() {
@@ -38,5 +38,8 @@ public class AuthorUploadRequest implements UploadRequestInterface<AuthorRecord>
         this.recordList = recordList;
     }
 
-
+    @Override
+    public String getTableType() {
+        return this.tableType;
+    }
 }

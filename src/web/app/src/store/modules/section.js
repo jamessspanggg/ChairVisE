@@ -40,6 +40,19 @@ export default {
       }, payload))
     },
 
+    copySectionDetail(state, payload) {
+      state.sectionList.push(Object.assign({
+        result: [],
+        previewResult: [],
+        status: {
+          isLoading: false,
+          isApiError: false,
+          apiErrorMsg: '',
+          apiErrorMsgDetail: '',
+        }
+      }, payload))
+    },
+
     deleteSectionDetail(state, payload) {
       let index = state.sectionList.findIndex(s => s.id === payload);
       state.sectionList.splice(index, 1)
@@ -113,6 +126,21 @@ export default {
       await axios.post(`/api/presentations/${presentationId}/sections`, newSection)
         .then(response => {
           commit('addSectionDetail', response.data)
+        })
+        .catch(e => {
+          commit('setSectionListApiError', e.toString())
+        })
+        .finally(() => {
+          commit('setSectionListLoading', false);
+        })
+    },
+
+    async copySectionDetail({commit}, {id, presentationId}) {
+      commit('setSectionListLoading', true);
+
+      await axios.post(`/api/presentations/${presentationId}/sections/${id}`)
+        .then(response => {
+          commit('copySectionDetail', response.data)
         })
         .catch(e => {
           commit('setSectionListApiError', e.toString())

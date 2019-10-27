@@ -83,4 +83,20 @@ public class PresentationSectionController extends BaseRestController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/presentations/{presentationId}/sections/{sectionId}")
+    public ResponseEntity<?> copyPresentationSection(@PathVariable Long presentationId, @PathVariable Long sectionId) throws URISyntaxException {
+        Presentation presentation = presentationLogic.findById(presentationId)
+                .orElseThrow(() -> new PresentationNotFoundException(presentationId));
+        gateKeeper.verifyAccessForPresentation(presentation, AccessLevel.CAN_WRITE);
+
+        PresentationSection presentationSection = presentationSectionLogic.findById(sectionId)
+                .orElseThrow(() -> new PresentationSectionNotFoundException(presentationId, sectionId));
+
+        PresentationSection newPresentationSection = presentationSectionLogic.saveForPresentation(presentation, presentationSection);
+
+        return ResponseEntity
+                .created(new URI("/presentations/" + presentationId + "/section/" + newPresentationSection.getId()))
+                .body(newPresentationSection);
+    }
+
 }
