@@ -2824,11 +2824,11 @@ export default {
     }
   },
   "avg_reviewer_expertise_level_by_track": {
-    name: "Average Reviewer's Expertise Level By Track",
+    name: "Average Reviewer's Expertise Level by Track",
     group: 'Review Record + Submission Record',
     data: {
       type: 'bar_chart',
-      title: 'Average Reviewer\'s Expertise Level By Track',
+      title: 'Average Reviewer\'s Expertise Level by Track',
       dataSet: '${PLACEHOLDER_DATA_SET}',
       description: 'By combining review and submission, this bar chart shows the average reviewer\'s expertise level for papers in each track. This gives us an insight on which track has been reviewed by more expert reviewers.',
       selections: [
