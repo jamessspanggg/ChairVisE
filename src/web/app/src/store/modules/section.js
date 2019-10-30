@@ -60,18 +60,19 @@ export default {
 
     updateSectionDetail(state, { id, title, description, type, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData }) {
       let section = findSectionDetailById(state.sectionList, id);
+      let presentationSection = section.presentationSection;
 
-      section.title = title;
-      section.description = description;
-      section.type = type;
-      section.dataSet = dataSet;
-      section.selections = selections;
-      section.involvedRecords = involvedRecords;
-      section.filters = filters;
-      section.joiners = joiners;
-      section.groupers = groupers;
-      section.sorters = sorters;
-      section.extraData = extraData;
+      presentationSection.title = title;
+      presentationSection.description = description;
+      presentationSection.type = type;
+      presentationSection.dataSet = dataSet;
+      presentationSection.selections = selections;
+      presentationSection.involvedRecords = involvedRecords;
+      presentationSection.filters = filters;
+      presentationSection.joiners = joiners;
+      presentationSection.groupers = groupers;
+      presentationSection.sorters = sorters;
+      presentationSection.extraData = extraData;
     },
 
     setSectionDetailLoading(state, { id, isLoading }) {
@@ -137,7 +138,7 @@ export default {
       let bodyContent = {
         presentationSection: newSection,
         fileIds: fileIds
-      }
+      };
 
       await axios.post(`/api/presentations/${presentationId}/sections`, bodyContent)
         .then(response => {
