@@ -15,6 +15,7 @@
                                    v-bind:sectionId="this.sectionDetail.id"></Copy-Presentation-Panel>
         </el-dialog>
       </div>
+      <div class="files" v-if="!isEditing">{{ sectionDetail.fileNames }}</div>
       <div class="title" v-else>
         <el-input v-model="editForm.title"></el-input>
       </div>
@@ -36,7 +37,6 @@
       <slot v-else></slot>
       <div v-if="!isEditing" class="description">{{ editForm.description }}</div>
       <div v-if="isEditing">
-
         <el-form-item label="Editing Mode">
           <el-switch
             :disabled="isDisabledInAdvancedMode == 1 ? true : false"
@@ -551,8 +551,8 @@
 
     components: {
       CopyPresentationPanel
-    },
-  }
+    }
+  };
 </script>
 
 <style scoped>
@@ -561,6 +561,14 @@
     text-align: center;
     margin-bottom: 10px;
     margin-top: 10px;
+  }
+
+  .files {
+    font-size: 16px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 25px;
+    margin-bottom: 15px;
   }
 
   .description {
