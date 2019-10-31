@@ -446,13 +446,6 @@
         });
       },
 
-      deleteSectionDetail() {
-        this.$store.dispatch('deleteSectionDetail', {
-          presentationId: this.presentationId,
-          id: this.sectionDetail.id
-        });
-      },
-
       capitalizeString(str) {
         let array1 = str.split(' ');
         let newarray1 = [];
