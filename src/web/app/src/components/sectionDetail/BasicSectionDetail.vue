@@ -7,7 +7,7 @@
         <el-button type="primary" plain @click="changeEditMode(true)" v-if="isPresentationEditable">Edit</el-button>
         <el-button type="success" plain @click="openCopyPresentationPanel()" v-if="isPresentationEditable">Copy
         </el-button>
-        <el-button type="danger" icon="el-icon-delete" circle @click="deleteSectionDetail"
+        <el-button type="danger" icon="el-icon-delete" circle @click="openDeleteConfirmation"
                    v-if="isPresentationEditable"></el-button>
         <el-dialog title="Copy to:" :visible.sync="isCopyDialogVisible" width="30%"
                    :close-on-click-modal="false">
@@ -486,6 +486,32 @@
           numOfResultToDisplay: 10,
           isColorfulBar: true,
         }
+      },
+
+      openDeleteConfirmation() {
+        this.$confirm('This will permanently delete the visualisation. Continue?', 'Warning', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
+          type: 'warning'
+        }).then(() => {
+          this.deleteSectionDetail();
+          this.$message({
+            type: 'success',
+            message: 'Delete Successful'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: 'Delete Cancelled'
+          });
+        })
+      },
+
+      deleteSectionDetail() {
+        this.$store.dispatch("deleteSectionDetail", {
+          presentationId: this.presentationId,
+          id: this.sectionDetail.id
+        });
       },
 
       toPieChart() {
