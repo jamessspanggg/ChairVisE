@@ -11,6 +11,7 @@
                   v-loading.fullscreen.lock="isFullscreenLoading">
       <el-button type="success" plain :disabled="isApiError">Login</el-button>
     </el-menu-item>
+    <el-menu-item style="float: right;" index="/help">Help</el-menu-item>
   </el-menu>
 </template>
 
