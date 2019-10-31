@@ -462,7 +462,6 @@ export default {
 }
 
 .selectFiles {
-  background-color: #f5f5f5;
   padding: 1rem 3rem 1.75rem 3rem;
 }
 
