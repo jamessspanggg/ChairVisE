@@ -724,6 +724,80 @@ export default {
     },
     fileIds: ['${PLACEHOLDER_SUBMISSION_FILE_ID}']
   },
+
+  "submission_rejected_rank_paper_author": {
+    name: "Submission Rejected Rank Paper Author",
+    group: 'Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Submission Rejected Rank Paper Author',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'This bar chart shows the number of rejected papers submitted by each author in descending order. This tells us which authors has more rejected papers than other authors. We have split the authors field in each submission into individual authors and aggregate the rejected submissions for each author.',
+      selections: [
+        {
+          expression: "SUM(CASE WHEN s_is_accepted = 'reject' THEN 1 ELSE 0 END)",
+          rename: 'rejected'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submitted'
+        },
+        {
+          expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'reject' THEN 1 ELSE 0 END)/COUNT(*), 2)",
+          rename: 'rejection_rate'
+        },
+        {
+          expression: "s_author_name",
+          rename: 's_author_name'
+        },
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT s_author_name, s_is_accepted FROM submission_record, submission_record_author_set, submission_author_record " +
+              "WHERE submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND submission_author_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} AND s_id = submission_record_s_id AND author_set_s_author_id = s_author_id AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}') AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "s_author_name"
+        },
+      ],
+      sorters: [
+        {
+          field: 'rejected',
+          order: 'DESC',
+        },
+        {
+          field: 's_author_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Rejected Papers',
+        fieldsShownInToolTips: [
+          {
+            label: 'Rejection Rate',
+            field: 'rejection_rate',
+          },
+          {
+            label: 'Total Submitted',
+            field: 'submitted',
+          },
+        ],
+        xAxisFieldName: 's_author_name',
+        yAxisFieldName: 'rejected',
+        xLabel: 'Author Name',
+        yLabel: 'No. Rejected Papers',
+        numOfResultToDisplay: 10,
+        isColorfulBar: true,
+      }
+    },
+    fileIds: ['${PLACEHOLDER_SUBMISSION_FILE_ID}']
+  },
+
   submission_rank_country: {
     name: 'Submission Rank Country',
     group: 'Author Record',
@@ -1139,6 +1213,69 @@ export default {
     },
     fileIds: ['${PLACEHOLDER_SUBMISSION_FILE_ID}']
   },
+
+  "submission_rejected_rank_track": {
+    name: "Submission Rejected Rank Track",
+    group: 'Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Submission Rejected Rank Track',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'This bar chart shows the number of papers that are rejected in each track. This tells us which track is more often being rejected than other tracks.',
+      selections: [
+        {
+          expression: 'COUNT(*)',
+          rename: 'rejection_count'
+        },
+        {
+          expression: "s_track_name",
+          rename: 's_track_name'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: 'submission_record',
+          customized: false,
+        }
+      ],
+      filters: [
+        {
+          field: 's_is_accepted',
+          comparator: '=',
+          value: 'reject'
+        },
+        {
+          field: 'file_id',
+          comparator:'=',
+          value: '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+        }
+      ],
+      joiners: [],
+      groupers: [
+        {
+          field: "s_track_name"
+        }
+      ],
+      sorters: [
+        {
+          field: 's_track_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Submission Rejected Count',
+        fieldsShownInToolTips: [],
+        xAxisFieldName: 's_track_name',
+        yAxisFieldName: 'rejection_count',
+        xLabel: 'Track Name',
+        yLabel: 'Submission Rejected Count',
+        numOfResultToDisplay: 10,
+        isColorfulBar: true,
+      }
+    },
+    fileIds: ['${PLACEHOLDER_SUBMISSION_FILE_ID}']
+  },
+
   acceptance_ratio_track: {
     name: 'Acceptance Ratio Track',
     group: 'Submission Record',
@@ -3095,6 +3232,118 @@ export default {
       '${PLACEHOLDER_SUBMISSION_FILE_ID}'
     ]
   },
+
+  "avg_reviewer_expertise_level_by_track": {
+    name: "Average Reviewer's Expertise Level by Track",
+    group: 'Review Record + Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level by Track',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining review and submission, this bar chart shows the average reviewer\'s expertise level for papers in each track. This gives us an insight on which track has been reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_expertise_level'
+        },
+        {
+          expression: "s_track_name",
+          rename: 's_track_name'
+        },
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT s_track_name, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level " +
+              "FROM review_record, submission_record WHERE" + ' review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} ' +
+              "AND review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              "AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_track_name) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [{
+        field: 's_track_name'
+      }],
+      sorters: [
+        {
+          field: 's_track_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Average Reviewer\'s Expertise Level',
+        fieldsShownInToolTips: [],
+        xAxisFieldName: 's_track_name',
+        yAxisFieldName: 'avg_expertise_level',
+        xLabel: 'Track Name',
+        yLabel: 'Average Reviewer\'s Expertise Level',
+        numOfResultToDisplay: 50,
+        isColorfulBar: true,
+      }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}',
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
+  },
+
+  "average_days_for_review_by_track": {
+    name: "Average Number of Days to Review by Track",
+    group: 'Review Record + Submission Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Number of Days to Review by Track',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining review and submission, this bar chart shows the average number of days taken to review each track. This gives us an insight on the efficiency of the reviewers with each track.',
+      selections: [
+        {
+          expression: "ROUND(SUM(duration_get_reviewed) / COUNT(*), 2)",
+          rename: 'average_duration_get_reviewed'
+        },
+        {
+          expression: "s_track_name",
+          rename: 's_track_name'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT DATEDIFF(MIN(r_review_submission_time), s_submission_time) AS `duration_get_reviewed`, s_track_name " +
+              "FROM review_record, submission_record WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND submission_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              'AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND submission_record.file_id = ${PLACEHOLDER_SUBMISSION_FILE_ID} ' +
+              "AND review_record.r_submission_id = submission_record.s_submission_id GROUP BY r_submission_id, s_submission_time, s_track_name) " +
+              "AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [{
+        field: 's_track_name'
+      }],
+      sorters: [
+        {
+          field: 's_track_name',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        dataSetLabel: 'Average Number of Days to Review',
+        fieldsShownInToolTips: [],
+        xAxisFieldName: 's_track_name',
+        yAxisFieldName: 'average_duration_get_reviewed',
+        xLabel: 'Track Name',
+        yLabel: 'Average Number of Days to Review',
+        numOfResultToDisplay: 50,
+        isColorfulBar: false,
+      }
+    },
+    fileIds: [
+      '${PLACEHOLDER_REVIEW_FILE_ID}',
+      '${PLACEHOLDER_SUBMISSION_FILE_ID}'
+    ]
+  },
+
   earliest_review_for_submission: {
     name: 'Earliest Review in Days For Submission',
     group: 'Review Record + Submission Record',
@@ -3705,6 +3954,224 @@ export default {
     fileIds: ['${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}']
   },
 
+  "avg_reviewer_expertise_level_author": {
+    name: "Average Reviewer's Expertise Level Per Author",
+    group: 'Author Record + Review Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level Per Author',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining author and review, this bar chart shows the average reviewer\'s expertise level that reviews all the submissions for each author. This gives us an insight on which author\'s submissions are being reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_reviewer_expertise'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
+        },
+        {
+          expression: "CONCAT(a_first_name, ' ', a_last_name)",
+          rename: 'author_name'
+        },
+        {
+          expression: "a_email",
+          rename: 'author_email'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT a_first_name, a_last_name, a_email, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level FROM review_record, author_record " +
+              "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              'AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} ' +
+              "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_first_name, a_last_name, a_email) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "a_first_name"
+        },
+        {
+          field: "a_last_name"
+        },
+        {
+          field: "a_email"
+        }
+      ],
+      sorters: [
+        {
+          field: 'avg_reviewer_expertise',
+          order: 'DESC',
+        },
+        {
+          field: 'a_email',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        type: 'category',
+        dataSetLabel: 'Average Reviewer\'s Expertise',
+        fieldsShownInToolTips: [
+          {
+            label: 'Email',
+            field: 'author_email'
+          },
+          {
+            label: 'Submission',
+            field: 'submission_count'
+          }
+        ],
+        xAxisFieldName: 'author_name',
+        yAxisFieldName: 'avg_reviewer_expertise',
+        xLabel: 'Author Name',
+        yLabel: 'Average Reviewer\'s Expertise',
+        numOfResultToDisplay: 15,
+        isColorfulBar: true,
+      }
+    },
+    fileIds: ['${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}']
+  },
+
+  "avg_reviewer_expertise_level_organization": {
+    name: "Average Reviewer's Expertise Level Per Organization",
+    group: 'Author Record + Review Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level Per Organization',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining author and review, this bar chart shows the average reviewer\'s expertise level that reviews all the submissions for each organization. This gives us an insight on which organization\'s submissions are being reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_reviewer_expertise'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
+        },
+        {
+          expression: "a_organisation",
+          rename: 'a_organisation'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT a_organisation, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level FROM review_record, author_record " +
+              "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              'AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} ' +
+              "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_organisation) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "a_organisation"
+        }
+      ],
+      sorters: [
+        {
+          field: 'avg_reviewer_expertise',
+          order: 'DESC',
+        },
+        {
+          field: 'a_organisation',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        type: 'category',
+        dataSetLabel: 'Average Reviewer\'s Expertise',
+        fieldsShownInToolTips: [
+          {
+            label: 'Submission',
+            field: 'submission_count'
+          }
+        ],
+        xAxisFieldName: 'a_organisation',
+        yAxisFieldName: 'avg_reviewer_expertise',
+        xLabel: 'Organisation Name',
+        yLabel: 'Average Reviewer\'s Expertise',
+        numOfResultToDisplay: 15,
+        isColorfulBar: true,
+      }
+    },
+    fileIds: ['${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}']
+  },
+
+  "avg_reviewer_expertise_level_country": {
+    name: "Average Reviewer's Expertise Level Per Country",
+    group: 'Author Record + Review Record',
+    data: {
+      type: 'bar_chart',
+      title: 'Average Reviewer\'s Expertise Level Per Country',
+      dataSet: '${PLACEHOLDER_DATA_SET}',
+      description: 'By combining author and review, this bar chart shows the average reviewer\'s expertise level that reviews all the submissions for each country. This gives us an insight on which country\'s submissions are being reviewed by more expert reviewers.',
+      selections: [
+        {
+          expression: 'ROUND(AVG(sum_expertise_level), 2)',
+          rename: 'avg_reviewer_expertise'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
+        },
+        {
+          expression: "a_country",
+          rename: 'a_country'
+        }
+      ],
+      involvedRecords: [
+        {
+          name: "(SELECT a_country, SUM(r_expertise_level) / COUNT(*) as sum_expertise_level FROM review_record, author_record " +
+              "WHERE review_record.data_set = '${PLACEHOLDER_DATA_SET}' AND author_record.data_set = '${PLACEHOLDER_DATA_SET}' " +
+              'AND review_record.file_id = ${PLACEHOLDER_REVIEW_FILE_ID} AND author_record.file_id = ${PLACEHOLDER_AUTHOR_FILE_ID} ' +
+              "AND review_record.r_submission_id = author_record.a_submission_id GROUP BY a_submission_id, a_country) AS `tmp`",
+          customized: true,
+        }
+      ],
+      filters: [],
+      joiners: [],
+      groupers: [
+        {
+          field: "a_country"
+        }
+      ],
+      sorters: [
+        {
+          field: 'avg_reviewer_expertise',
+          order: 'DESC',
+        },
+        {
+          field: 'a_country',
+          order: 'ASC',
+        }
+      ],
+      extraData: {
+        type: 'category',
+        dataSetLabel: 'Average Reviewer\'s Expertise',
+        fieldsShownInToolTips: [
+          {
+            label: 'Submission',
+            field: 'submission_count'
+          }
+        ],
+        xAxisFieldName: 'a_country',
+        yAxisFieldName: 'avg_reviewer_expertise',
+        xLabel: 'Country Name',
+        yLabel: 'Average Reviewer\'s Expertise',
+        numOfResultToDisplay: 15,
+        isColorfulBar: true,
+      }
+    },
+    fileIds: ['${PLACEHOLDER_AUTHOR_FILE_ID}', '${PLACEHOLDER_REVIEW_FILE_ID}']
+  },
+
   /*
   // visualization for gender distribution.
     "author_gender_ratio": {
@@ -3714,7 +4181,7 @@ export default {
             // set the variables for bar chart
             type: 'bar_chart',
             title: 'Author Gender Distribution',
-    
+
             dataSet: '${PLACEHOLDER_DATA_SET}',
             description: 'This bar chart shows the number of male and female authors. This tells us about the gender distribution of the authors.',
             //determine the selections for select query
@@ -3744,7 +4211,7 @@ export default {
               }
             ],
             sorters: [
-  
+
             ],
             // set the labels, x and y axis, and modify chart style
             extraData: {
