@@ -735,7 +735,11 @@ export default {
       selections: [
         {
           expression: "SUM(CASE WHEN s_is_accepted = 'reject' THEN 1 ELSE 0 END)",
-          rename: 'rejected'
+          rename: 'num_rejected_papers'
+        },
+        {
+          expression: "s_author_name",
+          rename: 'author_name'
         },
         {
           expression: "COUNT(*)",
@@ -744,11 +748,7 @@ export default {
         {
           expression: "ROUND(SUM(CASE WHEN s_is_accepted = 'reject' THEN 1 ELSE 0 END)/COUNT(*), 2)",
           rename: 'rejection_rate'
-        },
-        {
-          expression: "s_author_name",
-          rename: 's_author_name'
-        },
+        }
       ],
       involvedRecords: [
         {
@@ -761,12 +761,12 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "s_author_name"
+          field: "author_name"
         },
       ],
       sorters: [
         {
-          field: 'rejected',
+          field: 'num_rejected_papers',
           order: 'DESC',
         },
         {
@@ -786,8 +786,8 @@ export default {
             field: 'submitted',
           },
         ],
-        xAxisFieldName: 's_author_name',
-        yAxisFieldName: 'rejected',
+        xAxisFieldName: 'author_name',
+        yAxisFieldName: 'num_rejected_papers',
         xLabel: 'Author Name',
         yLabel: 'No. Rejected Papers',
         numOfResultToDisplay: 10,
@@ -1218,11 +1218,11 @@ export default {
       selections: [
         {
           expression: 'COUNT(*)',
-          rename: 'rejection_count'
+          rename: 'rejected_count'
         },
         {
           expression: "s_track_name",
-          rename: 's_track_name'
+          rename: 'track_name'
         }
       ],
       involvedRecords: [
@@ -1246,20 +1246,20 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "s_track_name"
+          field: "track_name"
         }
       ],
       sorters: [
         {
-          field: 's_track_name',
+          field: 'track_name',
           order: 'ASC',
         }
       ],
       extraData: {
         dataSetLabel: 'Submission Rejected Count',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_track_name',
-        yAxisFieldName: 'rejection_count',
+        xAxisFieldName: 'track_name',
+        yAxisFieldName: 'rejected_count',
         xLabel: 'Track Name',
         yLabel: 'Submission Rejected Count',
         numOfResultToDisplay: 10,
@@ -3231,7 +3231,7 @@ export default {
         },
         {
           expression: "s_track_name",
-          rename: 's_track_name'
+          rename: 'track_name'
         },
       ],
       involvedRecords: [
@@ -3246,18 +3246,18 @@ export default {
       filters: [],
       joiners: [],
       groupers: [{
-        field: 's_track_name'
+        field: 'track_name'
       }],
       sorters: [
         {
-          field: 's_track_name',
+          field: 'track_name',
           order: 'ASC',
         }
       ],
       extraData: {
         dataSetLabel: 'Average Reviewer\'s Expertise Level',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_track_name',
+        xAxisFieldName: 'track_name',
         yAxisFieldName: 'avg_expertise_level',
         xLabel: 'Track Name',
         yLabel: 'Average Reviewer\'s Expertise Level',
@@ -3282,11 +3282,11 @@ export default {
       selections: [
         {
           expression: "ROUND(SUM(duration_get_reviewed) / COUNT(*), 2)",
-          rename: 'average_duration_get_reviewed'
+          rename: 'average_number_of_days_to_review'
         },
         {
           expression: "s_track_name",
-          rename: 's_track_name'
+          rename: 'track_name'
         }
       ],
       involvedRecords: [
@@ -3302,19 +3302,19 @@ export default {
       filters: [],
       joiners: [],
       groupers: [{
-        field: 's_track_name'
+        field: 'track_name'
       }],
       sorters: [
         {
-          field: 's_track_name',
+          field: 'track_name',
           order: 'ASC',
         }
       ],
       extraData: {
         dataSetLabel: 'Average Number of Days to Review',
         fieldsShownInToolTips: [],
-        xAxisFieldName: 's_track_name',
-        yAxisFieldName: 'average_duration_get_reviewed',
+        xAxisFieldName: 'track_name',
+        yAxisFieldName: 'average_number_of_days_to_review',
         xLabel: 'Track Name',
         yLabel: 'Average Number of Days to Review',
         numOfResultToDisplay: 50,
@@ -3950,12 +3950,12 @@ export default {
           rename: 'avg_reviewer_expertise'
         },
         {
-          expression: "COUNT(*)",
-          rename: 'submission_count'
-        },
-        {
           expression: "CONCAT(a_first_name, ' ', a_last_name)",
           rename: 'author_name'
+        },
+        {
+          expression: "COUNT(*)",
+          rename: 'submission_count'
         },
         {
           expression: "a_email",
@@ -4032,12 +4032,12 @@ export default {
           rename: 'avg_reviewer_expertise'
         },
         {
-          expression: "COUNT(*)",
-          rename: 'submission_count'
+          expression: "a_organisation",
+          rename: 'organisation_name'
         },
         {
-          expression: "a_organisation",
-          rename: 'a_organisation'
+          expression: "COUNT(*)",
+          rename: 'submission_count'
         }
       ],
       involvedRecords: [
@@ -4053,7 +4053,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "a_organisation"
+          field: "organisation_name"
         }
       ],
       sorters: [
@@ -4062,7 +4062,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'a_organisation',
+          field: 'organisation_name',
           order: 'ASC',
         }
       ],
@@ -4075,7 +4075,7 @@ export default {
             field: 'submission_count'
           }
         ],
-        xAxisFieldName: 'a_organisation',
+        xAxisFieldName: 'organisation_name',
         yAxisFieldName: 'avg_reviewer_expertise',
         xLabel: 'Organisation Name',
         yLabel: 'Average Reviewer\'s Expertise',
@@ -4100,12 +4100,12 @@ export default {
           rename: 'avg_reviewer_expertise'
         },
         {
-          expression: "COUNT(*)",
-          rename: 'submission_count'
+          expression: "a_country",
+          rename: 'country_name'
         },
         {
-          expression: "a_country",
-          rename: 'a_country'
+          expression: "COUNT(*)",
+          rename: 'submission_count'
         }
       ],
       involvedRecords: [
@@ -4121,7 +4121,7 @@ export default {
       joiners: [],
       groupers: [
         {
-          field: "a_country"
+          field: "country_name"
         }
       ],
       sorters: [
@@ -4130,7 +4130,7 @@ export default {
           order: 'DESC',
         },
         {
-          field: 'a_country',
+          field: 'country_name',
           order: 'ASC',
         }
       ],
@@ -4143,7 +4143,7 @@ export default {
             field: 'submission_count'
           }
         ],
-        xAxisFieldName: 'a_country',
+        xAxisFieldName: 'country_name',
         yAxisFieldName: 'avg_reviewer_expertise',
         xLabel: 'Country Name',
         yLabel: 'Average Reviewer\'s Expertise',
