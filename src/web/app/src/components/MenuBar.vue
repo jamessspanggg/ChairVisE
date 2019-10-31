@@ -82,7 +82,7 @@ export default {
       this.$data.isFullscreenLoading = true;
       window.location.href = this.$store.state.userInfo.logoutUrl;
     },
-    toggleMode(event) {
+    toggleMode() {
       if (this.checked) {
         document.documentElement.setAttribute("data-theme", "dark");
         localStorage.setItem("theme", "dark"); //add this
