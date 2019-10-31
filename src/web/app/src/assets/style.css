@@ -1,0 +1,70 @@
+:root {
+  --bg-color: #ffffff;
+  --heading-color: #292922;
+  --el-menu-background: #ecf5ff;
+  --el-menu--horizontal-background: transparent;
+  --select-file-bg: #f5f5f5;
+  --el-form-item-label: #606266;
+}
+
+[data-theme="dark"] {
+  --font-color: #ffffff;
+  --bg-color: #000;
+  --el-menu-background: transparent;
+  --select-file-bg: #000;
+  --el-form-item-label: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+/* NAVBAR CSS */
+.el-menu {
+  background-color: var(--bg-color);
+  
+}
+
+.el-menu--horizontal>.el-menu-item.is-active {
+  color: var(--font-color);
+}
+
+.el-menu--horizontal>.el-menu-item:not(.is-disabled):hover {
+  background-color: var(--el-menu--horizontal-backgroundd);
+  color: var(--font-color);
+}
+
+
+/* list of information available CSS */
+.el-menu-item {
+  color: var(--font-color) ;
+}
+
+.el-menu>.el-menu-item:hover {
+  background-color: var(--el-menu-background);
+  color: var(--font-color);
+}
+
+/* UPLOADED FILES */
+
+.el-table th, .el-table tr {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+/* Analyze */
+.selectFiles {
+  background-color: var(--select-file-bg);
+  border-color: #f5f5f5;
+  border-width: thin;
+  border-style: solid;
+}
+
+.el-form-item__label {
+  color: var(--el-form-item-label);
+}
+
+
+
+
