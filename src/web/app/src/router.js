@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { ID_NEW_PRESENTATION } from "@/common/const";
+import {ID_NEW_PRESENTATION} from "@/common/const";
 
 Vue.use(Router);
 
@@ -50,6 +50,14 @@ export default new Router({
         title: 'Import Data Page'
       },
       component: () => import(/* webpackChunkName: "importData" */ './views/ImportData.vue')
+    },
+    {
+      path: '/help',
+      name: 'help',
+      meta: {
+        title: 'Help Page'
+      },
+      component: () => import(/* webpackChunkName: "help" */ './views/Help.vue')
     },
     {
       path: '/',

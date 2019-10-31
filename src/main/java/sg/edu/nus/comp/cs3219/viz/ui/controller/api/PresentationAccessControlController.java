@@ -1,15 +1,20 @@
 package sg.edu.nus.comp.cs3219.viz.ui.controller.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sg.edu.nus.comp.cs3219.viz.common.datatransfer.AccessLevel;
+import sg.edu.nus.comp.cs3219.viz.common.datatransfer.UserInfo;
 import sg.edu.nus.comp.cs3219.viz.common.entity.Presentation;
 import sg.edu.nus.comp.cs3219.viz.common.entity.PresentationAccessControl;
 import sg.edu.nus.comp.cs3219.viz.common.exception.PresentationAccessControlNotFoundException;
 import sg.edu.nus.comp.cs3219.viz.common.exception.PresentationNotFoundException;
+import sg.edu.nus.comp.cs3219.viz.common.exception.UnauthorisedException;
 import sg.edu.nus.comp.cs3219.viz.logic.GateKeeper;
 import sg.edu.nus.comp.cs3219.viz.logic.PresentationAccessControlLogic;
 import sg.edu.nus.comp.cs3219.viz.logic.PresentationLogic;
+import sg.edu.nus.comp.cs3219.viz.service.EmailService;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,6 +23,12 @@ import java.util.List;
 @RestController
 public class PresentationAccessControlController extends BaseRestController {
     private final PresentationLogic presentationLogic;
+
+    @Autowired
+    EmailService emailService;
+
+    @Value("${app.base_analyze_url}")
+    private String baseAnalyzeUrl;
 
     private final GateKeeper gateKeeper;
 
@@ -45,8 +56,15 @@ public class PresentationAccessControlController extends BaseRestController {
         Presentation presentation = presentationLogic.findById(presentationId)
                 .orElseThrow(() -> new PresentationNotFoundException(presentationId));
         gateKeeper.verifyAccessForPresentation(presentation, AccessLevel.CAN_WRITE);
-
+        UserInfo currentUser = gateKeeper.getCurrentLoginUser().orElseThrow(UnauthorisedException::new);
         PresentationAccessControl newAccessControl = presentationAccessControlLogic.saveForPresentation(presentation, presentationAccessControl);
+        emailService.sendEmail(
+                newAccessControl.getUserIdentifier(),
+                currentUser.getUserEmail(),
+                currentUser.getUserNickname(),
+                baseAnalyzeUrl + presentation.getId() ,
+                newAccessControl.getAccessLevel(),
+                presentation.getName());
         return ResponseEntity
                 .created(new URI("/presentations/" + presentation.getId() + "/accessControl/" + newAccessControl.getId()))
                 .body(newAccessControl);
