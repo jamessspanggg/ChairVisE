@@ -58,19 +58,21 @@ export default {
       state.sectionList.splice(index, 1)
     },
 
-    updateSectionDetail(state, { id, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData }) {
+    updateSectionDetail(state, { id, title, description, type, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData }) {
       let section = findSectionDetailById(state.sectionList, id);
+      let presentationSection = section.presentationSection;
 
-      section.title = title;
-      section.description = description;
-      section.dataSet = dataSet;
-      section.selections = selections;
-      section.involvedRecords = involvedRecords;
-      section.filters = filters;
-      section.joiners = joiners;
-      section.groupers = groupers;
-      section.sorters = sorters;
-      section.extraData = extraData;
+      presentationSection.title = title;
+      presentationSection.description = description;
+      presentationSection.type = type;
+      presentationSection.dataSet = dataSet;
+      presentationSection.selections = selections;
+      presentationSection.involvedRecords = involvedRecords;
+      presentationSection.filters = filters;
+      presentationSection.joiners = joiners;
+      presentationSection.groupers = groupers;
+      presentationSection.sorters = sorters;
+      presentationSection.extraData = extraData;
     },
 
     setSectionDetailLoading(state, { id, isLoading }) {
@@ -136,7 +138,7 @@ export default {
       let bodyContent = {
         presentationSection: newSection,
         fileIds: fileIds
-      }
+      };
 
       await axios.post(`/api/presentations/${presentationId}/sections`, bodyContent)
         .then(response => {
@@ -165,12 +167,13 @@ export default {
         })
     },
 
-    async saveSectionDetail({ commit }, { id, presentationId, title, description, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData }) {
+    async saveSectionDetail({ commit }, { id, presentationId, title, description, type, dataSet, selections, involvedRecords, filters, joiners, groupers, sorters, extraData }) {
       commit('setSectionDetailLoading', { id, isLoading: true });
 
       await axios.put(`/api/presentations/${presentationId}/sections/${id}`, {
         title,
         description,
+        type,
         dataSet,
         selections,
         involvedRecords,
@@ -186,6 +189,7 @@ export default {
             id: section.id,
             title: section.title,
             description: section.description,
+            type: section.type,
             dataSet: section.dataSet,
             selections: section.selections,
             involvedRecords: section.involvedRecords,

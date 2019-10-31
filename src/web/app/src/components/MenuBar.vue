@@ -22,6 +22,7 @@
       <el-button type="success" plain :disabled="isApiError">Login</el-button>
     </el-menu-item>
 
+    <el-menu-item style="float: right;" index="/help">Help</el-menu-item>
     <el-menu-item style="float: right;">
       <el-switch v-model="checked" @change="toggleMode" active-text="🌛" inactive-text="☀️"></el-switch>
     </el-menu-item>

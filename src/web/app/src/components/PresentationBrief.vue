@@ -63,7 +63,7 @@
       <el-button
         type="danger"
         v-if="!isNewPresentation && isLogin && isPresentationEditable"
-        @click="deletePresentation()"
+        @click="openDeleteConfirmation()"
       >Delete</el-button>
     </el-form-item>
   </el-form>
@@ -210,6 +210,24 @@ export default {
           });
         }
       });
+    },
+    openDeleteConfirmation() {
+      this.$confirm('This will permanently delete the presentation. Continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
+      }).then(() => {
+        this.deletePresentation();
+        this.$message({
+          type: 'success',
+          message: 'Delete Successful'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete Cancelled'
+        });
+      })
     },
     deletePresentation() {
       this.$store.dispatch("deletePresentation", this.id).then(() => {
