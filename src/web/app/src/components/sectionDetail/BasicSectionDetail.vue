@@ -26,7 +26,7 @@
           type="danger"
           icon="el-icon-delete"
           circle
-          @click="deleteSectionDetail"
+          @click="openDeleteConfirmation"
           v-if="isPresentationEditable"
         ></el-button>
         <el-dialog
@@ -491,6 +491,25 @@ export default {
           return false;
         }
       });
+    },
+
+    openDeleteConfirmation() {
+      this.$confirm('This will permanently delete the visualisation. Continue?', 'Warning', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
+      }).then(() => {
+        this.deleteSectionDetail();
+        this.$message({
+          type: 'success',
+          message: 'Delete Successful'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete Cancelled'
+        });
+      })
     },
 
     deleteSectionDetail() {
