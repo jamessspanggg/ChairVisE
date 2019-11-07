@@ -15,8 +15,5 @@ Report: Project_Report.pdf
 - [**Setting-up Guide**](docs/setting-up.md)
 - [**Application Software Design**](docs/design.md)
 
-## Existing CharVisE 2.0 Documentation
-https://hackmd.io/@a5A4fRHnTHSeDnuc86KjNw/rkLDiWrSS
-
-## CharVisE 3.0 Documentation
-https://hackmd.io/@a5A4fRHnTHSeDnuc86KjNw/S1DecrRSS
+## Report
+- [**ChairVise3.0_A0169761R_A0168492R_A0177406B_A0168472W**](ChairVise3.0_A0169761R_A0168492R_A0177406B_A0168472W.md)
