@@ -1,4 +1,4 @@
-- [Final Report](#final-report)
+- [Final Report](#final-report---CS3219-GROUP-07)
 - [ChairVisE 2.0](#chairvise-20)
   - [Existing Features](#existing-features)
     - [Google Login](#google-login)
@@ -74,9 +74,9 @@
   - [Glossary](#glossary)
 
 
-<h3 align="center"> 
-  CS3219 GROUP 07<br>Final Report
-</h3>
+
+# Final Report - CS3219 GROUP 07
+
 
 | Team member        | Roles           | Subtasks  |
 | ------------- |:-------------:| -----:|
@@ -86,7 +86,6 @@
 | Tan Jin Ying <br> A0168492R| Full Stack Software Engineer    |  US2<br>US6 |
 
 
-# Final Report
 # ChairVisE 2.0 
 
 <p align="center"> 
