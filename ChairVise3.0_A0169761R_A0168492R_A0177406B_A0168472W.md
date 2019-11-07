@@ -73,75 +73,27 @@
     - [4. Presentation Mode](#4-presentation-mode)
   - [Glossary](#glossary)
 
-<div style="height: 100vh;">
-    <div style="font-size: 3rem; text-align: center; padding-top: 5rem;">
-        CS3219 GROUP 07<br>Final Report
-    </div>
-    <div style = "text-align: center">
-        <table style="padding-top: 5rem; text-align: center; margin: 0 auto; width: 95%;">
-            <tr>
-                <th>Team member</th>
-                <th>Roles</th>
-                <th>Subtasks</th>
-            </tr>
-            <tr>
-                <td>James Pang Mun Wai<br/>A0169761R</td>
-                <td>Full Stack Software Engineer</td>
-                <td>
-                    <ul>
-                        <li>US3</li>
-                        <li>US5</li>
-                        <li>US7</li>
-                        <li>US9</li>
-                        <li>US10</li>
-                        <li>US16</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Khoo Jin Zheng Daniel <br/> A0177406B</td>
-                <td>Full Stack Software Engineer</td>
-                <td>
-                    <ul>
-                        <li>US4</li>
-                        <li>US8</li>
-                        <li>US15</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Koh Chi Hao <br/> A0168472W</td>
-                <td>Team Lead <br> Full Stack Software Engineer</td>
-                <td>
-                    <ul>
-                        <li>US1</li>
-                        <li>US11</li>
-                        <li>US13</li>
-                        <li>US14</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Tan Jin Ying <br/> A0168492R</td>
-                <td>Full Stack Software Engineer</td>
-                <td>
-                    <ul>
-                        <li>US2</li>
-                        <li>US6</li>
-                    </ul>
-                </td>
-            </tr>
-        </table> 
-    </div>
-</div>
 
-<br><br><br><br><br>
+<h3 align="center"> 
+  CS3219 GROUP 07<br>Final Report
+</h3>
+
+| Team member        | Roles           | Subtasks  |
+| ------------- |:-------------:| -----:|
+| James Pang Mun Wai <br>A0169761R   | Full Stack Software Engineer | US3<br>US5<br>US7<br>US9<br>US10<br>US16 |
+| Khoo Jin Zheng Daniel <br>A0177406B  | Full Stack Software Engineer      |   US4<br>US8<br>US15 |
+| Koh Chi Hao <br> A0168472W | Team Lead <br> Full Stack Software Engineer      |    US1<br>US11<br>US13<br>US14 |
+| Tan Jin Ying <br> A0168492R| Full Stack Software Engineer    |  US2<br>US6 |
+
+
 # Final Report
 # ChairVisE 2.0 
 
-![ChairVisE](https://i.imgur.com/FjMDetS.png)
-<center style="font-size:12px">Figure 1. ChairVisE Home Page</center>
-<br/>
+<p align="center"> 
+<img src="https://i.imgur.com/FjMDetS.png"/> 
+<br>
+Figure 1. ChairVisE Home Page
+</p>
 
 ChairVisE is designed to enable **conference program chairpersons** to visualize and share conference submission statistics. By parsing the information in different formats, ChairVisE aims to assist users to obtain the most value out of the information uploaded. ChairVisE also supports sharing and exporting of such visualization.
 
@@ -151,14 +103,16 @@ ChairVisE is designed to enable **conference program chairpersons** to visualize
 ### Google Login
 Users can log in securely with their existing Google account which reduces the burden of remembering password. 
 
-<p style="text-align: center"> 
+<p align="center"> 
 <img src="https://i.imgur.com/7bJ2OAd.png" width="350px"/> 
-<center style="font-size:12px">Figure 2. Navbar with login button</center>
+<br>
+Figure 2. Navbar with login button
 </p>
 
-<p style="text-align: center"> 
+<p align="center"> 
 <img src="https://i.imgur.com/L8JFIXI.png" width="350px"/> 
-<center style="font-size:12px">Figure 3. Selection of Google Account</center>
+<br>
+Figure 3. Selection of Google Account
 </p>
  
 ### Upload Conference Data
@@ -166,36 +120,44 @@ ChairVisE empowers users with the ability to upload metadata of conferences to t
 
 Users are given the choice of uploading of 2 different formats of conference data, namely `SoftConf` and `EasyChair`.   
 
-<p style="text-align: center"> 
+<p align="center"> 
 <img src="https://i.imgur.com/4qbyJW1.png" width="350px"/> 
-<center style="font-size:12px">Figure 4. Import Data Format Type Account</center>
+<br>
+Figure 4. Import Data Format Type Account
 </p>
 
 With selecting either of the formats, users are further able to choose up to 3 different table types of datasets to be uploaded, being, `Author Record`, `Review Record` and `Submission Record`.  
 
-
-<p style="text-align: center"> 
+<p align="center"> 
 <img src="https://i.imgur.com/PJUxdcb.png" width="350px"/> 
-<center style="font-size:12px">Figure 5. Import Data Table Type</center>
+<br>
+Figure 5. Import Data Table Type
 </p>
+
 <br/>
 
 After deciding on the table types, users would be able to select whether their files have headers and whether they would like to use the predefined mapping within the application.
 
 <br/>
-<p style="text-align: center"> 
+
+<p align="center"> 
 <img src="https://i.imgur.com/lX0FYTf.png" width="350px"/> 
-<center style="font-size:12px">Figure 6. Import Data Other Options Account</center>
+<br>
+Figure 6. Import Data Other Options Account
 </p>
+
 <br/>
 
 After selecting all the options above, users would be able to upload their CSV files. 
 
 <br/>
-<p style="text-align: center"> 
+
+<p align="center"> 
 <img src="https://i.imgur.com/mJRSX1H.png" width="350px"/> 
-<center style="font-size:12px">Figure 7. Import Data Upload CSV File</center>
+<br>
+Figure 7. Import Data Upload CSV File
 </p>
+
 <br/>
 
 ### Create Presentations
@@ -228,6 +190,7 @@ Here is the list of visualizations available concerning the type of record uploa
 | | Reviewer Confidence vs Score | | 
 
 Records are also combined to generate more meaningful visualizations:
+
 | Author Record + Submission Record | Review Record + Author Record | Submission Record + Review Record |
 | -------- | -------- | -------- |
 | Submission Rank Author in Full Papers | Average Weighted Score Rank Author | Acceptance Rate and Weighted Score |
@@ -243,50 +206,52 @@ The visualization can be represented by different types of charts, including `Pi
 
 Example of `Pie Chart`:
 ![Pie Chart Example](https://i.imgur.com/v8596KR.png)
-<center style="font-size:12px">Figure 8. Submission Rank Country Pie Chart</center>
+<p align="center">Figure 8. Submission Rank Country Pie Chart</p>
 <br>
 
 Example of `Bar Chart`:
 ![Bar Chart Example](https://i.imgur.com/wAww8Qu.png)
-<center style="font-size:12px">Figure 9. Submission Rank Author Bar Chart</center>
+<p align="center">Figure 9. Submission Rank Author Bar Chart</p>
 <br>
 
 Example of `Line Chart`:
 ![Line Chart Example](https://i.imgur.com/L1JGrFc.png)
-<center style="font-size:12px">Figure 10. Acceptance Ratio by Year Line Chart</center>
+<p align="center">Figure 10. Acceptance Ratio by Year Line Chart</p>
 <br>
 
 Example of `Word Cloud`:
 ![Word Cloud Example](https://i.imgur.com/8eFgmnk.png)
-<center style="font-size:12px">Figure 11. Word Cloud for All Submissions</center>
+<p align="center">Figure 11. Word Cloud for All Submissions</p>
 <br>
 
 ### Download Presentations
 Users can download their presentations as PDF for offline viewing.
 
 ![Downloading Presentation](https://i.imgur.com/ZnnIMNZ.png)
-<center style="font-size:12px">Figure 12. Download Presentation UI</center>
+<p align="center">Figure 12. Download Presentation UI</p>
 
 ### Share Presentations
 The presentations created can be shared via email or shareable link to other users. Permissions to view or edit the shared presentation will be given to the users.
 
 ![Sharing Presentation](https://i.imgur.com/4WzguE5.png)
-<center style="font-size:12px">Figure 13. Share Presentation UI</center>
+<p align="center">Figure 13. Share Presentation UI</p>
 
 ## Designs
 ### General Workflow
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/nFbRybS.png"/> 
-<center style="font-size:12px">Figure 14. General workflow of ChairVisE 2.0</center>
+<p align="center"> 
+<img src="https://i.imgur.com/nFbRybS.png"/>
+<br>
+Figure 14. General workflow of ChairVisE 2.0
 </p>
 
 The diagram above shows a general workflow of a user of ChairVisE application. 
 
 ### Overall Architecture
-<p style="text-align: center"> 
+<p align="center"> 
 <img src="https://i.imgur.com/Aeg5tON.png"/> 
-<center style="font-size:12px">Figure 15. Overall Architecture of ChairVisE 2.0</center>
+<br>
+Figure 15. Overall Architecture of ChairVisE 2.0
 </p>
 
 The overall architecture is designed with an N-tier design pattern. Single Responsibility Principle (SRP) is applied everywhere. Each layer/classes has its responsibility. The Model-View design pattern is applied to the frontend.
@@ -305,16 +270,17 @@ The overall architecture is designed with an N-tier design pattern. Single Respo
 ### Sequence Diagrams
 
 #### Uploading of CSV
-<p style="text-align: center"> 
+<p align="center"> 
 <img src="https://i.imgur.com/0sMZ1Nn.png"/> 
-<center style="font-size:12px">Figure 16. Sequence diagram of Uploading Author CSV File</center>
+<br>
+Figure 16. Sequence diagram of Uploading Author CSV File
 </p>
 
 The above sequence diagram describes the interactions between components when uploading an `author` csv file to ChairVisE.
 
 ### Back-end Architecture
 ![Back-end Architecture](https://i.imgur.com/jUF2s8H.png)
-<center style="font-size:12px">Figure 17. Back-end Architecture</center>
+<p align="center">Figure 17. Back-end Architecture</p>
 <br>
 
 The diagram above illustrates the backend package overview of the existing system.
@@ -342,9 +308,10 @@ The Common component contains common utilities used across the web application.
 - common.entity: Contains entity stored in the database.
 
 ### Front-end Architecture
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/zf2C5aJ.png"/> 
-<center style="font-size:12px">Figure 18. Front-End Architecture </center>
+<p align="center"> 
+<img src="https://i.imgur.com/zf2C5aJ.png"/>
+<br>
+Figure 18. Front-End Architecture
 </p>
 
 The package mainly consists of:
@@ -357,16 +324,16 @@ The package mainly consists of:
 
 ##### Home
 ![Home View](https://i.imgur.com/dsDLgtm.png)
-<center style="font-size:12px">Figure 19. Home View</center>
+<p align="center">Figure 19. Home View</p>
 
 #### Analyze
 ![Analyze View](https://i.imgur.com/r8p6dvP.jpg)
-<center style="font-size:12px">Figure 20. Analyze View</center>
+<p align="center">Figure 20. Analyze View</p>
 
 
 #### Import Data 
 ![Import Data View](https://i.imgur.com/Mt2nKMU.png)
-<center style="font-size:12px">Figure 21. Import Data View</center>
+<p align="center">Figure 21. Import Data View</p>
 
 ## Requirements
 ### Functional Requirements
@@ -778,33 +745,37 @@ The following shows the schedule of what we have done throughout the 6 weeks:
 #### 1a. [US7] Labels for X and Y-axis
 As ChairVisE 2.0 only shows the x and y-axis when the cursor is hovers over the chart, this functionality could not be applied to the pdf that is exported. Hence, we have added editable x and y-axis labels to the chart. This will be clearer for the audiences to understand what those axes represent.
 ![](https://i.imgur.com/u0qjreO.png)
-<center style="font-size:12px">Figure 22. Chart with the addition of x and y labels</center>
+<p align="center">Figure 22. Chart with the addition of x and y labels</p>
 
 #### 1b. [US8] Multiple chart representations
 This functionality allows users to toggle certain visualisation analysis from `bar` chart to `pie` chart and vice versa. Hence, this provides users with more chart representation to choose from.
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/5fgH8KD.jpg"/> 
-<center style="font-size:12px">Figure 23. Bar-Pie Chart Toggle Button</center>
+<p align="center">
+<img src="https://i.imgur.com/5fgH8KD.jpg"/>
+<br>
+Figure 23. Bar-Pie Chart Toggle Button
 </p>
 
-<p style="text-align: center"> 
+<p align="center">
 <img src="https://i.imgur.com/yUJEcQb.jpg"/> 
-<center style="font-size:12px">Figure 24. Bar Chart for Submission Rank Track</center>
+<br>
+Figure 24. Bar Chart for Submission Rank Track
 </p>
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/JYgg8qL.jpg"/> 
-<center style="font-size:12px">Figure 25. Pie Chart for Submission Rank Track</center>
+<p align="center">
+<img src="https://i.imgur.com/JYgg8qL.jpg"/>
+<br>
+Figure 25. Pie Chart for Submission Rank Track
 </p>
 
 In figure 24 to figure 25, it shows the transformation of `bar` chart to `pie` chart for the `submission rank track` analysis.
 
 The following sequence diagram shows the implementation when a user toggles a visualisation from `bar` chart to `pie` chart:
 
-<p style="text-align: center"> 
+<p align="center">
 <img src="https://i.imgur.com/lS0L6ii.jpg"/> 
-<center style="font-size:12px">Figure 26. Bar Chart to Pie Chart Sequence Diagram</center>
+<br>
+Figure 26. Bar Chart to Pie Chart Sequence Diagram
 </p>
 
 1. User toggles chart type to `bar` chart and selects `save`. The view (`BasicSectionDetail.vue`) will send a request with `editForm` information to the store (`section.js`)
@@ -822,25 +793,25 @@ The following sequence diagram shows the implementation when a user toggles a vi
 <br>This chart shows the average reviewer's expertise level that reviews all the submissions for each author. This allows users to know which author's submissions are being reviewed by more expert reviewers. (Same goes for organization and country)
 
 ![](https://i.imgur.com/SsybWMF.png)
-<center style="font-size:12px">Figure 27. Average Reviewer's Expertise Level per Author</center><br>
+<p align="center">Figure 27. Average Reviewer's Expertise Level per Author</p><br>
 
 - `Submission Rejected Rank Track and Submission Rejected Rank Author (2 visualisations with different x-axis)`
 <br>This chart shows the number of submissions that were rejected in each track. This allows us to get the info on which track gets rejected more often than the other. (Same goes for author)
 
 ![](https://i.imgur.com/KF6h8y6.png)
-<center style="font-size:12px">Figure 28. Bar chart of Submission Rejected Rank Track</center><br>
+<p align="center">Figure 28. Bar chart of Submission Rejected Rank Track</p><br>
 
 - `Average Number of Days to Review By Track`
 <br>This chart shows the average number of days taken to review each track, which gives us an insight on the efficiency of the reviewing process for each track.
 
 ![](https://i.imgur.com/B6ynvOl.png)
-<center style="font-size:12px">Figure 29. Bar chart of Average Number of Days to Review By Track</center><br>
+<p align="center">Figure 29. Bar chart of Average Number of Days to Review By Track</p><br>
 
 - `Average Reviewer's Expertise Level By Track`
 <br>This chart shows the average reviewer's expertise level for each track. This provides information on the expected expertise level of reviewers for each track.
 
 ![](https://i.imgur.com/SUj12ku.png)
-<center style="font-size:12px">Figure 30. Bar chart of Average Reviewer's Expertise Level By Track</center>
+<p align="center">Figure 30. Bar chart of Average Reviewer's Expertise Level By Track</p>
 
 ### 3. Persistence of multiple conference data
 #### 3a. [US1] Allow multiple uploads for files of the same type (author, review, submission)
@@ -850,22 +821,24 @@ Allowing the uploading of multiple conference data allows users to compare diffe
 For example, now the user can have the ability to upload multiple author or submission or review `csv` files without overriding the existing content. 
 
 ![](https://i.imgur.com/2kHYmVC.png)
-<center style="font-size:12px">Figure 31. Sequence diagram of multiple conference data upload</center><br>
+<p align="center">Figure 31. Sequence diagram of multiple conference data upload</p><br>
 
 #### 3b. [US2] View files that are uploaded
 
 Users can view all their uploaded files. This allows the user to manage all their uploaded file in a single location. 
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/33Nx2E0.jpg"/> 
-<center style="font-size:12px">Figure 32. View Uploaded Files Page</center>
+<p align="center">
+<img src="https://i.imgur.com/33Nx2E0.jpg"/>
+<br>
+Figure 32. View Uploaded Files Page
 </p>
 
 The following sequence diagram shows the implementation of viewing of uploaded files: 
 
-<p style="text-align: center"> 
+<p align="center">
 <img src="https://i.imgur.com/qv3Wbxx.jpg"/> 
-<center style="font-size:12px">Figure 33. Sequence Diagram for view for uploaded files</center>
+<br>
+Figure 33. Sequence Diagram for view for uploaded files
 </p>
 
 1. When the user selects to view their uploaded files, `UploadedFiles.vue` will send a request the data from the store (`userFile.js`)
@@ -879,32 +852,35 @@ The following sequence diagram shows the implementation of viewing of uploaded f
 With the addition of uploading multiple files, we also implemented the option of deleting uploaded files which allow users to de-clutter the number of files uploaded as well as to have better file management.
 
 ![](https://i.imgur.com/wWWjoCK.png)
-<center style="font-size:12px">Figure 34. Delete operation in UploadedFiles.vue</center><br>
+<p align="center">Figure 34. Delete operation in UploadedFiles.vue</p><br>
 
 The following shows the sequence diagram when deleting a certain author file named `author.csv`. The `userFile` is first removed from the database, followed by the corresponding `authorRecord` identified by the primary key, `fileId`. The same sequence diagram can be applied to review and submission files.
 
 ![](https://i.imgur.com/Kemt12N.png)
-<center style="font-size:12px">Figure 35. Sequence Diagram for deleting uploaded files</center>
+<p align="center">Figure 35. Sequence Diagram for deleting uploaded files</p>
 
 ### 4. User interface improvements
 #### 4a. [US4] Copy charts to another presentation
 This functionality allows users to copy any chart from one presentation to another presentation, which makes the process of creating the same chart information to a different presentation easier.
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/9KArD7N.jpg"/> 
-<center style="font-size:12px">Figure 36. Copy button on each chart</center>
+<p align="center">
+<img src="https://i.imgur.com/9KArD7N.jpg"/>
+<br>
+Figure 36. Copy button on each chart
 </p>
 
-<p style="text-align: center"> 
+<p align="center">
 <img src="https://i.imgur.com/IhRUfaD.jpg"/> 
-<center style="font-size:12px">Figure 37. Popup dialog to select copy to presentation</center>
+<br>
+Figure 37. Popup dialog to select copy to presentation
 </p>
 
 The following sequence diagram shows the implementation of copying a chart from one presentation to another presentation:
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/IKVY767.jpg"/> 
-<center style="font-size:12px">Figure 38. Copy Presentation Sequence Diagram</center>
+<p align="center">
+<img src="https://i.imgur.com/IKVY767.jpg"/>
+<br>
+Figure 38. Copy Presentation Sequence Diagram
 </p>
 
 1. When the user selects `copy` from the chart, the view (`BasicSectionDetail.vue`) will send a request to open the view (`CopyPresentationPanel.vue`) dialog to allow the user to select which presentation to be copied to.
@@ -921,20 +897,23 @@ The following sequence diagram shows the implementation of copying a chart from 
 With this addition, users can view what each column represents when mapping each column to the predefined field, which makes the mapping process easier and more convenient.
 
 ![](https://i.imgur.com/ztrncG0.png)
+<p align="center">Figure 39. Preview of uploaded data</p><br>
 
 #### 4c. [US6] Selection of specific files to be analysed
 Having the ability to upload multiple files, this feature allows the user to select the files they would like to include in the visualization. This feature provides a drop-down to allow the user to select the different table types of file they want and the section will be filtered according to the combination of the files they have picked. 
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/FvHpDkB.jpg"/> 
-<center style="font-size:12px">Figure 39. Select files for visualization</center>
+<p align="center">
+<img src="https://i.imgur.com/FvHpDkB.jpg"/>
+<br>
+Figure 40. Select files for visualization
 </p>
 
 The following sequence diagram shows the implementation of adding a new chart section: 
 
-<p style="text-align: center"> 
+<p align="center">
 <img src="https://i.imgur.com/mm5qFRj.png"/> 
-<center style="font-size:12px">Figure 40. Sequence Diagram for adding a new chart section</center>
+<br>
+Figure 41. Sequence Diagram for adding a new chart section
 </p>
 
 1. After user selects `Add New Section`, the view (`SectionListPanel.vue`) will send a request with the `presentationId`, `selectedNewSection`, `dataSet` (userEmail) and `keys` (fileIds) to the store (`section.js`)
@@ -949,50 +928,52 @@ The following sequence diagram shows the implementation of adding a new chart se
 The controls in advanced edit mode are rearranged to be at the same level as their sections for a better visual flow.
 
 ![](https://i.imgur.com/vpvH5iS.png)
-<center style="font-size:12px">Figure 41. Updated Positions of Advanced Edit Controls</center>
+<p align="center">Figure 42. Updated Positions of Advanced Edit Controls</p>
 
 #### 4e. [US13] Dark Mode
 In this day and age, every piece of software comes with a dark mode because dark mode is proven to be less straining on the eyes. There is a toggle switch on the top right-hand side of the navigation bar where the user can toggle between `light` and `dark` mode.
 
-![](https://i.imgur.com/YKQEsfX.png)
-<center style="font-size:12px">Figure 42. Light mode (Home page)</center>
+![darkMode](https://i.imgur.com/YKQEsfX.png)
+<p align="center">Figure 43. Light mode (Home page)</p>
 
 <br>
 
-![](https://i.imgur.com/KdHwzxY.png)
-<center style="font-size:12px">Figure 43. Dark mode (Home page)</center>
+![darkMode1](https://i.imgur.com/KdHwzxY.png)
+<p align="center">Figure 44. Dark mode (Home page)</p>
 
 <br>
+<br>
 
-![](https://i.imgur.com/gYwrW0B.png)
-<center style="font-size:12px">Figure 44. Dark mode (Analyze page)</center>
+![darkMode2](https://i.imgur.com/gYwrW0B.png)
+<p align="center">Figure 45. Dark mode (Analyze page)</p>
 
 #### 4f. [US15] Shift help instructions to an individual help page
 As ChairVisE 2.0 help instruction is placed in the home page. Hence, we have separated it from `home page` to `help page`. This will be clearer for the users to find help instruction from the navigation bar `help`.
 
-<p style="text-align: center"> 
-<img src="https://i.imgur.com/Cx6GZZF.jpg"/> 
-<center style="font-size:12px">Figure 45. Help Page</center>
+<p align="center">
+<img src="https://i.imgur.com/Cx6GZZF.jpg"/>
+<br>
+Figure 46. Help Page
 </p>
 
 #### 4g. [US16] Confirmation prompt before deletion (uploaded files, presentations, visualisations)
 A confirmation prompt will pop up before the user deletes the particular item to prevent them from mistakenly delete important files, presentations and visualisations. The prompts will have the following format:
 
 ![](https://i.imgur.com/7cMyJJd.png)
-<center style="font-size:12px">Figure 46. Confirmation prompt for deletion</center>
+<p align="center">Figure 47. Confirmation prompt for deletion</p>
 
 ### 5. Co-authorship Queries
 #### 5a. [US14] Co-authorship Queries
 By having the different visualization for co-authorship, it enables the user to see more potential trends between `countries`,`authors` and `organization`. The different pair of collaboration between `country-country`, `author-author` and `organization-organization` is available to the user.
 
-![](https://i.imgur.com/nSLnLUh.png)
-<center style="font-size:12px">Figure 47. Visualization for author-author pair</center><br>
+![fig48](https://i.imgur.com/nSLnLUh.png)
+<p align="center">Figure 48. Visualization for author-author pair</p><br>
 
-![](https://i.imgur.com/sEuZHYw.png)
-<center style="font-size:12px">Figure 48. Visualization for country-country pair</center><br>
+![fig49](https://i.imgur.com/sEuZHYw.png)
+<p align="center">Figure 49. Visualization for country-country pair</p><br>
 
-![](https://i.imgur.com/pWV5HpB.png)
-<center style="font-size:12px">Figure 49. Visualization for organization-organization pair</center><br>
+![fig50](https://i.imgur.com/pWV5HpB.png)
+<p align="center">Figure 50. Visualization for organization-organization pair</p><br>
 
 ### 6. Others
 #### 6a. [US11] Email Notifications when sharing to other users
@@ -1000,12 +981,12 @@ By having the different visualization for co-authorship, it enables the user to 
 Whenever user *A* shares a presentation with user *B* via email, using `SendGrid` email feature, an email will be sent to the user *B* email notifying that someone has shared with them a presentation with the ability to `edit` or `view` only.
 
 ![](https://i.imgur.com/hMiUchE.png)
-<center style="font-size:12px">Figure 50. Sequence diagram for email notification</center><br>
+<p align="center">Figure 51. Sequence diagram for email notification</p><br>
 
 Once the email has been sent out by the SendGrid system, user *B* will receive the email. From the email, user *B* can simply click on *Open in ChairVisE* button and they will be redirected to ChairVisE website with the presentation. A screenshot of how the email looks like is provided below.
 
-![](https://i.imgur.com/BECsztO.png)
-<center style="font-size:12px">Figure 51. User receiving email from SendGrid</center><br>
+![fig52](https://i.imgur.com/BECsztO.png)
+<p align="center">Figure 52. User receiving email from SendGrid</p><br>
 
 ## Design
 
@@ -1105,8 +1086,8 @@ The builder pattern allow us to not have a giant constructor that accepts all th
 
 ### ER Diagrams
 The following ER Diagram shows the relationship between each table in ChairVisE 3.0: 
-![](https://i.imgur.com/ZIXCjsy.png)
-<center style="font-size:12px">Figure 52. ER Diagram of ChairVisE 3.0</center>
+![fig53](https://i.imgur.com/ZIXCjsy.png)
+<p align="center">Figure 53. ER Diagram of ChairVisE 3.0</p>
 
 ## Future Developments 
 
