@@ -71,7 +71,7 @@
     - [2. Enhancement to [US6]](#2-enhancement-to-us6)
     - [3. Rigidity of predefinedQueries.js in Frontend codebase](#3-rigidity-of-predefinedqueriesjs-in-frontend-codebase)
     - [4. Presentation Mode](#4-presentation-mode)
-    - [5. Addressing Flexible Data Schemes](#-addressing-flexible-data-schemes)
+    - [5. Addressing Flexible Data Schemes](#5-addressing-flexible-data-schemes)
   - [Glossary](#glossary)
 
 
