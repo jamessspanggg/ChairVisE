@@ -71,6 +71,7 @@
     - [2. Enhancement to [US6]](#2-enhancement-to-us6)
     - [3. Rigidity of predefinedQueries.js in Frontend codebase](#3-rigidity-of-predefinedqueriesjs-in-frontend-codebase)
     - [4. Presentation Mode](#4-presentation-mode)
+    - [5. Addressing Flexible Data Schemes](#-addressing-flexible-data-schemes)
   - [Glossary](#glossary)
 
 
@@ -1114,6 +1115,20 @@ To mitigate this problem, there should be an API call to the backend with the ty
 The current ChairVisE only allows exporting of presentations as `pdf` files. Interactions to the charts (e.g. tool-tip hovers that show additional information of the chart) cannot be shown in the exported `pdf` files. 
 
 A suggestion is to add a presentation mode, which shows presentations without controls (edit and delete), while still allowing the interactions to the charts. In this way, the presenter can show more chart info that is not encapsulated when the presentation is exported as `pdf`.
+
+### 5. Addressing Flexible Data Schemes
+Our work done for this project did not address the `flexible data schemes` requirement as the feature will require major architectural changes to the backend code and might hinder the progress of other features. Additionally, with the time constraints and other commitments of group members, it makes more sense to deliver as many features as possible by not modifying the current architecture as much as possible.
+
+Even though we did not implement this feature, we have came up with a solution for other developers to tackle this feature:
+- a main table `user_file` that stores all the uploaded files with their file ids and file types (e.g. `EasyChair`, `SoftConf`, `CMT`)
+- separate tables with different file types, storing the specific attributes of each file types
+- a façade class will act as the Single Source of Truth instead of the database. This façade class will handle all the merging of the different table types and the backend logic would call the façade to request for data.
+- The façade can help to abstract away the complexities behind a single interface, that appears simple on the outside. The backend logic will be decoupled from the database.
+
+![](https://i.imgur.com/bmebtFX.png)
+<p align="center">Figure 53. Proposed structure for flexible data scheme</p>
+
+By storing the uploaded files in this way, it will be easier to extend to support more file types as extending will only require to add new tables and new set of APIs that manage these new file types. The existing file storage will also not be modified with the addition of new file types, hence preserving the Open-Closed principle.
 
 ## Glossary 
 
