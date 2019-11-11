@@ -1,29 +1,11 @@
 - [Final Report](#final-report---CS3219-GROUP-07)
 - [ChairVisE 2.0](#chairvise-20)
   - [Existing Features](#existing-features)
-    - [Google Login](#google-login)
-    - [Upload Conference Data](#upload-conference-data)
-    - [Create Presentations](#create-presentations)
-    - [Data Visualizations](#data-visualizations)
-    - [Download Presentations](#download-presentations)
-    - [Share Presentations](#share-presentations)
   - [Designs](#designs)
-    - [General Workflow](#general-workflow)
-    - [Overall Architecture](#overall-architecture)
-    - [Sequence Diagrams](#sequence-diagrams)
-    - [Back-end Architecture](#back-end-architecture)
-    - [Front-end Architecture](#front-end-architecture)
   - [Requirements](#requirements)
     - [Functional Requirements](#functional-requirements)
       - [User stories](#user-stories)
       - [Use cases](#use-cases)
-        - [UC1 - Upload CSV files](#uc1---upload-csv-files)
-        - [UC2 - Adding visualization](#uc2---adding-visualization)
-        - [UC3 - Download presentation](#uc3---download-presentation)
-        - [UC4 - Share presentation](#uc4---share-presentation)
-        - [UC5 - Basic edit visualization](#uc5---basic-edit-visualization)
-        - [UC6 - Advanced edit visualization](#uc6---advanced-edit-visualization)
-        - [UC7 - Login with Google](#uc7---login-with-google)
     - [Non-Function Requirements](#non-function-requirements)
       - [Constraints](#constraints)
       - [Interface Requirements](#interface-requirements)
@@ -34,15 +16,6 @@
     - [Functional Requirements](#functional-requirements-1)
       - [User stories](#user-stories-1)
       - [Use Cases](#use-cases)
-        - [UC 1 - Upload multiple files of the same type](#uc-1---upload-multiple-files-of-the-same-type)
-        - [UC 2 - View uploaded files](#uc-2---view-uploaded-files)
-        - [UC 3 - Delete uploaded files](#uc-3---delete-uploaded-files)
-        - [UC 4 - Copy chart to other presentation](#uc-4---copy-chart-to-other-presentation)
-        - [UC 5 - Preview of file contents on upload](#uc-5---preview-of-file-contents-on-upload)
-        - [UC 6 - Select file for relevant visualization](#uc-6---select-file-for-relevant-visualization)
-        - [UC 7 - Choose chart representation for a visualization](#uc-7---choose-chart-representation-for-a-visualization)
-        - [UC 8 - Upload multiple files at a go](#uc-8---upload-multiple-files-at-a-go)
-        - [UC 9 - Switch to dark mode](#uc-9---switch-to-dark-mode)
       - [Functional Requirements](#functional-requirements-2)
       - [User Stories | Use Cases | Functional Requirements mappings](#user-stories--use-cases--functional-requirements-mappings)
     - [Non Functional Requirements](#non-functional-requirements)
@@ -52,39 +25,25 @@
       - [Quality Attributes](#quality-attributes-1)
   - [Development Process](#development-process)
   - [Enhancements](#enhancements)
-    - [1. Make existing visualisations more meaningful to the user](#1-make-existing-visualisations-more-meaningful-to-the-user)
-    - [2. Add more visualisations to provide more value to the user](#2-add-more-visualisations-to-provide-more-value-to-the-user)
-    - [3. Persistence of multiple conference data](#3-persistence-of-multiple-conference-data)
-    - [4. User interface improvements](#4-user-interface-improvements)
-    - [5. Co-authorship Queries](#5-co-authorship-queries)
-    - [6. Others](#6-others)
   - [Design](#design)
     - [Design Decisions](#design-decisions)
-      - [MVC Pattern for Front-End](#mvc-pattern-for-front-end)
-      - [Predefined Queries and Analysis Logic](#predefined-queries-and-analysis-logic)
-      - [[US1] New user file table](#us1-new-user-file-table)
-      - [[US6] Storage of file ids for charts](#us6-storage-of-file-ids-for-charts)
-      - [[US11] Email Notification](#us11-email-notification)
     - [ER Diagrams](#er-diagrams)
   - [Future Developments](#future-developments)
-    - [1. Enhancement to [US2] & [US3]](#1-enhancement-to-us2--us3)
-    - [2. Enhancement to [US6]](#2-enhancement-to-us6)
-    - [3. Rigidity of predefinedQueries.js in Frontend codebase](#3-rigidity-of-predefinedqueriesjs-in-frontend-codebase)
-    - [4. Presentation Mode](#4-presentation-mode)
-    - [5. Addressing Flexible Data Schemes](#5-addressing-flexible-data-schemes)
   - [Glossary](#glossary)
 
 
 
 # Final Report - CS3219 GROUP 07
+Code Repository URL: https://github.com/CS3219-SE-Principles-and-Patterns/chairvise3-0-ghost-3
 
 
-| Team member        | Roles           | Subtasks  |
-| ------------- |:-------------:| -----:|
-| James Pang Mun Wai <br>A0169761R   | Full Stack Software Engineer | US3<br>US5<br>US7<br>US9<br>US10<br>US16 |
-| Khoo Jin Zheng Daniel <br>A0177406B  | Full Stack Software Engineer      |   US4<br>US8<br>US15 |
-| Koh Chi Hao <br> A0168472W | Team Lead <br> Full Stack Software Engineer      |    US1<br>US11<br>US13<br>US14 |
-| Tan Jin Ying <br> A0168492R| Full Stack Software Engineer    |  US2<br>US6 |
+| Team member        | Roles           | Technical Tasks  | Non-Technical Task |
+| ------------- |:-------------:| -----:|-----:|
+| James Pang Mun Wai <br>A0169761R   | Full Stack Software Engineer | US3<br>US5<br>US7<br>US9<br>US10<br>US16 | Documentation <br> Construct backlog <br> Code Review <br> Scheduling and Tracking deliverables |
+| Khoo Jin Zheng Daniel <br>A0177406B  | Full Stack Software Engineer      |   US4<br>US8<br>US15 | Documentation <br> Construct backlog <br> Code Review <br> Scheduling and Tracking deliverables |
+| Koh Chi Hao <br> A0168472W | Team Lead <br> Full Stack Software Engineer      |    US1<br>US11<br>US13<br>US14 | Documentation <br> Construct backlog <br> Code Review <br> Scheduling and Tracking deliverables |
+| Tan Jin Ying <br> A0168492R| Full Stack Software Engineer    |  US2<br>US6 | Documentation <br> Construct backlog <br> Code Review <br> Scheduling and Tracking deliverables|
+
 
 
 # ChairVisE 2.0 
